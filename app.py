@@ -95,6 +95,16 @@ def get_locations():
     return render_template("locations.html", locations=locations)
 
 
+@app.route("/locations/<location_id>")
+def locations(location_id):
+    location = mongo.db.locations.find_one(
+        {"_id": ObjectId(location_id)})
+
+    locations = mongo.db.locations.find().sort("location_name", 1)
+    return render_template(
+        "posts.html", location=location, locations=locations)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

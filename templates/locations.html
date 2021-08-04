@@ -9,7 +9,7 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, provident?</p>
         </div>
         <div class="card-links">
-          <a class="locations-links" href="#">This is a link</a>
+          <a class="locations-links" href="{{ url_for('locations', location_id=location._id) }}">This is a link</a>
         </div>
       </div>
       {% endfor %}
