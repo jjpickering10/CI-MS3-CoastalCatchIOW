@@ -100,18 +100,22 @@ def locations(location_id):
     location = mongo.db.locations.find_one(
         {"_id": ObjectId(location_id)})
 
-    locations = list(mongo.db.locations.find().sort("location_name", 1))
     if request.method == "POST":
         post = {
+            "location_id": location_id,
             "location_name": location["location_name"],
             "review_title": request.form.get("review_title"),
             "review_description": request.form.get("review_description"),
             "created_by": session['user']
         }
         mongo.db.reviews.insert_one(post)
-
+        flash('Post successful')
+        return redirect(url_for('locations', location_id=post["location_id"]))
+        # return redirect(url_for('get_locations'))
+    reviews = list(mongo.db.reviews.find({"location_id": location_id}))
+    print(reviews)
     return render_template(
-        "posts.html", location=location, locations=locations)
+        "posts.html", location=location, reviews=reviews)
 
 
 if __name__ == "__main__":
