@@ -6,7 +6,7 @@ _Use CTRL+click or CMD+click to open links throughout the README in a new tab_
 
 ## Overview
 
-
+Coastal Catch Isle of Wight is a fishing blog/forum site that allows users to post their fishing experiences of certain locations on the island as well as ask questions for advice.
 
 
 ---
@@ -23,42 +23,58 @@ _Use CTRL+click or CMD+click to open links throughout the README in a new tab_
 
 First Time Visitor Goals
 
-1. As a First Time Visitor, I want to - 
-2. As a First Time Visitor, I want to - 
-3. As a First Time Visitor, I want to - 
+1. As a First Time Visitor, I want to - view locations on the island
+2. As a First Time Visitor, I want to - be able to read posts
+3. As a First Time Visitor, I want to - be able to view questions and answers
+4. As a First Time Visitor, I want to - register account
+5. As a First Time Visitor, I want to - read about the site
 
 Returning Visitor Goals
 
-1. As a Returning Visitor, I want to - 
-2. As a Returning Visitor, I want to - 
-3. As a Returning Visitor, I want to - 
+1. As a Returning Visitor, I want to - log in to my account
+2. As a Returning Visitor, I want to - reply to comments on my posts and others
+3. As a Returning Visitor, I want to - edit and delete posts and comments if necessary
 
 Frequent User Goals
 
-1. As a Frequent User, I want to - 
-2. As a Frequent User, I want to - 
-3. As a Frequent User, I want to -
+1. As a Frequent User, I want to - edit my profile
+2. As a Frequent User, I want to - apply to become guru
+3. As a Frequent User, I want to - 
 
 ### **Strategy**
 
 #### External User's Goals
 
+Visiting users will be able to read in the information on the site.
+Registered users will be able to create, read, update and delete posts on the site.
+Registered users will be able to create, read, update and delete information in their profile.
+Guru users will be able to do everything a registered user can, but will be able to answer specific questions.
 
 
 #### Site Owner's Goals
 
-
+Admin users will be able to create, read, update and delete locations.
+Admin users will be able to decide who gets to be a guru user.
 
 ### **Scope**
 
-
+Fits in with skillset of current programming ability.
 
 ### **Structure**
 
+Consistent navigation throughout site.
+Logged in user can CRUD on posts and comment.
+Logged in guru user can CRUD on posts and answer specific questions.
+Logged in admin can CRUD on posts, but also manage locations.
 
 
 ### **Skeleton**
 
+Navigation, including dropdown locations menu
+Landing page
+Locations page
+Posts page
+Guru page
 
 
 
@@ -67,6 +83,9 @@ Frequent User Goals
 
 Colour scheme:
 
+Mix of blues, greys and browns to match sea and sand colors.
+
+![Color Palette](/docs/img/colorscheme.png) - color palette
 
 
 Images:
