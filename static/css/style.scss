@@ -14,6 +14,7 @@
 
 body {
     color: whitesmoke;
+    background: var(--secondary-blue);
 }
 
 /* Nav */
@@ -40,6 +41,22 @@ nav {
     .home-button {
         margin-top: 1rem;
         background: var(--primary-brown);
+    }
+}
+
+// Register Page
+
+.register-form-container {
+    .register-card {
+        background: var(--primary-brown);
+        transform: translateY(10vh);
+        .register-button {
+            background: whitesmoke;
+            color: black;
+        }
+    }
+    .input-field>label {
+        color: whitesmoke;
     }
 }
 

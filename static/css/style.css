@@ -14,6 +14,7 @@
 
 body {
   color: whitesmoke;
+  background: var(--secondary-blue);
 }
 
 /* Nav */
@@ -39,4 +40,16 @@ nav .navigation-main {
 .home-page-container .home-button {
   margin-top: 1rem;
   background: var(--primary-brown);
+}
+
+.register-form-container .register-card {
+  background: var(--primary-brown);
+  transform: translateY(10vh);
+}
+.register-form-container .register-card .register-button {
+  background: whitesmoke;
+  color: black;
+}
+.register-form-container .input-field > label {
+  color: whitesmoke;
 }/*# sourceMappingURL=style.css.map */
