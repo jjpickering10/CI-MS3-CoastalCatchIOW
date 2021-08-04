@@ -1,0 +1,47 @@
+:root {
+    --primary-blue: #006994;
+    --secondary-blue: #394955;
+    --tertiary-blue: #9CADBC;
+    --primary-brown: #7F5B30;
+    --secondary-brown: #B68D5F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: whitesmoke;
+}
+
+/* Nav */
+
+nav {
+    box-shadow: none;
+    .navigation-main {
+        background: var(--secondary-blue);
+    }
+}
+
+/* Landing Page */
+
+.home-page-container {
+    background: var(--secondary-blue);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    .home-text-content {
+        transform: translate(10%, 25%);
+    }
+    .home-button {
+        margin-top: 1rem;
+        background: var(--primary-brown);
+    }
+}
+
+
+

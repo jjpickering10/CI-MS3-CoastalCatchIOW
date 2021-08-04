@@ -14,22 +14,24 @@
 <body>
     <!-- Main Navbar -->
     <header>
-    <nav>
-        <div class="nav-wrapper navigation-main">
-          <a href="#!" class="brand-logo">CoastalCatch</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Ask Guru</a></li>
-            <li><a href="">Locations</a></li>
-            <li><a href="">Profile</a></li>
-            <li><a href="">Login</a></li>
-            <li><a href="">Register</a></li>
-            <li><a href="">Logout</a></li>
-          </ul>
-        </div>
-      </nav>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper navigation-main">
+              <a href="#!" class="brand-logo">CoastalCatch</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Ask Guru</a></li>
+                <li><a href="">Locations</a></li>
+                <li><a href="">Profile</a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="">Register</a></li>
+                <li><a href="">Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+    </div>
     <!-- Mobile Navbar -->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="">Home</a></li>
@@ -42,7 +44,6 @@
         <li><a href="">Logout</a></li>
       </ul>
     </header>
-    <h1>Testing base template</h1>
     {% block content %}
     {% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
