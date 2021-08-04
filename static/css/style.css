@@ -17,6 +17,10 @@ body {
   background: var(--secondary-blue);
 }
 
+.flashes h4 {
+  color: red;
+}
+
 /* Nav */
 nav {
   box-shadow: none;
