@@ -1,3 +1,22 @@
+:root {
+    --primary-blue: #006994;
+    --secondary-blue: #394955;
+    --tertiary-blue: #9CADBC;
+    --primary-brown: #7F5B30;
+    --secondary-brown: #B68D5F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background: red;
+    color: var(--primary-blue);
+}
+
+/* Nav */
+
+.navigation-main {
+    background: var(--secondary-blue);
 }
