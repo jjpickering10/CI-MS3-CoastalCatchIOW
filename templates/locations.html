@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+      <main>
+      {% for location in locations %}
+      <div class="card locations-card">
+        <div class="card-content locations-info">
+          <span class="card-title">{{ location.location_name }}</span>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, provident?</p>
+        </div>
+        <div class="card-links">
+          <a class="locations-links" href="#">This is a link</a>
+        </div>
+      </div>
+      {% endfor %}
+    </main>
+
+{% endblock %}

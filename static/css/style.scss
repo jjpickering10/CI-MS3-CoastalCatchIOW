@@ -4,6 +4,7 @@
     --tertiary-blue: #9CADBC;
     --primary-brown: #7F5B30;
     --secondary-brown: #B68D5F;
+    --white-color: whitesmoke;
 }
 
 * {
@@ -13,7 +14,7 @@
 }
 
 body {
-    color: whitesmoke;
+    color: var(--white-color);
     background: var(--secondary-blue);
 }
 
@@ -57,12 +58,35 @@ nav {
         background: var(--primary-brown);
         transform: translateY(10vh);
         .register-button {
-            background: whitesmoke;
+            background: var(--white-color);
             color: black;
         }
     }
     .input-field>label {
-        color: whitesmoke;
+        color: var(--white-color);
+    }
+}
+
+// Locations Page
+
+main {
+    margin: 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+    transform: translateY(10vh);
+    .locations-card {
+        background: var(--secondary-brown);
+        .card-links {
+            position: relative;
+            padding: 16px 24px;
+        }
+        
+        .locations-links {
+            color: var(--white-color);
+            background: var(--tertiary-blue);
+        }
     }
 }
 

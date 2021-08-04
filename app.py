@@ -89,10 +89,10 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/get_reviews")
-def get_reviews():
-    reviews = mongo.db.reviews.find()
-    return render_template("reviews.html", reviews=reviews)
+@app.route("/get_locations")
+def get_locations():
+    locations = mongo.db.locations.find()
+    return render_template("locations.html", locations=locations)
 
 
 if __name__ == "__main__":
