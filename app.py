@@ -95,12 +95,21 @@ def get_locations():
     return render_template("locations.html", locations=locations)
 
 
-@app.route("/locations/<location_id>")
+@app.route("/locations/<location_id>", methods=["GET", "POST"])
 def locations(location_id):
     location = mongo.db.locations.find_one(
         {"_id": ObjectId(location_id)})
 
-    locations = mongo.db.locations.find().sort("location_name", 1)
+    locations = list(mongo.db.locations.find().sort("location_name", 1))
+    if request.method == "POST":
+        post = {
+            "location_name": location["location_name"],
+            "review_title": request.form.get("review_title"),
+            "review_description": request.form.get("review_description"),
+            "created_by": session['user']
+        }
+        mongo.db.reviews.insert_one(post)
+
     return render_template(
         "posts.html", location=location, locations=locations)
 
