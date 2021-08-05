@@ -212,6 +212,22 @@ def view_locations():
         "view_locations.html", locations=locations, reviews=reviews)
 
 
+@app.route("/edit_locations/<location_id>", methods=["GET", "POST"])
+def edit_locations(location_id):
+    locations = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+    if request.method == "POST":
+        updated_location = {
+            "location_name": locations["location_name"],
+            "location_description": request.form.get("location_description")
+        }
+        mongo.db.locations.update(
+            {"_id": ObjectId(location_id)}, updated_location)
+        flash('Edit successful')
+        return redirect(url_for('view_locations'))
+
+    return render_template("edit_location.html", locations=locations)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
