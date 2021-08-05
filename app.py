@@ -141,6 +141,14 @@ def edit_post(post_id):
     return render_template("edit_post.html", post=post)
 
 
+@app.route("/delete_post/<post_id>")
+def delete_post(post_id):
+    post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
+    mongo.db.reviews.remove({"_id": ObjectId(post_id)})
+    flash("Post deleted")
+    return redirect(url_for('locations', location_id=post["location_id"]))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
