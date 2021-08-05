@@ -168,6 +168,25 @@ def add_comment(post_id):
         return redirect(url_for('locations', location_id=post["location_id"]))
 
 
+@app.route("/edit_comment/<comment_id>", methods=["GET", "POST"])
+def edit_comment(comment_id):
+    comments = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
+    if request.method == "POST":
+        updated_comment = {
+            "post_id": comments["post_id"],
+            "location_id": comments["location_id"],
+            "created_by": session['user'],
+            "comments": request.form.get("comments")
+        }
+        mongo.db.comments.update(
+            {"_id": ObjectId(comment_id)}, updated_comment)
+        flash('Edit successful')
+        return redirect(
+            url_for('locations', location_id=comments["location_id"]))
+
+    return render_template("edit_comment.html", comments=comments)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
