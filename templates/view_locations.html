@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+  
+
+  <br>
+  <br>
+
+
+  {% for location in locations %}
+    <div>
+      <h2>{{ location.location_name }}</h2>
+      <h5>{{ location.location_description }}</h5>
+      <a href="" class="btn-small">Edit</a>
+      <a href="" class="btn-small">Delete</a>
+      <h5>Posts: </h5>
+      {% for review in reviews %}
+        {% if review.location_name == location.location_name %}
+        <p>{{ review.review_title }}</p>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <br>
+    <br>
+    <br>
+  {% endfor %}
+  
+
+
+
+
+
+
+
+{% endblock %}

@@ -204,6 +204,14 @@ def delete_comment(comment_id):
     return redirect(url_for('locations', location_id=comments["location_id"]))
 
 
+@app.route("/view_locations")
+def view_locations():
+    locations = list(mongo.db.locations.find().sort("location_name", 1))
+    reviews = list(mongo.db.reviews.find().sort("review_title", 1))
+    return render_template(
+        "view_locations.html", locations=locations, reviews=reviews)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

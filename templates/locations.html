@@ -4,7 +4,7 @@
       {% if session.admin|lower == "yes" %}
       <div class="row">
         <div class="col s12 m12 center-align">
-          <a href="#" class="btn-large">Edit Locations</a>
+          <a href="{{ url_for('view_locations') }}" class="btn-large">Edit Locations</a>
         </div>
       </div>
       {% endif %}
@@ -14,7 +14,7 @@
       <div class="card locations-card">
         <div class="card-content locations-info">
           <span class="card-title">{{ location.location_name }}</span>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, provident?</p>
+          <p>{{ location.location_description }}</p>
         </div>
         <div class="card-links">
           <a class="locations-links" href="{{ url_for('locations', location_id=location._id) }}">This is a link</a>
