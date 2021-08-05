@@ -35,11 +35,14 @@ def register():
 
         register = {
             "username": request.form.get('username').lower(),
-            "password": generate_password_hash(request.form.get('password'))
+            "password": generate_password_hash(request.form.get('password')),
+            "user_description": "",
+            "is_admin": "no",
+            "is_guru": "no"
         }
         mongo.db.users.insert_one(register)
-
         session["user"] = request.form.get('username').lower()
+        session["admin"] = "no"
         flash('Registration Complete')
         return redirect(url_for("profile", username=session['user']))
     return render_template("register.html")
@@ -52,9 +55,14 @@ def login():
             {"username": request.form.get('username').lower()})
 
         if existing_user:
+            is_admin = existing_user["is_admin"]
             if check_password_hash(
              existing_user['password'], request.form.get('password')):
                 session['user'] = request.form.get('username').lower()
+                if is_admin == "no":
+                    session['admin'] = "no"
+                else:
+                    session['admin'] = "yes"
                 flash("Hello, {}".format(
                     request.form.get('username')))
                 return redirect(url_for(
@@ -77,7 +85,6 @@ def profile(username):
         {"username": session['user']})['username']
 
     created_reviews = list(mongo.db.reviews.find({"created_by": username}))
-    print(created_reviews)
 
     if session['user']:
         return render_template(
@@ -90,12 +97,14 @@ def profile(username):
 def logout():
     flash('You are logged out')
     session.pop('user')
+    session.pop('admin')
     return redirect(url_for('login'))
 
 
 @app.route("/get_locations")
 def get_locations():
     locations = mongo.db.locations.find()
+    print(session)
     return render_template("locations.html", locations=locations)
 
 

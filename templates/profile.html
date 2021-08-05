@@ -7,6 +7,9 @@
           <h3>
             {{ username }}'s Profile
           </h3>
+          {% if session.admin|lower == "yes" %}
+          <p>Is Admin</p>
+          {% endif %}
       </div>
     </form>
   </div>
