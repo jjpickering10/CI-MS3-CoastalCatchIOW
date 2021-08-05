@@ -104,6 +104,9 @@ def locations(location_id):
     location = mongo.db.locations.find_one(
         {"_id": ObjectId(location_id)})
 
+    comments = list(mongo.db.comments.find({"location_id": location_id}))
+    reviews = list(mongo.db.reviews.find({"location_id": location_id}))
+
     if request.method == "POST":
         post = {
             "location_id": location_id,
@@ -116,10 +119,9 @@ def locations(location_id):
         flash('Post successful')
         return redirect(url_for('locations', location_id=post["location_id"]))
         # return redirect(url_for('get_locations'))
-    reviews = list(mongo.db.reviews.find({"location_id": location_id}))
-    # print(reviews)
+
     return render_template(
-        "posts.html", location=location, reviews=reviews)
+        "posts.html", location=location, reviews=reviews, comments=comments)
 
 
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
@@ -147,6 +149,23 @@ def delete_post(post_id):
     mongo.db.reviews.remove({"_id": ObjectId(post_id)})
     flash("Post deleted")
     return redirect(url_for('locations', location_id=post["location_id"]))
+
+
+@app.route("/add_comment/<post_id>", methods=["GET", "POST"])
+def add_comment(post_id):
+    posts = mongo.db.reviews.find_one(
+        {"_id": ObjectId(post_id)})
+
+    if request.method == "POST":
+        post = {
+            "post_id": posts["_id"],
+            "location_id": posts["location_id"],
+            "created_by": session['user'],
+            "comments": request.form.get("comments")
+        }
+        mongo.db.comments.insert_one(post)
+        flash('Comment successful')
+        return redirect(url_for('locations', location_id=post["location_id"]))
 
 
 if __name__ == "__main__":

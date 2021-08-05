@@ -53,6 +53,14 @@
             {{ review.review_description }}
           </p>
         </div>
+        
+        {% for comment in comments %}
+        {% if comment.post_id == review._id %}
+        <p>{{ comment.comments }}</p>
+        {% endif %}
+        {% endfor %}
+       
+        
         <div class="card-action">
           <p>Posted by: {{ review.created_by }}</p>
           {% if session.user|lower == review.created_by|lower %}
@@ -63,12 +71,19 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <form class="col s12 m6" method="POST" action="{{ url_for('add_comment', post_id=review._id) }}">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <textarea id="comments" name="comments" class="materialize-textarea validate"></textarea>
+          <label for="comments">Textarea</label>
+        </div>
+        <button type="submit" class="btn-small">
+          Add Comment
+        </button>
+      </div>
+    </form>
+  </div>
   {% endfor %}
-
-
-
-
-
-
-
 {% endblock %}
