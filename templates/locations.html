@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+      {% if session.admin|lower == "yes" %}
+      <div class="row">
+        <div class="col s12 m12 center-align">
+          <a href="#" class="btn-large">Edit Locations</a>
+        </div>
+      </div>
+      {% endif %}
+
       <main>
       {% for location in locations %}
       <div class="card locations-card">
