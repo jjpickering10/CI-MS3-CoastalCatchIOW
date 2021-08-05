@@ -187,6 +187,14 @@ def edit_comment(comment_id):
     return render_template("edit_comment.html", comments=comments)
 
 
+@app.route("/delete_comment/<comment_id>")
+def delete_comment(comment_id):
+    comments = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
+    mongo.db.comments.remove({"_id": ObjectId(comment_id)})
+    flash("Comment deleted")
+    return redirect(url_for('locations', location_id=comments["location_id"]))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
