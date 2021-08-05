@@ -117,9 +117,17 @@ def locations(location_id):
         return redirect(url_for('locations', location_id=post["location_id"]))
         # return redirect(url_for('get_locations'))
     reviews = list(mongo.db.reviews.find({"location_id": location_id}))
-    print(reviews)
+    # print(reviews)
     return render_template(
         "posts.html", location=location, reviews=reviews)
+
+
+@app.route("/edit_post/<post_id>", methods=["GET", "POST"])
+def edit_post(post_id):
+    post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
+
+    posts = mongo.db.reviews.find().sort("location_name", 1)
+    return render_template("edit_post.html", posts=posts, post=post)
 
 
 if __name__ == "__main__":
