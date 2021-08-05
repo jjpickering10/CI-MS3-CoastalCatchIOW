@@ -55,8 +55,10 @@
         </div>
         <div class="card-action">
           <p>Posted by: {{ review.created_by }}</p>
+          {% if session.user|lower == review.created_by|lower %}
           <a href="" class="btn-small">Done</a>
           <a href="{{ url_for('edit_post', post_id=review._id) }}" class="btn-small">Edit</a>
+          {% endif %}
         </div>
       </div>
     </div>
