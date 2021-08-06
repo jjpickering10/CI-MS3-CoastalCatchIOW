@@ -6,6 +6,14 @@
   <br>
   <br>
 
+  {% if session.admin|lower == "yes" %}
+      <div class="row">
+        <div class="col s12 m12 center-align">
+          <a href="{{ url_for('add_location') }}" class="btn-large">Add Location</a>
+        </div>
+      </div>
+      {% endif %}
+
 
   {% for location in locations %}
     <div>

@@ -212,6 +212,20 @@ def view_locations():
         "view_locations.html", locations=locations, reviews=reviews)
 
 
+@app.route("/add_location", methods=["GET", "POST"])
+def add_location():
+    if request.method == "POST":
+        location = {
+            "location_name": request.form.get("location_name"),
+            "location_description": request.form.get("location_description")
+        }
+        mongo.db.locations.insert_one(location)
+        flash("New Location added")
+        return redirect(url_for('view_locations'))
+
+    return render_template("add_location.html")
+
+
 @app.route("/edit_locations/<location_id>", methods=["GET", "POST"])
 def edit_locations(location_id):
     locations = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
