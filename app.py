@@ -316,13 +316,31 @@ def add_reply(question_id):
 
     if request.method == "POST":
         reply = {
-            "post_id": question["_id"],
+            "question_id": question["_id"],
             "created_by": session['user'],
             "reply": request.form.get("reply")
         }
         mongo.db.replies.insert_one(reply)
         flash('Reply successful')
         return redirect(url_for('ask_guru'))
+
+
+@app.route("/edit_reply/<reply_id>", methods=["GET", "POST"])
+def edit_reply(reply_id):
+    replies = mongo.db.replies.find_one({"_id": ObjectId(reply_id)})
+    if request.method == "POST":
+        updated_reply = {
+            "question_id": replies["question_id"],
+            "created_by": session['user'],
+            "reply": request.form.get("reply")
+        }
+        mongo.db.replies.update(
+            {"_id": ObjectId(reply_id)}, updated_reply)
+        flash('Edit successful')
+        return redirect(
+            url_for('ask_guru'))
+
+    return render_template("edit_reply.html", replies=replies)
 
 
 if __name__ == "__main__":
