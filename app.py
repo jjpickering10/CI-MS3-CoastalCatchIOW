@@ -268,6 +268,7 @@ def delete_locations(location_id):
 @app.route("/ask_guru", methods=["GET", "POST"])
 def ask_guru():
     questions = mongo.db.questions.find()
+    replies = list(mongo.db.replies.find())
     if request.method == "POST":
 
         question = {
@@ -279,7 +280,8 @@ def ask_guru():
         mongo.db.questions.insert_one(question)
         flash("New question added")
         return redirect(url_for('ask_guru'))
-    return render_template("ask_guru.html", questions=questions)
+    return render_template(
+        "ask_guru.html", questions=questions, replies=replies)
 
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
@@ -305,6 +307,22 @@ def delete_question(question_id):
     mongo.db.questions.remove({"_id": ObjectId(question_id)})
     flash("Question deleted")
     return redirect(url_for('ask_guru'))
+
+
+@app.route("/add_reply/<question_id>", methods=["GET", "POST"])
+def add_reply(question_id):
+    question = mongo.db.questions.find_one(
+        {"_id": ObjectId(question_id)})
+
+    if request.method == "POST":
+        reply = {
+            "post_id": question["_id"],
+            "created_by": session['user'],
+            "reply": request.form.get("reply")
+        }
+        mongo.db.replies.insert_one(reply)
+        flash('Reply successful')
+        return redirect(url_for('ask_guru'))
 
 
 if __name__ == "__main__":

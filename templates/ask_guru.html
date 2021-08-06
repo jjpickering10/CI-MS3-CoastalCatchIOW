@@ -53,6 +53,15 @@
             {{ question.question_description }}
           </p>
         </div>
+        {% for reply in replies %}
+        {% if reply.post_id == question._id %}
+        <p>{{ reply.reply }}</p>
+          {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
+            <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
+            <a href="{{ url_for('edit_question', question_id=question._id) }}" class="btn-small">Edit</a>
+          {% endif %}
+        {% endif %}
+        {% endfor %}
         <div class="card-content white-text">
           <p>{{ question.created_by }}</p>
           {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
@@ -64,6 +73,23 @@
       </div>
     </div>
   </div>
+  {% if session.user %}
+
+  <div class="row">
+    <form class="col s12 m6" method="POST" action="{{ url_for('add_reply', question_id=question._id) }}">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <textarea id="reply" name="reply" class="materialize-textarea validate"></textarea>
+          <label for="reply">Textarea</label>
+        </div>
+        <button type="submit" class="btn-small">
+          Add Reply
+        </button>
+      </div>
+    </form>
+  </div>
+
+  {% endif %}
   {% endfor %}
 
   
