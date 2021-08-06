@@ -10,6 +10,9 @@
           {% if session.admin|lower == "yes" %}
           <p>Is Admin</p>
           {% endif %}
+          {% if session.guru|lower == "yes" %}
+          <p>Is Guru</p>
+          {% endif %}
       </div>
     </form>
   </div>

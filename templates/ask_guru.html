@@ -73,7 +73,7 @@
       </div>
     </div>
   </div>
-  {% if session.user %}
+  {% if session.guru|lower == "yes" %}
 
   <div class="row">
     <form class="col s12 m6" method="POST" action="{{ url_for('add_reply', question_id=question._id) }}">

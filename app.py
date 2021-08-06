@@ -43,6 +43,7 @@ def register():
         mongo.db.users.insert_one(register)
         session["user"] = request.form.get('username').lower()
         session["admin"] = "no"
+        session["guru"] = "no"
         flash('Registration Complete')
         return redirect(url_for("profile", username=session['user']))
     return render_template("register.html")
@@ -56,6 +57,7 @@ def login():
 
         if existing_user:
             is_admin = existing_user["is_admin"]
+            is_guru = existing_user["is_guru"]
             if check_password_hash(
              existing_user['password'], request.form.get('password')):
                 session['user'] = request.form.get('username').lower()
@@ -63,6 +65,10 @@ def login():
                     session['admin'] = "no"
                 else:
                     session['admin'] = "yes"
+                if is_guru == "no":
+                    session['guru'] = "no"
+                else:
+                    session['guru'] = "yes"
                 flash("Hello, {}".format(
                     request.form.get('username')))
                 return redirect(url_for(
@@ -98,6 +104,7 @@ def logout():
     flash('You are logged out')
     session.pop('user')
     session.pop('admin')
+    session.pop('guru')
     return redirect(url_for('login'))
 
 
