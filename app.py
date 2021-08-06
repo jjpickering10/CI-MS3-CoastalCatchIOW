@@ -113,7 +113,6 @@ def get_locations():
     return render_template("locations.html", locations=locations)
 
 
-
 @app.route("/locations/<location_id>", methods=["GET", "POST"])
 def locations(location_id):
     location = mongo.db.locations.find_one(
@@ -242,9 +241,14 @@ def add_location():
 def edit_locations(location_id):
     locations = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
     if request.method == "POST":
+        if 'location_image' in request.files:
+            location_image = request.files["location_image"]
+            mongo.save_file(location_image.filename, location_image)
+
         updated_location = {
             "location_name": locations["location_name"],
-            "location_description": request.form.get("location_description")
+            "location_description": request.form.get("location_description"),
+            "location_image": location_image.filename
         }
         mongo.db.locations.update(
             {"_id": ObjectId(location_id)}, updated_location)
