@@ -101,11 +101,17 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route("/file/<filename>")
+def file(filename):
+    return mongo.send_file(filename)
+
+
 @app.route("/get_locations")
 def get_locations():
     locations = mongo.db.locations.find()
     print(session)
     return render_template("locations.html", locations=locations)
+
 
 
 @app.route("/locations/<location_id>", methods=["GET", "POST"])
@@ -215,10 +221,16 @@ def view_locations():
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
     if request.method == "POST":
+        if 'location_image' in request.files:
+            location_image = request.files["location_image"]
+            mongo.save_file(location_image.filename, location_image)
+
         location = {
             "location_name": request.form.get("location_name"),
-            "location_description": request.form.get("location_description")
+            "location_description": request.form.get("location_description"),
+            "location_image": location_image.filename
         }
+
         mongo.db.locations.insert_one(location)
         flash("New Location added")
         return redirect(url_for('view_locations'))
