@@ -20,26 +20,54 @@
   <br>
   <br>
 
-  {% for review in created_reviews %}  
-  <div class="row">
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">{{ review.location_name }}</span>
-          <span class="card-title">{{ review.review_title }}</span>
-          <p>{{ review.review_description }}</p>
-        </div>
-        <div class="card-action">
-          <p>{{ review.created_by }}</p>
-          {% if session.user|lower == review.created_by|lower or session.admin|lower == "yes" %}
-          <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>
-          <a href="{{ url_for('edit_post', post_id=review._id) }}" class="btn-small">Edit</a>
-          {% endif %}
+  
+  <div>
+    <div>
+      <h2>Posts</h2>
+      {% for review in created_reviews %}
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{{ review.location_name }}</span>
+              <span class="card-title">{{ review.review_title }}</span>
+              <p>{{ review.review_description }}</p>
+            </div>
+            <div class="card-action">
+              <p>{{ review.created_by }}</p>
+              {% if session.user|lower == review.created_by|lower or session.admin|lower == "yes" %}
+              <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>
+              <a href="{{ url_for('edit_post', post_id=review._id) }}" class="btn-small">Edit</a>
+              {% endif %}
+            </div>
+          </div>
         </div>
       </div>
+      {% endfor %}
+    </div>
+    <div>
+      <h2>Questions asked</h2>
+      {% for question in asked_questions %}
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{{ question.question_title }}</span>
+              <p>{{ question.question_description }}</p>
+            </div>
+            <div class="card-action">
+              <p>{{ question.created_by }}</p>
+              {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
+              <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
+              <a href="{{ url_for('edit_question', question_id=question._id) }}" class="btn-small">Edit</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
-  {% endfor %}
 
 
 

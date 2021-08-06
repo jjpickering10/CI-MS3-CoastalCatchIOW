@@ -91,10 +91,11 @@ def profile(username):
         {"username": session['user']})['username']
 
     created_reviews = list(mongo.db.reviews.find({"created_by": username}))
+    asked_questions = list(mongo.db.questions.find({"created_by": username}))
 
     if session['user']:
         return render_template(
-            "profile.html", username=username, created_reviews=created_reviews)
+            "profile.html", username=username, created_reviews=created_reviews, asked_questions=asked_questions)
 
     return redirect(url_for('login'))
 
