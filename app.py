@@ -343,6 +343,13 @@ def edit_reply(reply_id):
     return render_template("edit_reply.html", replies=replies)
 
 
+@app.route("/delete_reply/<reply_id>")
+def delete_reply(reply_id):
+    mongo.db.replies.remove({"_id": ObjectId(reply_id)})
+    flash("Reply deleted")
+    return redirect(url_for('ask_guru'))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
