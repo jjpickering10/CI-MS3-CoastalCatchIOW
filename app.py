@@ -265,6 +265,10 @@ def delete_locations(location_id):
     return redirect(url_for('view_locations'))
 
 
+@app.route("/ask_guru")
+def ask_guru():
+    return render_template("ask_guru.html")
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

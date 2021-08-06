@@ -22,7 +22,7 @@
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="">About</a></li>
-                <li><a href="">Ask Guru</a></li>
+                <li><a href="{{ url_for('ask_guru') }}">Ask Guru</a></li>
                 <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
                 {% if session.admin|lower == "yes" %}
                 <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
@@ -42,7 +42,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="">About</a></li>
-        <li><a href="">Ask Guru</a></li>
+        <li><a href="{{ url_for('ask_guru') }}">Ask Guru</a></li>
         <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
         {% if session.admin|lower == "yes" %}
         <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
