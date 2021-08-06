@@ -300,6 +300,13 @@ def edit_question(question_id):
     return render_template("edit_question.html", question=question)
 
 
+@app.route("/delete_question/<question_id>")
+def delete_question(question_id):
+    mongo.db.questions.remove({"_id": ObjectId(question_id)})
+    flash("Question deleted")
+    return redirect(url_for('ask_guru'))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
