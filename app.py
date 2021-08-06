@@ -265,9 +265,22 @@ def delete_locations(location_id):
     return redirect(url_for('view_locations'))
 
 
-@app.route("/ask_guru")
+@app.route("/ask_guru", methods=["GET", "POST"])
 def ask_guru():
-    return render_template("ask_guru.html")
+    questions = mongo.db.questions.find()
+    if request.method == "POST":
+
+        question = {
+            "question_title": request.form.get("question_title"),
+            "question_description": request.form.get("question_description"),
+            "created_by": session['user']
+        }
+
+        mongo.db.questions.insert_one(question)
+        flash("New question added")
+        return redirect(url_for('ask_guru'))
+    return render_template("ask_guru.html", questions=questions)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
