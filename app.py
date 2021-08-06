@@ -282,6 +282,24 @@ def ask_guru():
     return render_template("ask_guru.html", questions=questions)
 
 
+@app.route("/edit_question/<question_id>", methods=["GET", "POST"])
+def edit_question(question_id):
+    question = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
+    if request.method == "POST":
+        updated_question = {
+            "question_title": request.form.get("question_title"),
+            "question_description": request.form.get("question_description"),
+            "created_by": session['user']
+        }
+        mongo.db.question.update(
+            {"_id": ObjectId(question_id)}, updated_question)
+        flash('Edit successful')
+        return redirect(url_for('ask_guru'))
+
+    # posts = mongo.db.reviews.find().sort("location_name", 1)
+    return render_template("edit_question.html", question=question)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

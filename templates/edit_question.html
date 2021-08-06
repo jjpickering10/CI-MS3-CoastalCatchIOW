@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+  
+
+  <br>
+  <br>
+
+  
+  <div class="row">
+    <form class="col s12" method="POST" action="{{ url_for('edit_question', question_id=question._id) }}">
+      <h4 class="center-align">{{ question.question_title }}</h4>
+        <div class="row">
+          <div class="input-field col s6 offset-m3">
+            <input id="question_title" name="question_title" type="text" class="validate" value="{{ question.question_title }}" required>
+            <label for="question_title">Title</label>
+          </div>
+        </div>
+        <div class="row">
+            <div class="row">
+              <div class="input-field col s6 offset-m3">
+                <textarea id="question_description" name="question_description" class="materialize-textarea validate" required>
+                  {{- question.question_description -}}
+                </textarea>
+                <label for="question_description">Description</label>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col s12 center-align">
+            <a href="{{ url_for('ask_guru') }}" class="btn-large">
+              Cancel
+            </a>
+            <button type="submit" class="btn-large">
+              Edit Question
+            </button>
+          </div>
+        </div>
+    </form>
+  </div>
+  
+
+
+
+
+
+
+
+{% endblock %}
