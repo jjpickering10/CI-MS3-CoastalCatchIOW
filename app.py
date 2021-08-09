@@ -90,13 +90,15 @@ def login():
 def profile(username):
     username = mongo.db.users.find_one(
         {"username": session['user']})['username']
+    user_details = mongo.db.users.find_one(
+        {"username": session['user']}, {"password": 0})
     guru = mongo.db.users.find_one(
         {"username": session['user']})['is_guru']
 
     created_reviews = list(mongo.db.reviews.find({"created_by": username}))
     asked_questions = list(mongo.db.questions.find({"created_by": username}))
-    users = list(mongo.db.users.find())
-    print(users)
+    users = list(mongo.db.users.find({}, {"password": 0}))
+    print(user_details)
 
     if guru == "no":
         session['guru'] = "no"
@@ -107,7 +109,8 @@ def profile(username):
         return render_template(
             "profile.html", username=username,
             created_reviews=created_reviews,
-            asked_questions=asked_questions, users=users)
+            asked_questions=asked_questions,
+            users=users, user_details=user_details)
 
     return redirect(url_for('login'))
 
@@ -289,7 +292,7 @@ def delete_locations(location_id):
 def ask_guru():
     questions = mongo.db.questions.find()
     replies = list(mongo.db.replies.find())
-    users = list(mongo.db.users.find({"is_guru": "yes"}))
+    users = list(mongo.db.users.find({"is_guru": "yes"}, {"password": 0}))
     print(users)
     if request.method == "POST":
 
