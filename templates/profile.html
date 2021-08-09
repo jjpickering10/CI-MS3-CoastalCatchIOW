@@ -38,7 +38,7 @@
           {% endif %}
         </div>
         <div class="card-action">
-          <a href="#">Edit My Profile</a>
+          <a href="{{ url_for('edit_profile', username_id=user_details._id) }}">Edit My Profile</a>
         </div>
       </div>
     </div>

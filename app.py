@@ -115,6 +115,35 @@ def profile(username):
     return redirect(url_for('login'))
 
 
+@app.route("/edit_profile/<username_id>", methods=["GET", "POST"])
+def edit_profile(username_id):
+    user_details = mongo.db.users.find_one(
+        {"_id": ObjectId(username_id)}, {"password": 0})
+
+    print(user_details)
+
+    if request.method == "POST":
+        if 'user_image' in request.files:
+            user_image = request.files["user_image"]
+            mongo.save_file(user_image.filename, user_image)
+
+        updated_user = {
+            "$set": {"user_description": request.form.get(
+                "user_description"), "user_image": user_image.filename}
+        }
+        mongo.db.users.update_one({"_id": ObjectId(username_id)}, updated_user)
+        flash('Edit successful')
+        return redirect(url_for('profile', username=session['user']))
+
+    print(session)
+
+    if session["user"]:
+        return render_template(
+            "edit_profile.html", user_details=user_details)
+
+    return redirect(url_for('login'))
+
+
 @app.route("/logout")
 def logout():
     flash('You are logged out')

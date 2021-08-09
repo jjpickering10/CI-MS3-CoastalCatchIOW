@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+  
+
+  <br>
+  <br>
+
+  <p>{{ user_details.user_description }}</p>
+
+  
+  <div class="row">
+    <form class="col s12" method="POST" action="{{ url_for('edit_profile', username_id=user_details._id) }}" enctype="multipart/form-data">
+      <h4 class="center-align">Edit Your Details</h4>
+      <div class="row">
+        <div class="card-image center-align">
+          {% if user_details.user_image %}
+          <img src="{{ url_for('file', filename=user_details.user_image) }}">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+          {% endif %}
+          <span class="card-title">Current Image</span>
+        </div>
+        <div class="input-field col s6 offset-m3">
+          <input id="user_image" name="user_image" type="file" class="validate">
+          <label for="user_image">Your Image</label>
+        </div>
+      </div>
+        <div class="row">
+            <div class="row">
+              <div class="input-field col s6 offset-m3">
+                <textarea id="user_description" name="user_description" class="materialize-textarea validate" required>
+                  {{- user_details.user_description -}}
+                </textarea>
+                <label for="user_description">Your Description</label>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col s12 center-align">
+            <a href="" class="btn-large">
+              Cancel
+            </a>
+            <button type="submit" class="btn-large">
+              Edit User
+            </button>
+          </div>
+        </div>
+    </form>
+  </div>
+  
+
+
+
+
+
+
+
+{% endblock %}
