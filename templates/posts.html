@@ -5,7 +5,11 @@
 
   <div class="row posts-info">
     <div class="col s6">
-      <img class="posts-image" src="{{ url_for('file', filename=location.location_image) }}" alt="{{ location.location_name }}">
+      {% if location.location_image %}
+          <img class="posts-image" src="{{ url_for('file', filename=location.location_image) }}" alt="{{ location.location_name }}">
+          {% else %}
+          <img class="posts-image" src="{{ url_for('static', filename='img/blank_profile_image.png') }}" alt="{{ location.location_name }}">
+          {% endif %}
     </div>
     <div class="col s6">
       <h3 class="posts-heading">

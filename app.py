@@ -37,6 +37,7 @@ def register():
             "username": request.form.get('username').lower(),
             "password": generate_password_hash(request.form.get('password')),
             "user_description": "",
+            "user_image": "",
             "is_admin": "no",
             "is_guru": "no"
         }

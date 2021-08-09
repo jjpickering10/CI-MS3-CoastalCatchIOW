@@ -13,7 +13,11 @@
       {% for location in locations %}
       <div class="card locations-card">
         <div class="card-image">
+          {% if location.location_image %}
           <img src="{{ url_for('file', filename=location.location_image) }}">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+          {% endif %}
         </div>
         <div class="card-content locations-info">
           <span class="card-title">{{ location.location_name }}</span>
