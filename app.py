@@ -95,7 +95,7 @@ def profile(username):
     created_reviews = list(mongo.db.reviews.find({"created_by": username}))
     asked_questions = list(mongo.db.questions.find({"created_by": username}))
     users = list(mongo.db.users.find())
-    print(guru)
+    print(users)
 
     if guru == "no":
         session['guru'] = "no"
