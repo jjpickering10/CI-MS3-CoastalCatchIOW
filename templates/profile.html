@@ -19,6 +19,43 @@
 
   <br>
   <br>
+  {% if session.admin|lower == "yes" %}
+  <h2>Users</h2>
+  <div class="row">
+  {% for user in users %}
+  
+    
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{ user.username }}</span>
+        </div>
+        <div class="card-action">
+          <p>{{ user.is_guru }}</p>
+          
+        </div>
+      </div>
+      <form class="col s12" method="POST" action="{{ url_for('update_user', username_id=user._id) }}">
+      <div class="switch">
+        <label for="is_guru_{{ user.username }}">
+          no
+          {% if user.is_guru == "yes" %}
+          <input type="checkbox" id="is_guru_{{ user.username }}" name="is_guru" checked>
+          {% else %}
+          <input type="checkbox" id="is_guru_{{ user.username }}" name="is_guru">
+          {% endif %}
+          <span class="lever"></span>
+          yes
+        </label>
+      </div>
+      <button type="submit" class="btn-small">Update</button>
+    </form>
+    </div>
+  
+  {% endfor %}
+  </div>
+  
+  {% endif %}
 
   
   <div>

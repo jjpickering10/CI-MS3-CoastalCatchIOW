@@ -92,10 +92,14 @@ def profile(username):
 
     created_reviews = list(mongo.db.reviews.find({"created_by": username}))
     asked_questions = list(mongo.db.questions.find({"created_by": username}))
+    users = list(mongo.db.users.find())
+    print(users)
 
     if session['user']:
         return render_template(
-            "profile.html", username=username, created_reviews=created_reviews, asked_questions=asked_questions)
+            "profile.html", username=username,
+            created_reviews=created_reviews,
+            asked_questions=asked_questions, users=users)
 
     return redirect(url_for('login'))
 
@@ -356,6 +360,18 @@ def delete_reply(reply_id):
     mongo.db.replies.remove({"_id": ObjectId(reply_id)})
     flash("Reply deleted")
     return redirect(url_for('ask_guru'))
+
+
+@app.route("/update_user/<username_id>", methods=["GET", "POST"])
+def update_user(username_id):
+    if request.method == "POST":
+        is_guru = "yes" if request.form.get("is_guru") else "no"
+        updated_user = {
+            "$set": {"is_guru": is_guru}
+        }
+        mongo.db.users.update_one({"_id": ObjectId(username_id)}, updated_user)
+        flash("Edit User successful")
+        return redirect(url_for("profile", username=session['user']))
 
 
 if __name__ == "__main__":

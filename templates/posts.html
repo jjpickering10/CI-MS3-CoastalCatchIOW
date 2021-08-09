@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div class="row register-form-container">
-    <div class="col s12 m8 offset-m2">
-      <div class="card-panel register-card">
-          <h3>
-            {{ location.location_name }}'s Posts
-          </h3>
-      </div>
+
+
+  <div class="row posts-info">
+    <div class="col s6">
+      <img class="posts-image" src="{{ url_for('file', filename=location.location_image) }}" alt="{{ location.location_name }}">
+    </div>
+    <div class="col s6">
+      <h3 class="posts-heading">
+        {{ location.location_name }}
+      </h3>
+      <p>{{ location.location_description }}</p>
     </div>
   </div>
 

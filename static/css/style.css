@@ -77,4 +77,14 @@ main .locations-card .card-links {
 main .locations-card .locations-links {
   color: var(--white-color);
   background: var(--tertiary-blue);
+}
+
+.posts-info {
+  margin-top: 5rem;
+}
+.posts-info .posts-image {
+  width: 100%;
+}
+.posts-info .posts-heading {
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */
