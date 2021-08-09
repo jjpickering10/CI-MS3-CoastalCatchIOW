@@ -289,6 +289,8 @@ def delete_locations(location_id):
 def ask_guru():
     questions = mongo.db.questions.find()
     replies = list(mongo.db.replies.find())
+    users = list(mongo.db.users.find({"is_guru": "yes"}))
+    print(users)
     if request.method == "POST":
 
         question = {
@@ -301,7 +303,7 @@ def ask_guru():
         flash("New question added")
         return redirect(url_for('ask_guru'))
     return render_template(
-        "ask_guru.html", questions=questions, replies=replies)
+        "ask_guru.html", questions=questions, replies=replies, users=users)
 
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
