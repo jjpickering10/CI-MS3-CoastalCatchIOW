@@ -101,7 +101,7 @@ def profile(username):
         asked_questions = list(
             mongo.db.questions.find({"created_by": username}))
         users = list(mongo.db.users.find({}, {"password": 0}))
-        print(user_details)
+        # print(user_details)
 
         if guru == "no":
             session['guru'] = "no"
@@ -123,7 +123,7 @@ def edit_profile(username_id):
     user_details = mongo.db.users.find_one(
         {"_id": ObjectId(username_id)}, {"password": 0})
 
-    print(user_details)
+    # print(user_details)
 
     if request.method == "POST":
         if 'user_image' in request.files:
@@ -138,7 +138,7 @@ def edit_profile(username_id):
         flash('Edit successful')
         return redirect(url_for('profile', username=session['user']))
 
-    print(session)
+    # print(session)
 
     if 'user' in session:
         return render_template(
@@ -164,7 +164,7 @@ def file(filename):
 @app.route("/get_locations")
 def get_locations():
     locations = mongo.db.locations.find()
-    print(session)
+    # print(session)
     return render_template("locations.html", locations=locations)
 
 
@@ -289,10 +289,13 @@ def delete_comment(comment_id):
 
 @app.route("/view_locations")
 def view_locations():
-    locations = list(mongo.db.locations.find().sort("location_name", 1))
-    reviews = list(mongo.db.reviews.find().sort("review_title", 1))
-    return render_template(
-        "view_locations.html", locations=locations, reviews=reviews)
+    if 'user' in session and 'admin' in session:
+        locations = list(mongo.db.locations.find().sort("location_name", 1))
+        reviews = list(mongo.db.reviews.find().sort("review_title", 1))
+        return render_template(
+            "view_locations.html", locations=locations, reviews=reviews)
+
+    return redirect(url_for('login'))
 
 
 @app.route("/add_location", methods=["GET", "POST"])
@@ -357,10 +360,12 @@ def delete_locations(location_id):
 
 @app.route("/ask_guru", methods=["GET", "POST"])
 def ask_guru():
-    questions = mongo.db.questions.find()
+    questions = list(mongo.db.questions.find())
     replies = list(mongo.db.replies.find())
+    likes = list(mongo.db.likes.find())
+
     users = list(mongo.db.users.find({"is_guru": "yes"}, {"password": 0}))
-    print(users)
+    # print(users)
     if request.method == "POST":
 
         question = {
@@ -373,7 +378,8 @@ def ask_guru():
         flash("New question added")
         return redirect(url_for('ask_guru'))
     return render_template(
-        "ask_guru.html", questions=questions, replies=replies, users=users)
+        "ask_guru.html", questions=questions,
+        replies=replies, users=users, likes=likes)
 
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
@@ -407,6 +413,28 @@ def delete_question(question_id):
         return redirect(url_for('ask_guru'))
 
     return redirect(url_for('login'))
+
+
+@app.route("/like_question/<question_id>")
+def like_question(question_id):
+    if 'user' in session:
+        like = list(mongo.db.likes.find(
+            {"question_id": ObjectId(
+                question_id), "liked_user": session['user']}))
+
+        if len(like) < 1:
+            new_like = {
+                "question_id": ObjectId(question_id),
+                "liked_user": session['user']
+            }
+            mongo.db.likes.insert_one(new_like)
+            return redirect(url_for('ask_guru'))
+        else:
+            mongo.db.likes.remove({"question_id": ObjectId(
+                question_id), "liked_user": session['user']})
+            return redirect(url_for('ask_guru'))
+    flash("You must be logged in to like")
+    return redirect(url_for("ask_guru"))
 
 
 @app.route("/add_reply/<question_id>", methods=["GET", "POST"])

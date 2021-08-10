@@ -160,6 +160,8 @@ Chrome Dev Tools
 
 ## Testing
 
+- After logging out, you could go back in the browser and still post/edit/delete. Fixed this by adding if statements to routes.
+
 First Time Visitor Goals
 
 Returning Visitor Goals
