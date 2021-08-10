@@ -88,24 +88,27 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    username = mongo.db.users.find_one(
-        {"username": session['user']})['username']
-    user_details = mongo.db.users.find_one(
-        {"username": session['user']}, {"password": 0})
-    guru = mongo.db.users.find_one(
-        {"username": session['user']})['is_guru']
+    if 'user' in session:
+        username = mongo.db.users.find_one(
+            {"username": session['user']})['username']
+        user_details = mongo.db.users.find_one(
+            {"username": session['user']}, {"password": 0})
+        guru = mongo.db.users.find_one(
+            {"username": session['user']})['is_guru']
 
-    created_reviews = list(mongo.db.reviews.find({"created_by": username}))
-    asked_questions = list(mongo.db.questions.find({"created_by": username}))
-    users = list(mongo.db.users.find({}, {"password": 0}))
-    print(user_details)
+        created_reviews = list(
+            mongo.db.reviews.find({"created_by": username}))
+        asked_questions = list(
+            mongo.db.questions.find({"created_by": username}))
+        users = list(mongo.db.users.find({}, {"password": 0}))
+        print(user_details)
 
-    if guru == "no":
-        session['guru'] = "no"
-    else:
-        session['guru'] = "yes"
+        if guru == "no":
+            session['guru'] = "no"
+        else:
+            session['guru'] = "yes"
 
-    if session['user']:
+    # if session['user']:
         return render_template(
             "profile.html", username=username,
             created_reviews=created_reviews,
@@ -137,7 +140,7 @@ def edit_profile(username_id):
 
     print(session)
 
-    if session["user"]:
+    if 'user' in session:
         return render_template(
             "edit_profile.html", user_details=user_details)
 
@@ -183,7 +186,8 @@ def locations(location_id):
         }
         mongo.db.reviews.insert_one(post)
         flash('Post successful')
-        return redirect(url_for('locations', location_id=post["location_id"]))
+        return redirect(url_for(
+            'locations', location_id=post["location_id"]))
         # return redirect(url_for('get_locations'))
 
     return render_template(
@@ -192,73 +196,95 @@ def locations(location_id):
 
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
-    post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
-    if request.method == "POST":
-        updated_post = {
-            "location_id": post["location_id"],
-            "location_name": post["location_name"],
-            "review_title": request.form.get("review_title"),
-            "review_description": request.form.get("review_description"),
-            "created_by": session['user']
-        }
-        mongo.db.reviews.update({"_id": ObjectId(post_id)}, updated_post)
-        flash('Edit successful')
-        return redirect(url_for('locations', location_id=post["location_id"]))
+    if 'user' in session:
+        post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
+        if request.method == "POST":
+            updated_post = {
+                "location_id": post["location_id"],
+                "location_name": post["location_name"],
+                "review_title": request.form.get("review_title"),
+                "review_description": request.form.get("review_description"),
+                "created_by": session['user']
+            }
+            mongo.db.reviews.update(
+                {"_id": ObjectId(post_id)}, updated_post)
+            flash('Edit successful')
+            return redirect(url_for(
+                'locations', location_id=post["location_id"]))
 
-    # posts = mongo.db.reviews.find().sort("location_name", 1)
-    return render_template("edit_post.html", post=post)
+        # posts = mongo.db.reviews.find().sort("location_name", 1)
+        return render_template("edit_post.html", post=post)
+
+    return redirect(url_for('login'))
 
 
 @app.route("/delete_post/<post_id>")
 def delete_post(post_id):
-    post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
-    mongo.db.reviews.remove({"_id": ObjectId(post_id)})
-    flash("Post deleted")
-    return redirect(url_for('locations', location_id=post["location_id"]))
+    if 'user' in session:
+        post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
+        mongo.db.reviews.remove({"_id": ObjectId(post_id)})
+        flash("Post deleted")
+        return redirect(url_for(
+            'locations', location_id=post["location_id"]))
+
+    return redirect(url_for('login'))
 
 
 @app.route("/add_comment/<post_id>", methods=["GET", "POST"])
 def add_comment(post_id):
-    posts = mongo.db.reviews.find_one(
-        {"_id": ObjectId(post_id)})
+    if 'user' in session:
+        posts = mongo.db.reviews.find_one(
+            {"_id": ObjectId(post_id)})
 
-    if request.method == "POST":
-        post = {
-            "post_id": posts["_id"],
-            "location_id": posts["location_id"],
-            "created_by": session['user'],
-            "comments": request.form.get("comments")
-        }
-        mongo.db.comments.insert_one(post)
-        flash('Comment successful')
-        return redirect(url_for('locations', location_id=post["location_id"]))
+        if request.method == "POST":
+            post = {
+                "post_id": posts["_id"],
+                "location_id": posts["location_id"],
+                "created_by": session['user'],
+                "comments": request.form.get("comments")
+            }
+            mongo.db.comments.insert_one(post)
+            flash('Comment successful')
+            return redirect(url_for(
+                'locations', location_id=post["location_id"]))
+
+    return redirect(url_for('login'))
 
 
 @app.route("/edit_comment/<comment_id>", methods=["GET", "POST"])
 def edit_comment(comment_id):
-    comments = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
-    if request.method == "POST":
-        updated_comment = {
-            "post_id": comments["post_id"],
-            "location_id": comments["location_id"],
-            "created_by": session['user'],
-            "comments": request.form.get("comments")
-        }
-        mongo.db.comments.update(
-            {"_id": ObjectId(comment_id)}, updated_comment)
-        flash('Edit successful')
-        return redirect(
-            url_for('locations', location_id=comments["location_id"]))
+    if 'user' in session:
+        comments = mongo.db.comments.find_one(
+            {"_id": ObjectId(comment_id)})
+        if request.method == "POST":
+            updated_comment = {
+                "post_id": comments["post_id"],
+                "location_id": comments["location_id"],
+                "created_by": session['user'],
+                "comments": request.form.get("comments")
+            }
+            mongo.db.comments.update(
+                {"_id": ObjectId(comment_id)}, updated_comment)
+            flash('Edit successful')
+            return redirect(
+                url_for('locations', location_id=comments["location_id"]))
 
-    return render_template("edit_comment.html", comments=comments)
+        return render_template("edit_comment.html", comments=comments)
+
+    return redirect(url_for('login'))
 
 
 @app.route("/delete_comment/<comment_id>")
 def delete_comment(comment_id):
-    comments = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
-    mongo.db.comments.remove({"_id": ObjectId(comment_id)})
-    flash("Comment deleted")
-    return redirect(url_for('locations', location_id=comments["location_id"]))
+    if 'user' in session:
+        comments = mongo.db.comments.find_one(
+            {"_id": ObjectId(comment_id)})
+        mongo.db.comments.remove({"_id": ObjectId(comment_id)})
+        flash("Comment deleted")
+        return redirect(url_for(
+            'locations', location_id=comments["location_id"]))
+
+    return redirect(url_for('login'))
 
 
 @app.route("/view_locations")
@@ -271,50 +297,62 @@ def view_locations():
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
-    if request.method == "POST":
-        if 'location_image' in request.files:
-            location_image = request.files["location_image"]
-            mongo.save_file(location_image.filename, location_image)
+    if 'user' in session and 'admin' in session:
+        if request.method == "POST":
+            if 'location_image' in request.files:
+                location_image = request.files["location_image"]
+                mongo.save_file(location_image.filename, location_image)
 
-        location = {
-            "location_name": request.form.get("location_name"),
-            "location_description": request.form.get("location_description"),
-            "location_image": location_image.filename
-        }
+            location = {
+                "location_name": request.form.get("location_name"),
+                "location_description": request.form.get(
+                    "location_description"),
+                "location_image": location_image.filename
+            }
 
-        mongo.db.locations.insert_one(location)
-        flash("New Location added")
-        return redirect(url_for('view_locations'))
+            mongo.db.locations.insert_one(location)
+            flash("New Location added")
+            return redirect(url_for('view_locations'))
 
-    return render_template("add_location.html")
+        return render_template("add_location.html")
+
+    return redirect(url_for('login'))
 
 
 @app.route("/edit_locations/<location_id>", methods=["GET", "POST"])
 def edit_locations(location_id):
-    locations = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    if request.method == "POST":
-        if 'location_image' in request.files:
-            location_image = request.files["location_image"]
-            mongo.save_file(location_image.filename, location_image)
+    if 'user' in session and 'admin' in session:
+        locations = mongo.db.locations.find_one(
+            {"_id": ObjectId(location_id)})
+        if request.method == "POST":
+            if 'location_image' in request.files:
+                location_image = request.files["location_image"]
+                mongo.save_file(location_image.filename, location_image)
 
-        updated_location = {
-            "location_name": locations["location_name"],
-            "location_description": request.form.get("location_description"),
-            "location_image": location_image.filename
-        }
-        mongo.db.locations.update(
-            {"_id": ObjectId(location_id)}, updated_location)
-        flash('Edit successful')
-        return redirect(url_for('view_locations'))
+            updated_location = {
+                "location_name": locations["location_name"],
+                "location_description": request.form.get(
+                    "location_description"),
+                "location_image": location_image.filename
+            }
+            mongo.db.locations.update(
+                {"_id": ObjectId(location_id)}, updated_location)
+            flash('Edit successful')
+            return redirect(url_for('view_locations'))
 
-    return render_template("edit_location.html", locations=locations)
+        return render_template("edit_location.html", locations=locations)
+
+    return redirect(url_for('login'))
 
 
 @app.route("/delete_locations/<location_id>")
 def delete_locations(location_id):
-    mongo.db.locations.remove({"_id": ObjectId(location_id)})
-    flash("Location successfully deleted")
-    return redirect(url_for('view_locations'))
+    if 'user' in session and 'admin' in session:
+        mongo.db.locations.remove({"_id": ObjectId(location_id)})
+        flash("Location successfully deleted")
+        return redirect(url_for('view_locations'))
+
+    return redirect(url_for('login'))
 
 
 @app.route("/ask_guru", methods=["GET", "POST"])
@@ -340,80 +378,101 @@ def ask_guru():
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
 def edit_question(question_id):
-    question = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
-    if request.method == "POST":
-        updated_question = {
-            "question_title": request.form.get("question_title"),
-            "question_description": request.form.get("question_description"),
-            "created_by": session['user']
-        }
-        mongo.db.question.update(
-            {"_id": ObjectId(question_id)}, updated_question)
-        flash('Edit successful')
-        return redirect(url_for('ask_guru'))
+    if 'user' in session:
+        question = mongo.db.questions.find_one(
+            {"_id": ObjectId(question_id)})
+        if request.method == "POST":
+            updated_question = {
+                "question_title": request.form.get("question_title"),
+                "question_description": request.form.get(
+                    "question_description"),
+                "created_by": session['user']
+            }
+            mongo.db.question.update(
+                {"_id": ObjectId(question_id)}, updated_question)
+            flash('Edit successful')
+            return redirect(url_for('ask_guru'))
 
-    # posts = mongo.db.reviews.find().sort("location_name", 1)
-    return render_template("edit_question.html", question=question)
+        # posts = mongo.db.reviews.find().sort("location_name", 1)
+        return render_template("edit_question.html", question=question)
+
+    return redirect(url_for('login'))
 
 
 @app.route("/delete_question/<question_id>")
 def delete_question(question_id):
-    mongo.db.questions.remove({"_id": ObjectId(question_id)})
-    flash("Question deleted")
-    return redirect(url_for('ask_guru'))
+    if 'user' in session:
+        mongo.db.questions.remove({"_id": ObjectId(question_id)})
+        flash("Question deleted")
+        return redirect(url_for('ask_guru'))
+
+    return redirect(url_for('login'))
 
 
 @app.route("/add_reply/<question_id>", methods=["GET", "POST"])
 def add_reply(question_id):
-    question = mongo.db.questions.find_one(
-        {"_id": ObjectId(question_id)})
+    if 'user' in session and 'guru' in session:
+        question = mongo.db.questions.find_one(
+            {"_id": ObjectId(question_id)})
 
-    if request.method == "POST":
-        reply = {
-            "question_id": question["_id"],
-            "created_by": session['user'],
-            "reply": request.form.get("reply")
-        }
-        mongo.db.replies.insert_one(reply)
-        flash('Reply successful')
-        return redirect(url_for('ask_guru'))
+        if request.method == "POST":
+            reply = {
+                "question_id": question["_id"],
+                "created_by": session['user'],
+                "reply": request.form.get("reply")
+            }
+            mongo.db.replies.insert_one(reply)
+            flash('Reply successful')
+            return redirect(url_for('ask_guru'))
+
+    return redirect(url_for('login'))
 
 
 @app.route("/edit_reply/<reply_id>", methods=["GET", "POST"])
 def edit_reply(reply_id):
-    replies = mongo.db.replies.find_one({"_id": ObjectId(reply_id)})
-    if request.method == "POST":
-        updated_reply = {
-            "question_id": replies["question_id"],
-            "created_by": session['user'],
-            "reply": request.form.get("reply")
-        }
-        mongo.db.replies.update(
-            {"_id": ObjectId(reply_id)}, updated_reply)
-        flash('Edit successful')
-        return redirect(
-            url_for('ask_guru'))
+    if 'user' in session and 'guru' in session:
+        replies = mongo.db.replies.find_one({"_id": ObjectId(reply_id)})
+        if request.method == "POST":
+            updated_reply = {
+                "question_id": replies["question_id"],
+                "created_by": session['user'],
+                "reply": request.form.get("reply")
+            }
+            mongo.db.replies.update(
+                {"_id": ObjectId(reply_id)}, updated_reply)
+            flash('Edit successful')
+            return redirect(
+                url_for('ask_guru'))
 
-    return render_template("edit_reply.html", replies=replies)
+        return render_template("edit_reply.html", replies=replies)
+
+    return redirect(url_for('login'))
 
 
 @app.route("/delete_reply/<reply_id>")
 def delete_reply(reply_id):
-    mongo.db.replies.remove({"_id": ObjectId(reply_id)})
-    flash("Reply deleted")
-    return redirect(url_for('ask_guru'))
+    if 'user' in session and 'guru' in session:
+        mongo.db.replies.remove({"_id": ObjectId(reply_id)})
+        flash("Reply deleted")
+        return redirect(url_for('ask_guru'))
+
+    return redirect(url_for('login'))
 
 
 @app.route("/update_user/<username_id>", methods=["GET", "POST"])
 def update_user(username_id):
-    if request.method == "POST":
-        is_guru = "yes" if request.form.get("is_guru") else "no"
-        updated_user = {
-            "$set": {"is_guru": is_guru}
-        }
-        mongo.db.users.update_one({"_id": ObjectId(username_id)}, updated_user)
-        flash("Edit User successful")
-        return redirect(url_for("profile", username=session['user']))
+    if 'user' in session and 'admin' in session:
+        if request.method == "POST":
+            is_guru = "yes" if request.form.get("is_guru") else "no"
+            updated_user = {
+                "$set": {"is_guru": is_guru}
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(username_id)}, updated_user)
+            flash("Edit User successful")
+            return redirect(url_for("profile", username=session['user']))
+
+    return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
