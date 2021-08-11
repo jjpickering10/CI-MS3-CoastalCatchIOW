@@ -121,8 +121,6 @@ def edit_profile(username_id):
     user_details = mongo.db.users.find_one(
         {"_id": ObjectId(username_id)}, {"password": 0})
 
-    # print(user_details)
-
     if request.method == "POST":
         if 'user_image' in request.files:
             user_image = request.files["user_image"]
@@ -135,8 +133,6 @@ def edit_profile(username_id):
         mongo.db.users.update_one({"_id": ObjectId(username_id)}, updated_user)
         flash('Edit successful')
         return redirect(url_for('profile', username=session['user']))
-
-    # print(session)
 
     if 'user' in session:
         return render_template(
@@ -162,7 +158,6 @@ def file(filename):
 @app.route("/get_locations")
 def get_locations():
     locations = mongo.db.locations.find()
-    # print(session)
     return render_template("locations.html", locations=locations)
 
 
@@ -419,19 +414,18 @@ def delete_locations(location_id):
 def ask_guru():
     questions = list(mongo.db.questions.find().sort("like_count", -1))
     liked_questions = questions[:3]
-    print(liked_questions)
     categories = list(mongo.db.categories.find())
     replies = list(mongo.db.replies.find())
     likes = list(mongo.db.likes.find())
+    liked_user = list(mongo.db.likes.find({"liked_user": session['user']}))
 
     users = list(mongo.db.users.find({"is_guru": "yes"}, {"password": 0}))
-    # print(questions)
+    print(liked_user)
     if request.method == "POST":
 
         category_id = request.form.get("category_id")
         category_id_name = mongo.db.categories.find_one(
             {"_id": ObjectId(category_id)})
-        # print(category_id_name)
 
         question = {
             "category_id": request.form.get("category_id"),
@@ -448,7 +442,8 @@ def ask_guru():
     return render_template(
         "ask_guru.html", questions=questions,
         replies=replies, users=users, likes=likes,
-        categories=categories, liked_questions=liked_questions)
+        categories=categories, liked_questions=liked_questions,
+        liked_user=liked_user)
 
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
