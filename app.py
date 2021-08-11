@@ -369,7 +369,14 @@ def ask_guru():
     # print(users)
     if request.method == "POST":
 
+        category_id = request.form.get("category_id")
+        category_id_name = mongo.db.categories.find_one(
+            {"_id": ObjectId(category_id)})
+        print(category_id_name)
+
         question = {
+            "category_id": request.form.get("category_id"),
+            "category_name": category_id_name["category_name"],
             "question_title": request.form.get("question_title"),
             "question_description": request.form.get("question_description"),
             "created_by": session['user']

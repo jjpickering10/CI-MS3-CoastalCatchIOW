@@ -56,7 +56,7 @@
           <select id="category_id" name="category_id" class="validate" required>
             <option value="" disabled selected>Choose Category</option>
             {% for category in categories %}
-            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+            <option value="{{ category._id }}">{{ category.category_name }}</option>
             {% endfor %}
 
           </select>
@@ -95,7 +95,9 @@
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
+          <span class="card-title">{{ question.category_name }}
           <span class="card-title">{{ question.question_title }}
+          
             
            
             {% for like in likes %}
