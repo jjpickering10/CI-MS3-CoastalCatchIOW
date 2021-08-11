@@ -327,6 +327,26 @@ def add_category():
     return redirect(url_for('login'))
 
 
+@app.route("/edit_categories/<category_id>", methods=["GET", "POST"])
+def edit_categories(category_id):
+    if 'user' in session and 'admin' in session:
+        categories = mongo.db.categories.find_one(
+            {"_id": ObjectId(category_id)})
+        if request.method == "POST":
+
+            updated_category = {
+                "category_name": request.form.get("category_name")
+            }
+            mongo.db.categories.update(
+                {"_id": ObjectId(category_id)}, updated_category)
+            flash('Edit successful')
+            return redirect(url_for('view_categories'))
+
+        return render_template("edit_category.html", categories=categories)
+
+    return redirect(url_for('login'))
+
+
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
     if 'user' in session and 'admin' in session:
