@@ -54,7 +54,7 @@
       <div class="row">
         <div class="input-field col s6 offset-m3">
           <select id="category_id" name="category_id" class="validate" required>
-            <option value="" disabled selected>Choose Category</option>
+            <!-- <option value="" disabled selected>Choose Category</option> -->
             {% for category in categories %}
             <option value="{{ category._id }}">{{ category.category_name }}</option>
             {% endfor %}

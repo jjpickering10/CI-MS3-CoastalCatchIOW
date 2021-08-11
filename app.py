@@ -100,8 +100,6 @@ def profile(username):
             mongo.db.reviews.find({"created_by": username}))
         asked_questions = list(
             mongo.db.questions.find({"created_by": username}))
-        users = list(mongo.db.users.find({}, {"password": 0}))
-        # print(user_details)
 
         if guru == "no":
             session['guru'] = "no"
@@ -113,7 +111,7 @@ def profile(username):
             "profile.html", username=username,
             created_reviews=created_reviews,
             asked_questions=asked_questions,
-            users=users, user_details=user_details)
+            user_details=user_details)
 
     return redirect(url_for('login'))
 
@@ -357,7 +355,6 @@ def delete_categories(category_id):
     return redirect(url_for('login'))
 
 
-
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
     if 'user' in session and 'admin' in session:
@@ -588,6 +585,15 @@ def update_user(username_id):
                 {"_id": ObjectId(username_id)}, updated_user)
             flash("Edit User successful")
             return redirect(url_for("profile", username=session['user']))
+
+    return redirect(url_for('login'))
+
+
+@app.route("/edit_users")
+def edit_users():
+    if 'user' in session and 'admin' in session:
+        users = list(mongo.db.users.find({}, {"password": 0}))
+        return render_template("edit_users.html", users=users)
 
     return redirect(url_for('login'))
 
