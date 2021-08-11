@@ -361,6 +361,7 @@ def delete_locations(location_id):
 @app.route("/ask_guru", methods=["GET", "POST"])
 def ask_guru():
     questions = list(mongo.db.questions.find())
+    categories = list(mongo.db.categories.find())
     replies = list(mongo.db.replies.find())
     likes = list(mongo.db.likes.find())
 
@@ -379,7 +380,7 @@ def ask_guru():
         return redirect(url_for('ask_guru'))
     return render_template(
         "ask_guru.html", questions=questions,
-        replies=replies, users=users, likes=likes)
+        replies=replies, users=users, likes=likes, categories=categories)
 
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
