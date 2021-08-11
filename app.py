@@ -347,6 +347,17 @@ def edit_categories(category_id):
     return redirect(url_for('login'))
 
 
+@app.route("/delete_categories/<category_id>")
+def delete_categories(category_id):
+    if 'user' in session and 'admin' in session:
+        mongo.db.categories.remove({"_id": ObjectId(category_id)})
+        flash("Category successfully deleted")
+        return redirect(url_for('view_categories'))
+
+    return redirect(url_for('login'))
+
+
+
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
     if 'user' in session and 'admin' in session:
