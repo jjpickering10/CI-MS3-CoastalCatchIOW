@@ -26,6 +26,7 @@
                 <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
                 {% if session.admin|lower == "yes" %}
                 <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
+                <li><a href="{{ url_for('view_categories') }}">Edit Categories</a></li>
                 {% endif %}
                 {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
@@ -46,6 +47,7 @@
         <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
         {% if session.admin|lower == "yes" %}
         <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
+        <li><a href="{{ url_for('view_categories') }}">Edit Categories</a></li>
         {% endif %}  
         {% if session.user %}
         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>

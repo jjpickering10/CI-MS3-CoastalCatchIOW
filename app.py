@@ -298,6 +298,17 @@ def view_locations():
     return redirect(url_for('login'))
 
 
+@app.route("/view_categories")
+def view_categories():
+    if 'user' in session and 'admin' in session:
+        categories = list(mongo.db.categories.find().sort("category_name", 1))
+        # reviews = list(mongo.db.reviews.find().sort("review_title", 1))
+        return render_template(
+            "view_categories.html", categories=categories)
+
+    return redirect(url_for('login'))
+
+
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
     if 'user' in session and 'admin' in session:
