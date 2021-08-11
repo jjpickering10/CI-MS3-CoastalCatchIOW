@@ -309,6 +309,24 @@ def view_categories():
     return redirect(url_for('login'))
 
 
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if 'user' in session and 'admin' in session:
+        if request.method == "POST":
+
+            category = {
+                "category_name": request.form.get("category_name")
+            }
+
+            mongo.db.categories.insert_one(category)
+            flash("New Category added")
+            return redirect(url_for('view_categories'))
+
+        return render_template("add_category.html")
+
+    return redirect(url_for('login'))
+
+
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
     if 'user' in session and 'admin' in session:
