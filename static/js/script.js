@@ -13,3 +13,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var instancesCarousel = M.Carousel.init(carousel, optionsCarousel);
     var instancesSelect = M.FormSelect.init(elemsSelect);
   });
+
+  const questionsList = document.querySelectorAll('.questions-list')
+  const categoryButtons = document.querySelectorAll('.category-buttons')
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      
+    
+      const x = e.path[0].innerText.toLowerCase();
+
+      questionsList.forEach(question => {
+      if (x == question.dataset.questions.toLowerCase()) {
+      
+        question.classList.toggle('questions-hide')
+      } else {
+        question.classList.add('questions-hide')
+       
+      }
+    })
+    })
+  })

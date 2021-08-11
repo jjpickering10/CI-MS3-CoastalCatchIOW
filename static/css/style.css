@@ -87,4 +87,8 @@ main .locations-card .locations-links {
 }
 .posts-info .posts-heading {
   margin: 0;
+}
+
+.questions-hide {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

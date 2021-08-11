@@ -88,9 +88,23 @@
   </div>
   {% endif %}
 
-  {% for question in questions %}
   
+
   <div class="row">
+    <div class="col s6 offset-m3 pagination center-align">
+      {% for category in categories %}
+      <button class="btn-small category-buttons">{{ category.category_name }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+  {% for question in questions %}
+
+
+  
+  <div class="row questions-list questions-hide" data-questions="{{ question.category_name }}">
     {% set count = [] %}
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
@@ -135,8 +149,7 @@
         
       </div>
     </div>
-  </div>
-  {% if session.guru|lower == "yes" %}
+    {% if session.guru|lower == "yes" %}
 
   <div class="row">
     <form class="col s12 m6" method="POST" action="{{ url_for('add_reply', question_id=question._id) }}">
@@ -153,6 +166,8 @@
   </div>
 
   {% endif %}
+  </div>
+  
   {% endfor %}
 
   
