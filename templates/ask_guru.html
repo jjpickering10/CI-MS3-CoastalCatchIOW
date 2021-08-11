@@ -88,6 +88,15 @@
   </div>
   {% endif %}
 
+  <h4>Most liked questions</h4>
+
+  {% for likedquestion in liked_questions %}
+    <p>{{ likedquestion.category_name }}</p>
+    <p>{{ likedquestion.question_title }}</p>
+    <p>{{ likedquestion.question_description }}</p>
+    <p>{{ likedquestion.like_count }}</p>
+  {% endfor %}
+
   
 
   <div class="row">

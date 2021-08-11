@@ -360,26 +360,29 @@ def delete_locations(location_id):
 
 @app.route("/ask_guru", methods=["GET", "POST"])
 def ask_guru():
-    questions = list(mongo.db.questions.find())
+    questions = list(mongo.db.questions.find().sort("like_count", -1))
+    liked_questions = questions[:3]
+    print(liked_questions)
     categories = list(mongo.db.categories.find())
     replies = list(mongo.db.replies.find())
     likes = list(mongo.db.likes.find())
 
     users = list(mongo.db.users.find({"is_guru": "yes"}, {"password": 0}))
-    # print(users)
+    # print(questions)
     if request.method == "POST":
 
         category_id = request.form.get("category_id")
         category_id_name = mongo.db.categories.find_one(
             {"_id": ObjectId(category_id)})
-        print(category_id_name)
+        # print(category_id_name)
 
         question = {
             "category_id": request.form.get("category_id"),
             "category_name": category_id_name["category_name"],
             "question_title": request.form.get("question_title"),
             "question_description": request.form.get("question_description"),
-            "created_by": session['user']
+            "created_by": session['user'],
+            "like_count": 0
         }
 
         mongo.db.questions.insert_one(question)
@@ -387,7 +390,8 @@ def ask_guru():
         return redirect(url_for('ask_guru'))
     return render_template(
         "ask_guru.html", questions=questions,
-        replies=replies, users=users, likes=likes, categories=categories)
+        replies=replies, users=users, likes=likes,
+        categories=categories, liked_questions=liked_questions)
 
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
@@ -397,12 +401,15 @@ def edit_question(question_id):
             {"_id": ObjectId(question_id)})
         if request.method == "POST":
             updated_question = {
+                "category_id": question["category_id"],
+                "category_name": question["category_name"],
                 "question_title": request.form.get("question_title"),
                 "question_description": request.form.get(
                     "question_description"),
-                "created_by": session['user']
+                "created_by": session['user'],
+                "like_count": question["like_count"]
             }
-            mongo.db.question.update(
+            mongo.db.questions.update(
                 {"_id": ObjectId(question_id)}, updated_question)
             flash('Edit successful')
             return redirect(url_for('ask_guru'))
@@ -430,16 +437,30 @@ def like_question(question_id):
             {"question_id": ObjectId(
                 question_id), "liked_user": session['user']}))
 
+        question = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
+
         if len(like) < 1:
             new_like = {
                 "question_id": ObjectId(question_id),
                 "liked_user": session['user']
             }
+            updated_like = {
+                "$set": {"like_count": question["like_count"] + 1}
+            }
             mongo.db.likes.insert_one(new_like)
+            mongo.db.questions.update_one(
+                {"_id": ObjectId(question_id)}, updated_like)
             return redirect(url_for('ask_guru'))
         else:
             mongo.db.likes.remove({"question_id": ObjectId(
                 question_id), "liked_user": session['user']})
+
+            updated_like = {
+                "$set": {"like_count": question["like_count"] - 1}
+            }
+            mongo.db.questions.update_one(
+                {"_id": ObjectId(question_id)}, updated_like)
+
             return redirect(url_for('ask_guru'))
     flash("You must be logged in to like")
     return redirect(url_for("ask_guru"))
