@@ -605,6 +605,33 @@ def edit_users():
     return redirect(url_for('login'))
 
 
+@app.route("/rate_location/<location_id>", methods=['GET', "POST"])
+def rate_location(location_id):
+    if 'user' in session:
+        rating = list(mongo.db.ratings.find(
+            {"location_id": ObjectId(
+                location_id), "rating_user": session['user']}))
+
+        if request.method == "POST":
+            if len(rating) < 1:
+                new_rating = {
+                    "location_id": ObjectId(location_id),
+                    "rating": request.form.get("rating_score"),
+                    "rating_user": session['user']
+                }
+                mongo.db.ratings.insert_one(new_rating)
+                return redirect(url_for('locations', location_id=location_id))
+            else:
+                new_rating = {
+                    "$set": {"rating": request.form.get("rating_score")}
+                }
+                mongo.db.ratings.update_one({"location_id": ObjectId(
+                    location_id), "rating_user": session['user']}, new_rating)
+                return redirect(url_for('locations', location_id=location_id))
+    flash("You must be logged in to rate")
+    return redirect(url_for('locations', location_id=location_id))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
