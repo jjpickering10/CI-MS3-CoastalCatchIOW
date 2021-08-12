@@ -623,14 +623,14 @@ def rate_location(location_id):
             if len(rating) < 1:
                 new_rating = {
                     "location_id": ObjectId(location_id),
-                    "rating": request.form.get("rating_score"),
+                    "rating": int(request.form.get("rating_score")),
                     "rating_user": session['user']
                 }
                 mongo.db.ratings.insert_one(new_rating)
                 return redirect(url_for('locations', location_id=location_id))
             else:
                 new_rating = {
-                    "$set": {"rating": request.form.get("rating_score")}
+                    "$set": {"rating": int(request.form.get("rating_score"))}
                 }
                 mongo.db.ratings.update_one({"location_id": ObjectId(
                     location_id), "rating_user": session['user']}, new_rating)
