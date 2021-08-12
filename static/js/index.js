@@ -3,10 +3,6 @@ import { Water } from 'https://cdn.skypack.dev/three@0.131.3/examples/jsm/object
 
 console.log(Water);
 
-// Textures
-
-const textureLoader = new THREE.TextureLoader();
-
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -41,10 +37,22 @@ water.position.z = -1710;
 
 scene.add(water)
 
-// Materials
+// Sun
 
-const material = new THREE.MeshBasicMaterial()
-material.color = new THREE.Color(0xff0000)
+const sunGeometry = new THREE.SphereGeometry(1000, 1000, 1000);
+const sunMaterial = new THREE.MeshPhongMaterial({
+  color: new THREE.Color(0xfce570),
+  shininess: 100,
+  transparent: true,
+  opacity: 0.05,
+});
+const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+sun.position.x = 500;
+sun.position.y = 50;
+sun.position.z = -10000;
+scene.add(sun);
+
+// Materials
 
 // Mesh
 
