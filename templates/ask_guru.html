@@ -133,12 +133,13 @@
               
             {% endfor %}
             <p>{{ count|length }}</p>
-            
+            {% if session.user %}
             {% for like in liked_user %}
                 {% if like.question_id == question._id %}
                   {% set __ = class.append(1) %}
                 {% endif %}
             {% endfor %}
+            {% endif %}
             {% if class|length > 0 %}
             <a href="{{ url_for('like_question', question_id=question._id) }}"><i class="fas fa-thumbs-up"></i></a>
             {% else %}

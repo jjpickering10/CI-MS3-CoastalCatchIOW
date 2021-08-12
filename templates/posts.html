@@ -74,6 +74,7 @@
        
         
         <div class="card-action">
+          <p>Date: {{ review.date_created }}</p>
           <p>Posted by: {{ review.created_by }}</p>
           {% if session.user|lower == review.created_by|lower or session.admin|lower == "yes" %}
           <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>

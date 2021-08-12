@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -16,6 +17,11 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+
+def get_date():
+    current_date = datetime.datetime.utcnow().replace(microsecond=0)
+    return current_date
 
 
 @app.route("/")
@@ -170,12 +176,14 @@ def locations(location_id):
     reviews = list(mongo.db.reviews.find({"location_id": location_id}))
 
     if request.method == "POST":
+        post_date = get_date()
         post = {
             "location_id": location_id,
             "location_name": location["location_name"],
             "review_title": request.form.get("review_title"),
             "review_description": request.form.get("review_description"),
-            "created_by": session['user']
+            "created_by": session['user'],
+            "date_created": post_date
         }
         mongo.db.reviews.insert_one(post)
         flash('Post successful')
@@ -197,7 +205,8 @@ def edit_post(post_id):
                 "location_name": post["location_name"],
                 "review_title": request.form.get("review_title"),
                 "review_description": request.form.get("review_description"),
-                "created_by": session['user']
+                "created_by": session['user'],
+                "date_created": post["date_created"]
             }
             mongo.db.reviews.update(
                 {"_id": ObjectId(post_id)}, updated_post)
@@ -417,12 +426,13 @@ def ask_guru():
     categories = list(mongo.db.categories.find())
     replies = list(mongo.db.replies.find())
     likes = list(mongo.db.likes.find())
-    liked_user = list(mongo.db.likes.find({"liked_user": session['user']}))
-
     users = list(mongo.db.users.find({"is_guru": "yes"}, {"password": 0}))
-    print(liked_user)
+    if 'user' in session:
+        liked_user = list(mongo.db.likes.find({"liked_user": session['user']}))
+    else:
+        liked_user = None
+    # print(liked_user)
     if request.method == "POST":
-
         category_id = request.form.get("category_id")
         category_id_name = mongo.db.categories.find_one(
             {"_id": ObjectId(category_id)})
