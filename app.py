@@ -181,8 +181,10 @@ def locations(location_id):
     if 'user' in session:
         rating = mongo.db.ratings.find_one({"location_id": ObjectId(
             location_id), "rating_user": session['user']})
+        fav_user = list(mongo.db.favourites.find({"favourite_user": session['user']}))
     else:
         rating = None
+        fav_user = None
     print(ratings)
 
     if request.method == "POST":
@@ -204,7 +206,7 @@ def locations(location_id):
     return render_template(
         "posts.html", location=location,
         reviews=reviews, comments=comments,
-        rating=rating, ratings=ratings)
+        rating=rating, ratings=ratings, fav_user=fav_user)
 
 
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
@@ -642,6 +644,31 @@ def rate_location(location_id):
                 return redirect(url_for('locations', location_id=location_id))
     flash("You must be logged in to rate")
     return redirect(url_for('locations', location_id=location_id))
+
+
+@app.route("/favourite_post/<post_id>")
+def favourite_post(post_id):
+    post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
+    if 'user' in session:
+        favourite = list(mongo.db.favourites.find(
+            {"post_id": ObjectId(
+                post_id), "favourite_user": session['user']}))
+
+        if len(favourite) < 1:
+            new_fav = {
+                "post_id": ObjectId(post_id),
+                "favourite_user": session['user']
+            }
+            mongo.db.favourites.insert_one(new_fav)
+            return redirect(url_for(
+                'locations', location_id=post['location_id']))
+        else:
+            mongo.db.favourites.remove({"post_id": ObjectId(
+                post_id), "favourite_user": session['user']})
+            return redirect(url_for(
+                'locations', location_id=post['location_id']))
+    flash("You must be logged in to favourite a post")
+    return redirect(url_for("locations", location_id=post['location_id']))
 
 
 if __name__ == "__main__":
