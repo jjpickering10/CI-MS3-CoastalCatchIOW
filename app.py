@@ -212,6 +212,24 @@ def locations(location_id):
         rating=rating, ratings=ratings, fav_user=fav_user)
 
 
+@app.route("/view_post/<post_id>")
+def view_post(post_id):
+    post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
+    print(bool(post))
+    if post:
+        comments = list(mongo.db.comments.find(
+            {"location_id": post['location_id']}))
+        if 'user' in session:
+            fav_user = list(mongo.db.favourites.find(
+                    {"favourite_user": session['user']}))
+        else:
+            fav_user = None
+        return render_template(
+            "view_post.html", post=post, comments=comments, fav_user=fav_user)
+    flash("Post does not exist")
+    return redirect(url_for('get_locations'))
+
+
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if 'user' in session:
