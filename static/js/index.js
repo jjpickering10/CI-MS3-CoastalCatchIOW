@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.131.3';
+import { Water } from 'https://cdn.skypack.dev/three@0.131.3/examples/jsm/objects/Water.js';
 
-console.log(THREE);
+console.log(Water);
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
