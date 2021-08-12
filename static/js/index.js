@@ -52,13 +52,37 @@ sun.position.y = 50;
 sun.position.z = -10000;
 scene.add(sun);
 
+// Clouds
+
+let cloudArray = [];
+
+const cloudGeometry = new THREE.PlaneGeometry(20000, 20000);
+const cloudMaterial = new THREE.MeshStandardMaterial({
+  map: new THREE.TextureLoader().load("static/img/cloudimage.png"),
+  transparent: true,
+  opacity: 0.25,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false,
+  color: new THREE.Color(0xb68d5f),
+});
+
+for (let i = 0; i < 10; i++) {
+  const cloud = new THREE.Mesh(cloudGeometry, cloudMaterial);
+  cloud.position.x = (Math.random() - 0.5) * 10000;
+  cloud.position.y = Math.random() * 5000;
+  cloud.position.z = (Math.random() - 0.5) * 10000;
+  cloud.rotation.z = Math.random() * Math.PI * 2;
+  cloudArray.push(cloud);
+  scene.add(cloud);
+}
+
 // Materials
 
 // Mesh
 
 // Lights
 
-const light = new THREE.AmbientLight("#b68d5f", 1);
+const light = new THREE.AmbientLight(0xb68d5f, 1);
 scene.add(light)
 
 /**
