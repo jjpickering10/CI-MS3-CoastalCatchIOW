@@ -84,6 +84,7 @@ for (let i = 0; i < 10; i++) {
 
 const light = new THREE.AmbientLight(0xb68d5f, 1);
 scene.add(light)
+scene.background = new THREE.Color(0x959eac)
 
 /**
  * Sizes
@@ -137,6 +138,17 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+
+    // Cloud Movement
+
+    cloudArray.forEach((cloud) => {
+        cloud.rotation.z += 0.0005;
+        cloud.opacity = Math.random();
+      });
+
+    // Water Movement
+
+    water.material.uniforms["time"].value -= 0.002;
 
     // Render
     renderer.render(scene, camera)
