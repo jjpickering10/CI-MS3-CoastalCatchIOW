@@ -237,13 +237,14 @@ def add_comment(post_id):
     if 'user' in session:
         posts = mongo.db.reviews.find_one(
             {"_id": ObjectId(post_id)})
-
+        comment_date = get_date()
         if request.method == "POST":
             post = {
                 "post_id": posts["_id"],
                 "location_id": posts["location_id"],
                 "created_by": session['user'],
-                "comments": request.form.get("comments")
+                "comments": request.form.get("comments"),
+                "date_created": comment_date
             }
             mongo.db.comments.insert_one(post)
             flash('Comment successful')
@@ -263,7 +264,8 @@ def edit_comment(comment_id):
                 "post_id": comments["post_id"],
                 "location_id": comments["location_id"],
                 "created_by": session['user'],
-                "comments": request.form.get("comments")
+                "comments": request.form.get("comments"),
+                "date_created": comments["date_created"]
             }
             mongo.db.comments.update(
                 {"_id": ObjectId(comment_id)}, updated_comment)
