@@ -16,6 +16,17 @@
         {{ location.location_name }}
       </h3>
       <p>{{ location.location_description }}</p>
+      {% set rating_score = [] %}
+      {% for rating in ratings %}
+        {% set __ = rating_score.append(rating.rating) %}
+      {% endfor %}
+      {% if rating_score|length > 0 %}
+        <p>Current Rating: {{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }}</p>
+        <p>Total Ratings: {{ rating_score|length }}</p>
+      {% else %}
+        <p>No Ratings Yet</p>
+      {% endif %}
+
       {% if session.user %}
       
       <form class="col s12" method="POST" action="{{ url_for('rate_location', location_id=location._id) }}">
