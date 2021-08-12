@@ -22,6 +22,21 @@
         <div class="card-content locations-info">
           <span class="card-title">{{ location.location_name }}</span>
           <p>{{ location.location_description }}</p>
+          
+          {% set rating_score = [] %}
+            {% for rating in ratings %}
+            {% if rating.location_id == location._id %}
+              {% set __ = rating_score.append(rating.rating) %}
+            {% endif %}
+            {% endfor %}
+            {% if rating_score|length > 0 %}
+              <p>Current Rating: {{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }}</p>
+              <p>Total Ratings: {{ rating_score|length }}</p>
+            {% else %}
+              <p>No Ratings Yet</p>
+            {% endif %}
+          
+
         </div>
         <div class="card-links">
           <a class="locations-links" href="{{ url_for('locations', location_id=location._id) }}">This is a link</a>

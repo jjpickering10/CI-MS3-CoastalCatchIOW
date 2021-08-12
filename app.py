@@ -164,7 +164,9 @@ def file(filename):
 @app.route("/get_locations")
 def get_locations():
     locations = mongo.db.locations.find()
-    return render_template("locations.html", locations=locations)
+    ratings = list(mongo.db.ratings.find())
+    return render_template(
+        "locations.html", locations=locations, ratings=ratings)
 
 
 @app.route("/locations/<location_id>", methods=["GET", "POST"])
