@@ -46,6 +46,11 @@
             </div>
           </div>
       </form>
+      {% if rating != None %}
+      <p>You rated this: {{ rating.rating }} stars</p>
+      {% else %}
+      <p>You haven't rated this yet</p>
+      {% endif %}
       
       {% endif %}
     </div>

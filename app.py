@@ -174,6 +174,12 @@ def locations(location_id):
 
     comments = list(mongo.db.comments.find({"location_id": location_id}))
     reviews = list(mongo.db.reviews.find({"location_id": location_id}))
+    if 'user' in session:
+        rating = mongo.db.ratings.find_one({"location_id": ObjectId(
+            location_id), "rating_user": session['user']})
+    else:
+        rating = None
+    print(rating)
 
     if request.method == "POST":
         post_date = get_date()
@@ -192,7 +198,8 @@ def locations(location_id):
         # return redirect(url_for('get_locations'))
 
     return render_template(
-        "posts.html", location=location, reviews=reviews, comments=comments)
+        "posts.html", location=location,
+        reviews=reviews, comments=comments, rating=rating)
 
 
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
