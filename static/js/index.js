@@ -3,6 +3,10 @@ import { Water } from 'https://cdn.skypack.dev/three@0.131.3/examples/jsm/object
 
 console.log(Water);
 
+// Textures
+
+const textureLoader = new THREE.TextureLoader();
+
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -10,7 +14,32 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Objects
-const geometry = new THREE.TorusGeometry( .7, .2, 16, 100 );
+
+// Water
+
+const waterGeometry = new THREE.CircleGeometry(10000, 10000);
+
+const water = new Water(waterGeometry, {
+  textureWidth: 512,
+  textureHeight: 512,
+  waterNormals: new THREE.TextureLoader().load(
+    "/static/img/waternormals.jpg",
+    function (texture) {
+      texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    }
+  ),
+  sunDirection: new THREE.Vector3(),
+  sunColor: new THREE.Color(0x959eac),
+  waterColor: new THREE.Color(0x006994),
+  fog: scene.fog !== undefined,
+});
+
+water.rotation.x = -Math.PI / 2;
+water.position.x = -2.5;
+water.position.y = 51;
+water.position.z = -1710;
+
+scene.add(water)
 
 // Materials
 
@@ -18,8 +47,11 @@ const material = new THREE.MeshBasicMaterial()
 material.color = new THREE.Color(0xff0000)
 
 // Mesh
-const sphere = new THREE.Mesh(geometry,material)
-scene.add(sphere)
+
+// Lights
+
+const light = new THREE.AmbientLight("#b68d5f", 1);
+scene.add(light)
 
 /**
  * Sizes
@@ -48,10 +80,10 @@ window.addEventListener('resize', () =>
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 0
-camera.position.y = 0
-camera.position.z = 2
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 20000)
+camera.position.x = 30
+camera.position.y = 95
+camera.position.z = 8300
 scene.add(camera)
 
 /**
@@ -59,7 +91,7 @@ scene.add(camera)
  */
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
-    alpha: true
+    // alpha: true
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
