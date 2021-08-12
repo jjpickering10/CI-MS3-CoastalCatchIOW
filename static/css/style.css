@@ -16,6 +16,14 @@
 body {
   color: var(--white-color);
   background: var(--secondary-blue);
+  overflow-x: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
 }
 
 .flashes h4 {
