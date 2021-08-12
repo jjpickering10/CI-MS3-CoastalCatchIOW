@@ -106,6 +106,8 @@ def profile(username):
             mongo.db.reviews.find({"created_by": username}))
         asked_questions = list(
             mongo.db.questions.find({"created_by": username}))
+        fav_posts = list(
+            mongo.db.favourites.find({"favourite_user": username}))
 
         if guru == "no":
             session['guru'] = "no"
@@ -117,7 +119,7 @@ def profile(username):
             "profile.html", username=username,
             created_reviews=created_reviews,
             asked_questions=asked_questions,
-            user_details=user_details)
+            user_details=user_details, fav_posts=fav_posts)
 
     return redirect(url_for('login'))
 
@@ -181,7 +183,8 @@ def locations(location_id):
     if 'user' in session:
         rating = mongo.db.ratings.find_one({"location_id": ObjectId(
             location_id), "rating_user": session['user']})
-        fav_user = list(mongo.db.favourites.find({"favourite_user": session['user']}))
+        fav_user = list(mongo.db.favourites.find(
+            {"favourite_user": session['user']}))
     else:
         rating = None
         fav_user = None
@@ -657,6 +660,8 @@ def favourite_post(post_id):
         if len(favourite) < 1:
             new_fav = {
                 "post_id": ObjectId(post_id),
+                "post_title": post['review_title'],
+                "location_name": post['location_name'],
                 "favourite_user": session['user']
             }
             mongo.db.favourites.insert_one(new_fav)
