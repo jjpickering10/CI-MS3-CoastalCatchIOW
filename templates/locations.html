@@ -11,7 +11,7 @@
 
       <main>
       {% for location in locations %}
-      <div class="card locations-card">
+      <div class="card locations-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-scale="1.02" data-tilt-perspective="1000" data-tilt-glare data-tilt-max-glare="0.8">
         <div class="card-image">
           {% if location.location_image %}
           <img src="{{ url_for('file', filename=location.location_image) }}">
