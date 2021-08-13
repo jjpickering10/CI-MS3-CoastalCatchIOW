@@ -17,12 +17,12 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper navigation-main">
-              <a href="{{ url_for('home') }}" class="brand-logo">CoastalCatch</a>
+              <a href="{{ url_for('home') }}" class="brand-logo nav-logo">CoastalCatch</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="">About</a></li>
-                <li><a href="{{ url_for('ask_guru') }}">Ask Guru</a></li>
+                <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
                 <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
                 {% if session.admin|lower == "yes" %}
                 <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
@@ -44,7 +44,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="">About</a></li>
-        <li><a href="{{ url_for('ask_guru') }}">Ask Guru</a></li>
+        <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
         <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
         {% if session.admin|lower == "yes" %}
         <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
@@ -73,10 +73,10 @@
         {% endwith %}
     </section>
 
-    
+    <canvas class="webgl"></canvas>
     {% block content %}
     {% endblock %}
-    <canvas class="webgl"></canvas>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="module" src="{{  url_for('static', filename='js/index.js') }}"></script>
     <script src="{{  url_for('static', filename='js/script.js') }}"></script>

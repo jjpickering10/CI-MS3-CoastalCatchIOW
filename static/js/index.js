@@ -25,7 +25,8 @@ const water = new Water(waterGeometry, {
     }
   ),
   sunDirection: new THREE.Vector3(),
-  sunColor: new THREE.Color(0x959eac),
+  sunColor: new THREE.Color(0x202020),
+//   sunColor: new THREE.Color(0x959eac),
   waterColor: new THREE.Color(0x006994),
   fog: scene.fog !== undefined,
 });
@@ -84,7 +85,8 @@ for (let i = 0; i < 10; i++) {
 
 const light = new THREE.AmbientLight(0xb68d5f, 1);
 scene.add(light)
-scene.background = new THREE.Color(0x959eac)
+scene.background = new THREE.Color(0x202020)
+// scene.background = new THREE.Color(0x959eac)
 
 /**
  * Sizes
