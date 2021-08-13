@@ -116,6 +116,10 @@ Typography:
 
 [Materialize](https://materializecss.com/) - for responsive design and grid layout
 
+[Three.js](https://threejs.org/) - for 3D water and clouds background
+
+[Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) - for tilt effect on cards
+
 [GitPod](https://www.gitpod.io/) - Online IDE
 
 [Git](https://git-scm.com/) - Version Control

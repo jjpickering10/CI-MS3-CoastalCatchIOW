@@ -149,15 +149,48 @@ main {
   transform: translateY(10vh);
 }
 main .locations-card {
-  background: var(--secondary-brown);
+  background: var(--tertiary-blue);
+  overflow: hidden;
+  border-radius: 1rem;
+}
+main .locations-card .card-content .card-title {
+  color: var(--secondary-blue);
+  font-weight: 400;
+  font-size: 2rem;
+}
+main .locations-card .card-content .title-background {
+  position: absolute;
+  z-index: -1;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.05);
+  transform: rotate(45deg) scale(1.5);
+}
+main .locations-card .card-content p {
+  font-family: "Roboto", sans-serif;
+  color: var(--secondary-blue);
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+main .locations-card .card-content p i {
+  color: var(--secondary-brown);
+}
+main .locations-card .card-content p .rating-total {
+  font-weight: 400;
 }
 main .locations-card .card-links {
   position: relative;
-  padding: 16px 24px;
+  padding: 24px;
 }
-main .locations-card .locations-links {
+main .locations-card .card-links .locations-links {
   color: var(--white-color);
-  background: var(--tertiary-blue);
+  background: var(--primary-brown);
+  text-transform: lowercase;
+  border-radius: 0.5rem;
+}
+main .locations-card .card-links .locations-links:hover, main .locations-card .card-links .locations-links:focus {
+  transition: 0.5s;
+  background: var(--secondary-brown);
+  transform: scale(1.05);
 }
 
 .posts-info {

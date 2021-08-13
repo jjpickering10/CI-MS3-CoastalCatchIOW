@@ -11,7 +11,7 @@
 
       <main>
       {% for location in locations %}
-      <div class="card locations-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-scale="1.02" data-tilt-perspective="1000" data-tilt-glare data-tilt-max-glare="0.8">
+      <div class="card locations-card" data-tilt data-tilt-max="2" data-tilt-speed="400" data-tilt-scale="1.02" data-tilt-perspective="1000" data-tilt-glare data-tilt-max-glare="0.2">
         <div class="card-image">
           {% if location.location_image %}
           <img src="{{ url_for('file', filename=location.location_image) }}">
@@ -21,7 +21,7 @@
         </div>
         <div class="card-content locations-info">
           <span class="card-title">{{ location.location_name }}</span>
-          <p>{{ location.location_description }}</p>
+          <span class="title-background">{{ location.location_name }}</span>
           
           {% set rating_score = [] %}
             {% for rating in ratings %}
@@ -30,16 +30,16 @@
             {% endif %}
             {% endfor %}
             {% if rating_score|length > 0 %}
-              <p>Current Rating: {{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }}</p>
-              <p>Total Ratings: {{ rating_score|length }}</p>
+              <p>Current Rating: {{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }} <i class="fas fa-star"></i></p>
+              <p>Total Ratings: <span class="rating-total">{{ rating_score|length }}</span></p>
             {% else %}
+            <p>Current Rating: N/A</p>
               <p>No Ratings Yet</p>
             {% endif %}
-          
 
         </div>
         <div class="card-links">
-          <a class="locations-links" href="{{ url_for('locations', location_id=location._id) }}">This is a link</a>
+          <a class="btn-small locations-links" href="{{ url_for('locations', location_id=location._id) }}">View Forum</a>
         </div>
       </div>
       {% endfor %}
