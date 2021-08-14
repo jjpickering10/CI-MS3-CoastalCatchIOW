@@ -305,6 +305,90 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   z-index: 2;
 }
 
+.post-section-container {
+  margin-top: 5rem;
+  width: calc(100% - 10rem);
+}
+.post-section-container form p {
+  font-size: 1rem;
+  font-weight: 100;
+  text-transform: lowercase;
+}
+.post-section-container form p span {
+  font-size: 3rem;
+  color: var(--primary-blue);
+  font-weight: 300;
+}
+.post-section-container form .row {
+  margin: 0;
+}
+.post-section-container form .forum-text-field {
+  background: #b68d5f00;
+  box-shadow: 20px 0px 20rem 20rem #b68d5f;
+  padding: 3rem 2rem;
+  /* label color */
+  /* label focus color */
+  /* label underline focus color */
+  /* valid color */
+  /* invalid color */
+  /* icon prefix focus color */
+  /* invalid color */
+  /* icon prefix focus color */
+}
+.post-section-container form .forum-text-field .input-field label {
+  color: rgba(0, 0, 0, 0.5);
+}
+.post-section-container form .forum-text-field .input-field input[type=text]:focus + label {
+  color: #000;
+}
+.post-section-container form .forum-text-field .input-field input[type=text]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+.post-section-container form .forum-text-field .input-field input[type=text].valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+  color: black;
+}
+.post-section-container form .forum-text-field .input-field input[type=text].invalid {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.5);
+  color: black;
+}
+.post-section-container form .forum-text-field .input-field .prefix.active {
+  color: #000;
+}
+.post-section-container form .forum-text-field .input-field textarea.materialize-textarea.valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+  color: black;
+}
+.post-section-container form .forum-text-field .input-field textarea.materialize-textarea.invalid {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.5);
+  color: black;
+}
+.post-section-container form .forum-text-field .input-field .prefix.active {
+  color: #000;
+}
+.post-section-container form .forum-text-field .input-field textarea.materialize-textarea:focus-within {
+  border-bottom: 1px solid black;
+  box-shadow: 0 1px 0 0 black;
+  color: #000;
+}
+.post-section-container form .forum-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--secondary-blue);
+  text-transform: lowercase;
+}
+.post-section-container form .forum-button:hover, .post-section-container form .forum-button:focus {
+  transition: 0.5s;
+  background: var(--primary-blue);
+  transform: scale(1.05);
+}
+
 .questions-hide {
   display: none;
 }/*# sourceMappingURL=style.css.map */
