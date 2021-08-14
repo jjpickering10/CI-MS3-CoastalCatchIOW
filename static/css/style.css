@@ -310,8 +310,8 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   width: calc(100% - 10rem);
 }
 .post-section-container form p {
-  font-size: 1rem;
-  font-weight: 100;
+  font-size: 1.2rem;
+  font-weight: 200;
   text-transform: lowercase;
 }
 .post-section-container form p span {
@@ -384,6 +384,30 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   text-transform: lowercase;
 }
 .post-section-container form .forum-button:hover, .post-section-container form .forum-button:focus {
+  transition: 0.5s;
+  background: var(--primary-blue);
+  transform: scale(1.05);
+}
+
+.review-section-container {
+  margin-top: 5rem;
+  width: calc(100% - 10rem);
+}
+.review-section-container .single-post {
+  background: #7f5b3000;
+  box-shadow: -20px 20rem 20rem 5rem var(--tertiary-blue);
+}
+.review-section-container .single-post .card {
+  background: var(--secondary-blue);
+}
+.review-section-container .single-post .card .card-action .edit-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--secondary-blue);
+  text-transform: lowercase;
+}
+.review-section-container .single-post .card .card-action .edit-button:hover, .review-section-container .single-post .card .card-action .edit-button:focus {
   transition: 0.5s;
   background: var(--primary-blue);
   transform: scale(1.05);
