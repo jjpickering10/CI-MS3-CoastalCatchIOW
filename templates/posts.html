@@ -3,36 +3,41 @@
 
 
 
-  <div class="row posts-info">
-    <div class="col s6">
+  <div class="posts-info">
+    <div class="posts-image-container">
       {% if location.location_image %}
-          <img class="posts-image" src="{{ url_for('file', filename=location.location_image) }}" alt="{{ location.location_name }}">
+          <img class="posts-image responsive-img" src="{{ url_for('file', filename=location.location_image) }}" alt="{{ location.location_name }}">
           {% else %}
           <img class="posts-image" src="{{ url_for('static', filename='img/blank_profile_image.png') }}" alt="{{ location.location_name }}">
           {% endif %}
     </div>
-    <div class="col s6">
-      <h3 class="posts-heading">
-        {{ location.location_name }}
-      </h3>
-      <p>{{ location.location_description }}</p>
-      {% set rating_score = [] %}
-      {% for rating in ratings %}
-        {% set __ = rating_score.append(rating.rating) %}
-      {% endfor %}
-      {% if rating_score|length > 0 %}
-        <p>Current Rating: {{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }}</p>
-        <p>Total Ratings: {{ rating_score|length }}</p>
-      {% else %}
-        <p>No Ratings Yet</p>
-      {% endif %}
+    <div class="posts-text-container">
+      <div>
+        <h3 class="posts-heading">
+          {{ location.location_name }}
+        </h3>
+        <div class="posts-current-ratings">
+          {% set rating_score = [] %}
+          {% for rating in ratings %}
+            {% set __ = rating_score.append(rating.rating) %}
+          {% endfor %}
+          {% if rating_score|length > 0 %}
+            <p class="posts-rating">Current Rating: <strong>{{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }}</strong> <i class="fas fa-star"></i></p>
+            <p class="posts-rating">Total Ratings: <strong>{{ rating_score|length }}</strong></p>
+          {% else %}
+            <p class="posts-rating">No Ratings Yet</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <p class="posts-description">{{ location.location_description }}</p>
 
       {% if session.user %}
       
-      <form class="col s12" method="POST" action="{{ url_for('rate_location', location_id=location._id) }}">
-        <h4 class="center-align">Rate Location</h4>
-        <div class="row">
-          <div class="input-field col s6 offset-m3">
+      <form class="post-form" method="POST" action="{{ url_for('rate_location', location_id=location._id) }}">
+        <!-- <h4 class="posts-subheading">Rate Location</h4> -->
+        <div class="">
+          <div class="input-field">
             <select id="rating_score" name="rating_score" class="validate" required>
               <!-- <option value="" disabled selected>Choose Category</option> -->
               
@@ -44,27 +49,27 @@
               
   
             </select>
-            <label for="rating_score">Rating</label>
+            <label for="rating_score">Rate this location</label>
           </div>
-        </div>
+        <!-- </div> -->
           
-          
-          <div class="row">
-            <div class="col s12 center-align">
-              <button type="submit" class="btn-large">
+          <!-- <div class="row"> -->
+            <div class="">
+              <button type="submit" class="btn-large post-submit-button">
                 Submit Rating
               </button>
             </div>
           </div>
       </form>
       {% if rating != None %}
-      <p>You rated this: {{ rating.rating }} stars</p>
+      <p class="posts-user-rating">You rated this: <strong>{{ rating.rating }}</strong> <i class="fas fa-star"></i></p>
       {% else %}
-      <p>You haven't rated this yet</p>
+      <p class="posts-user-rating">You haven't rated this yet</p>
       {% endif %}
       
       {% endif %}
     </div>
+    <p class="posts-background">{{ location.location_name }}</p>
   </div>
 
   <br>

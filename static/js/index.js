@@ -59,7 +59,7 @@ let cloudArray = [];
 
 const cloudGeometry = new THREE.PlaneGeometry(20000, 20000);
 const cloudMaterial = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load("static/img/cloudimage.png"),
+  map: new THREE.TextureLoader().load("/static/img/cloudimage.png"),
   transparent: true,
   opacity: 0.25,
   blending: THREE.AdditiveBlending,

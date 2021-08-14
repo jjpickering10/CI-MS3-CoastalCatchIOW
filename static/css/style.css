@@ -3,6 +3,7 @@
   --primary-blue: #006994;
   --secondary-blue: #394955;
   --tertiary-blue: #9CADBC;
+  --bright-blue: #0092ff;
   --primary-brown: #7F5B30;
   --secondary-brown: #B68D5F;
   --white-color: whitesmoke;
@@ -26,6 +27,7 @@ body {
   top: 0;
   left: 0;
   outline: none;
+  z-index: -1000;
 }
 
 .flashes h4 {
@@ -71,11 +73,13 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   left: 0;
 }
 .home-page-container h1 {
+  position: relative;
   font-weight: 700;
   font-size: 10rem;
   transform: translate(5rem);
   mix-blend-mode: overlay;
   margin-top: 10rem;
+  z-index: -1000;
 }
 .home-page-container h1 span {
   font-size: 12rem;
@@ -173,6 +177,11 @@ main .locations-card .card-content p {
 }
 main .locations-card .card-content p i {
   color: var(--secondary-brown);
+  transition: 1s;
+}
+main .locations-card .card-content p i:hover {
+  transition: 1s;
+  transform: scale(1.5) rotate(720deg);
 }
 main .locations-card .card-content p .rating-total {
   font-weight: 400;
@@ -186,21 +195,114 @@ main .locations-card .card-links .locations-links {
   background: var(--primary-brown);
   text-transform: lowercase;
   border-radius: 0.5rem;
+  transition: 0.5s;
 }
 main .locations-card .card-links .locations-links:hover, main .locations-card .card-links .locations-links:focus {
-  transition: 0.5s;
   background: var(--secondary-brown);
   transform: scale(1.05);
 }
 
 .posts-info {
-  margin-top: 5rem;
+  position: relative;
+  margin: 5rem auto 0 auto;
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  gap: 3rem;
 }
-.posts-info .posts-image {
+.posts-info .posts-background {
+  position: absolute;
+  font-size: 20rem;
+  width: 100vw;
+  transform: rotate(-25deg) scale(1.5);
+  z-index: -2;
+  color: rgba(127, 91, 48, 0.25);
+}
+.posts-info .posts-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.posts-info .posts-image-container .posts-image {
   width: 100%;
 }
-.posts-info .posts-heading {
+.posts-info .posts-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.posts-info .posts-text-container .posts-heading {
   margin: 0;
+  font-size: 5rem;
+  font-weight: 700;
+}
+.posts-info .posts-text-container .posts-current-ratings {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 1.25rem;
+  color: var(--tertiary-blue);
+}
+.posts-info .posts-text-container .posts-current-ratings i {
+  color: var(--secondary-brown);
+  transition: 1s;
+}
+.posts-info .posts-text-container .posts-current-ratings i:hover {
+  transition: 1s;
+  transform: scale(1.5) rotate(720deg);
+}
+.posts-info .posts-text-container .posts-description {
+  width: 87.5%;
+  line-height: 1.75;
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+.posts-info .posts-text-container .post-form {
+  width: 87.5%;
+  display: flex;
+}
+.posts-info .posts-text-container .post-form .input-field {
+  margin: 0;
+  padding-top: 0.25rem;
+}
+.posts-info .posts-text-container .post-form .posts-subheading {
+  margin-left: 0;
+}
+.posts-info .posts-text-container .post-form .post-submit-button {
+  margin-top: 2rem;
+  background: var(--primary-brown);
+  text-transform: lowercase;
+  border-radius: 0.5rem;
+}
+.posts-info .posts-text-container .post-form .post-submit-button:hover, .posts-info .posts-text-container .post-form .post-submit-button:focus {
+  transition: 1s;
+  background: var(--secondary-brown);
+  transform: scale(1.1);
+}
+.posts-info .posts-text-container .posts-user-rating {
+  font-size: 2rem;
+  color: var(--bright-blue);
+  font-weight: 200;
+}
+.posts-info .posts-text-container .posts-user-rating i {
+  color: var(--secondary-brown);
+  transition: 1s;
+}
+.posts-info .posts-text-container .posts-user-rating i:hover {
+  transition: 1s;
+  transform: scale(1.5) rotate(720deg);
+}
+.posts-info .select-wrapper input.select-dropdown {
+  background: var(--white-color);
+  z-index: 1;
+  padding: 0 0 0 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--primary-brown);
+  margin-top: 0.5rem;
+}
+.posts-info .select-wrapper .caret {
+  fill: var(--primary-brown);
+  z-index: 2;
 }
 
 .questions-hide {

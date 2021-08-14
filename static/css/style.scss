@@ -4,6 +4,7 @@
     --primary-blue: #006994;
     --secondary-blue: #394955;
     --tertiary-blue: #9CADBC;
+    --bright-blue: #0092ff;
     --primary-brown: #7F5B30;
     --secondary-brown: #B68D5F;
     --white-color: whitesmoke;
@@ -29,6 +30,7 @@ body {
     top: 0;
     left: 0;
     outline: none;
+    z-index: -1000;
 }
 
 
@@ -82,11 +84,13 @@ nav {
     top: 0;
     left: 0;
     h1 {
+        position: relative;
         font-weight: 700;
         font-size: 10rem;
         transform: translate(5rem);
         mix-blend-mode: overlay;
         margin-top: 10rem;
+        z-index: -1000;
         span {
             font-size: 12rem;
         }
@@ -190,6 +194,11 @@ main {
                 font-size: 0.8rem;
                 i {
                     color: var(--secondary-brown);
+                    transition: 1s;
+                    &:hover {
+                        transition: 1s;
+                        transform: scale(1.5) rotate(720deg);
+                    }
                 }
                 .rating-total {
                     font-weight: 400;
@@ -204,8 +213,8 @@ main {
                 background: var(--primary-brown);
                 text-transform: lowercase;
                 border-radius: 0.5rem;
+                transition: 0.5s;
                 &:hover, &:focus {
-                    transition: 0.5s;
                     background: var(--secondary-brown);
                     transform: scale(1.05);
                 }
@@ -218,12 +227,110 @@ main {
 // Posts Page
 
 .posts-info {
-    margin-top: 5rem;
-    .posts-image {
-        width: 100%;
+    position: relative;
+    margin: 5rem auto 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 3rem;
+    .posts-background {
+        position: absolute;
+        font-size: 20rem;
+        width: 100vw;
+        transform: rotate(-25deg) scale(1.5);
+        z-index: -2;
+        color: rgb(127 91 48 / 25%);
     }
-    .posts-heading {
-        margin: 0;
+    .posts-image-container {
+        // padding: 0 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .posts-image {
+            width: 100%;
+        }
+    }
+    .posts-text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        .posts-heading {
+            margin: 0;
+            font-size: 5rem;
+            font-weight: 700;
+        }
+        .posts-current-ratings {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            font-size: 1.25rem;
+            color: var(--tertiary-blue);
+            i {
+                color: var(--secondary-brown);
+                transition: 1s;
+                &:hover {
+                    transition: 1s;
+                    transform: scale(1.5) rotate(720deg);
+                }
+            }
+    }
+        .posts-description {
+            width: 87.5%;
+            line-height: 1.75;
+            font-size: 1.4rem;
+            font-weight: 200;
+            
+        }
+        .post-form {   
+            width: 87.5%;
+            display: flex;
+            .input-field {
+                margin: 0;
+                padding-top: 0.25rem;
+            }
+            .posts-subheading {
+                margin-left: 0;
+            }
+            .post-submit-button {
+                margin-top: 2rem;
+                background: var(--primary-brown);
+                text-transform: lowercase;
+                border-radius: 0.5rem;
+                &:hover, &:focus {
+                    transition: 1s;
+                    background: var(--secondary-brown);
+                    transform: scale(1.1);
+                }
+            }
+        }
+        .posts-user-rating {
+            font-size: 2rem;
+            color: var(--bright-blue);
+            font-weight: 200;
+            i {
+                color: var(--secondary-brown);
+                transition: 1s;
+                &:hover {
+                    transition: 1s;
+                    transform: scale(1.5) rotate(720deg);
+                }
+            }
+        }
+    }
+    .select-wrapper {
+        input.select-dropdown {
+            background: var(--white-color);
+            z-index: 1;
+            padding:  0 0 0 0.5rem;
+            border-radius: 0.5rem;
+            color: var(--primary-brown);
+            margin-top: 0.5rem;
+        }
+        .caret {
+            fill: var(--primary-brown);
+            z-index: 2;
+        }
+        
     }
 }
 
