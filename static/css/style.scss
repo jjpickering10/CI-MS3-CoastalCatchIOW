@@ -507,13 +507,69 @@ main {
         background: #7f5b3000;
         box-shadow: -20px 20rem 20rem 5rem var(--tertiary-blue);
         .card {
+            .card-content {
+                a {
+                    .card-title {
+                        font-size: 3rem;
+                    }
+                }
+                p {
+                    font-size: 1.25rem;
+                    font-weight: 200;
+                }
+            }
             background: var(--secondary-blue);
-            .card-action {
-                .edit-button {
+            .comment-section-container, .add-comment-section {
+                padding: 24px;
+                a {
                     margin-top: 1rem;
                     margin-bottom: 1rem;
                     border-radius: 0.5rem;
-                    background: var(--secondary-blue);
+                    background: var(--primary-brown);
+                    text-transform: lowercase;
+    
+                    &:hover,
+                    &:focus {
+                        transition: 0.5s;
+                        background: var(--primary-blue);
+                        transform: scale(1.05);
+                    }
+                }
+            }
+            .add-comment-section {
+                background: var(--primary-blue);
+                form {
+                    background: var(--primary-blue);
+                    padding: 24px;
+                    button {
+                        margin-top: 1rem;
+                        margin-bottom: 1rem;
+                        border-radius: 0.5rem;
+                        background: var(--primary-brown);
+                        text-transform: lowercase;
+    
+                    &:hover,
+                    &:focus {
+                        transition: 0.5s;
+                        background: var(--primary-blue);
+                        transform: scale(1.05);
+                    }
+                    }
+                }
+            }
+            .card-action {
+                background: var(--tertiary-blue);
+                .comment-date {
+                    font-size: 75%;
+                }
+                .comment-created-by {
+                    font-size: 150%;
+                }
+                a {
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    border-radius: 0.5rem;
+                    background: var(--primary-brown);
                     text-transform: lowercase;
     
                     &:hover,

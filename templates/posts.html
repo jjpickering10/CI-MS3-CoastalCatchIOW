@@ -128,18 +128,21 @@
 
       {% for comment in comments %}
       {% if comment.post_id == review._id %}
-      <p>{{ comment.comments }}</p>
-      <p>{{ comment.date_created }}</p>
-      {% if session.user|lower == comment.created_by|lower or session.admin|lower == "yes" %}
-      <a href="{{ url_for('delete_comment', comment_id=comment._id) }}" class="btn-small edit-button">Delete</a>
-      <a href="{{ url_for('edit_comment', comment_id=comment._id) }}" class="btn-small edit-button">Edit</a>
-      {% endif %}
+      <div class="comment-section-container">
+        <p>{{ comment.comments }}</p>
+        <p>{{ comment.date_created }}</p>
+        <p>{{ comment.created_by }}</p>
+        {% if session.user|lower == comment.created_by|lower or session.admin|lower == "yes" %}
+        <a href="{{ url_for('delete_comment', comment_id=comment._id) }}" class="btn-small edit-button">Delete</a>
+        <a href="{{ url_for('edit_comment', comment_id=comment._id) }}" class="btn-small edit-button">Edit</a>
+        {% endif %}
+      </div>
       {% endif %}
       {% endfor %}
 
       {% if session.user %}
 
-<div class="row">
+<div class="row add-comment-section">
   <form class="col s12" method="POST" action="{{ url_for('add_comment', post_id=review._id) }}">
     <div class="row forum-text-field">
       <div class="input-field col s12">
@@ -157,8 +160,8 @@
 
 
       <div class="card-action">
-        <p>Date: {{ review.date_created }}</p>
-        <p>Posted by: {{ review.created_by }}</p>
+        <p class="comment-date">Date: {{ review.date_created }}</p>
+        <p class="comment-created-by">Posted by: {{ review.created_by }}</p>
         {% if session.user|lower == review.created_by|lower or session.admin|lower == "yes" %}
         <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>
         <a href="{{ url_for('edit_post', post_id=review._id) }}" class="btn-small">Edit</a>

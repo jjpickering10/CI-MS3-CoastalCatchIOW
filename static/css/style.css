@@ -400,14 +400,64 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .review-section-container .single-post .card {
   background: var(--secondary-blue);
 }
-.review-section-container .single-post .card .card-action .edit-button {
+.review-section-container .single-post .card .card-content a .card-title {
+  font-size: 3rem;
+}
+.review-section-container .single-post .card .card-content p {
+  font-size: 1.25rem;
+  font-weight: 200;
+}
+.review-section-container .single-post .card .comment-section-container, .review-section-container .single-post .card .add-comment-section {
+  padding: 24px;
+}
+.review-section-container .single-post .card .comment-section-container a, .review-section-container .single-post .card .add-comment-section a {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
-  background: var(--secondary-blue);
+  background: var(--primary-brown);
   text-transform: lowercase;
 }
-.review-section-container .single-post .card .card-action .edit-button:hover, .review-section-container .single-post .card .card-action .edit-button:focus {
+.review-section-container .single-post .card .comment-section-container a:hover, .review-section-container .single-post .card .comment-section-container a:focus, .review-section-container .single-post .card .add-comment-section a:hover, .review-section-container .single-post .card .add-comment-section a:focus {
+  transition: 0.5s;
+  background: var(--primary-blue);
+  transform: scale(1.05);
+}
+.review-section-container .single-post .card .add-comment-section {
+  background: var(--primary-blue);
+}
+.review-section-container .single-post .card .add-comment-section form {
+  background: var(--primary-blue);
+  padding: 24px;
+}
+.review-section-container .single-post .card .add-comment-section form button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--primary-brown);
+  text-transform: lowercase;
+}
+.review-section-container .single-post .card .add-comment-section form button:hover, .review-section-container .single-post .card .add-comment-section form button:focus {
+  transition: 0.5s;
+  background: var(--primary-blue);
+  transform: scale(1.05);
+}
+.review-section-container .single-post .card .card-action {
+  background: var(--tertiary-blue);
+}
+.review-section-container .single-post .card .card-action .comment-date {
+  font-size: 75%;
+}
+.review-section-container .single-post .card .card-action .comment-created-by {
+  font-size: 150%;
+}
+.review-section-container .single-post .card .card-action a {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--primary-brown);
+  text-transform: lowercase;
+}
+.review-section-container .single-post .card .card-action a:hover, .review-section-container .single-post .card .card-action a:focus {
   transition: 0.5s;
   background: var(--primary-blue);
   transform: scale(1.05);
