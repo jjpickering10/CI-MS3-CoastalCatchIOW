@@ -481,6 +481,20 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.05);
 }
 
+.carousel {
+  z-index: 100;
+}
+
+.guru-background {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg) scale(3);
+  font-size: 10rem;
+  color: #7f5b304a;
+  color: rgba(156, 173, 188, 0.1);
+}
+
 .ask-guru-container {
   position: relative;
   margin: 5rem auto 0 auto;
@@ -496,10 +510,29 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   align-items: center;
 }
 .ask-guru-container .ask-guru-info-container .guru-text-content {
-  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1;
+  width: 100%;
+  box-shadow: 40rem 0rem 20rem 20rem var(--secondary-blue);
 }
 .ask-guru-container .ask-guru-info-container .guru-text-content h3 {
   font-size: 3rem;
+  padding: 2rem;
+  z-index: 10;
+}
+.ask-guru-container .ask-guru-info-container .guru-text-content h3 span {
+  font-size: 7rem;
+  font-weight: 700;
+  color: var(--primary-brown);
+}
+.ask-guru-container .ask-guru-info-container .guru-text-content p {
+  padding: 2rem;
+  z-index: 10;
+  line-height: 2;
+  font-weight: 100;
+  font-size: 1.25rem;
 }
 .ask-guru-container .question-container {
   display: flex;
@@ -509,19 +542,39 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 }
 .ask-guru-container .question-container .ask-question {
   width: 100%;
+  box-shadow: -40rem 0rem 20rem 20rem #394955b8;
 }
 .ask-guru-container .question-container .ask-question h3 {
+  padding: 2rem;
   font-size: 3rem;
 }
+.ask-guru-container .question-container .ask-question h3 span {
+  font-size: 7rem;
+  font-weight: 700;
+  color: var(--primary-brown);
+}
 .ask-guru-container .question-container .ask-question form {
+  padding: 2rem;
   margin-top: 5rem;
 }
 .ask-guru-container .question-container .ask-question form .row .input-field {
   width: 100%;
 }
+.ask-guru-container .question-container .ask-question form .row button {
+  border-radius: 0.5rem;
+  background: var(--primary-brown);
+  text-transform: lowercase;
+}
+.ask-guru-container .question-container .ask-question form .row button:hover, .ask-guru-container .question-container .ask-question form .row button:focus {
+  transition: 0.5s;
+  background: var(--secondary-brown);
+  transform: scale(1.05);
+}
 
 .question-category-section {
-  margin-top: 5rem;
+  position: relative;
+  margin-top: 10rem;
+  z-index: 10;
 }
 
 .questions-hide {

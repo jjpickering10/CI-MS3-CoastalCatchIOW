@@ -43,13 +43,14 @@
   {% endfor %}
 </div>
 
+<p class="guru-background">Isle of Wight</p>
 
 <div class="ask-guru-container">
 
   <div class="ask-guru-info-container">
     <div class="guru-text-content">
       <h3>
-        Ask a guru
+        Ask a <span>guru</span>
       </h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis sapiente quo voluptates saepe labore iste
         culpa expedita, ad quam vitae omnis. Incidunt accusantium earum pariatur doloremque ad totam illo repellendus
@@ -61,7 +62,7 @@
   <div class="question-container">
     {% if session.user %}
     <div class="ask-question">
-      <h3>Ask question</h3>
+      <h3>Ask <span>question</span></h3>
       <form class="" method="POST" action="{{ url_for('ask_guru') }}">
         
         <div class="row">

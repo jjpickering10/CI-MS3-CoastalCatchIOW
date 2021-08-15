@@ -605,6 +605,20 @@ main {
 
 // Questions Page
 
+.carousel {
+    z-index: 100;
+}
+
+.guru-background {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg) scale(3);
+    font-size: 10rem;
+    color: #7f5b304a;
+    color: rgb(156 173 188 / 10%);
+}
+
 .ask-guru-container {
     position: relative;
     margin: 5rem auto 0 auto;
@@ -612,16 +626,40 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 3rem;
+    // background: var(--tertiary-blue);
     .ask-guru-info-container {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        // box-shadow:  inset 0px 0px 4rem 4rem var(--secondary-blue);
+       
         .guru-text-content {
-            width: 75%;
-            
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-grow: 1;
+            width: 100%;
+            // box-shadow: 0rem -0rem 20rem 10rem var(--secondary-blue);
+            box-shadow: 40rem 0rem 20rem 20rem var(--secondary-blue);
+                        
+            // background: rgba(0, 0, 0, 0.5);
             h3 {
                 font-size: 3rem;
+                padding: 2rem;
+                z-index: 10;
+                span {
+                    font-size: 7rem;
+                    font-weight: 700;
+                    color: var(--primary-brown);
+                }
+            }
+            p {
+                padding: 2rem;
+                z-index: 10;
+                line-height: 2;
+                font-weight: 100;
+                font-size: 1.25rem;
             }
         }
         
@@ -633,15 +671,35 @@ main {
         align-items: center;
         .ask-question {
             width: 100%;
+            box-shadow: -40rem 0rem 20rem 20rem #394955b8;
             h3 {
+                padding: 2rem;
                 font-size: 3rem;
+                span {
+                    font-size: 7rem;
+                    font-weight: 700;
+                    color: var(--primary-brown);
+                }
             }
             form {
+                padding: 2rem;
                 margin-top: 5rem;
                 
                 .row {
                     .input-field {
                         width: 100%;
+                    }
+                    button {
+                        border-radius: 0.5rem;
+                        background: var(--primary-brown);
+                        text-transform: lowercase;
+    
+                    &:hover,
+                    &:focus {
+                        transition: 0.5s;
+                        background: var(--secondary-brown);
+                        transform: scale(1.05);
+                    }
                     }
                 }
                 
@@ -651,7 +709,9 @@ main {
 }
 
 .question-category-section {
-    margin-top: 5rem;
+    position: relative;
+    margin-top: 10rem;
+    z-index: 10;
 }
 
 
