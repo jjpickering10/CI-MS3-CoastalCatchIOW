@@ -712,6 +712,13 @@ main {
     position: relative;
     margin-top: 10rem;
     z-index: 10;
+    .category-buttons {
+        background-color: var(--white-color);
+        color: var(--primary-brown);
+        text-transform: lowercase;
+        margin: 0.5rem;
+        border-radius: 0.5rem;
+    }
 }
 
 
