@@ -508,19 +508,37 @@ main {
         box-shadow: -20px 20rem 20rem 5rem var(--tertiary-blue);
         .card {
             .card-content {
+                background: var(--tertiary-blue);
+                word-wrap: break-word;
                 a {
                     .card-title {
                         font-size: 3rem;
+                        font-weight: 500;
                     }
                 }
                 p {
-                    font-size: 1.25rem;
+                    font-size: 2rem;
                     font-weight: 200;
                 }
+            }
+            .collapsible-header {
+                color: var(--primary-brown);
             }
             background: var(--secondary-blue);
             .comment-section-container, .add-comment-section {
                 padding: 24px;
+                .comment-reply{
+                    font-size: 1.5rem;
+                    font-weight: 200;
+                }
+                .comment-date{
+                    font-size: 50%;
+                    
+                }
+                .comment-created{
+                    font-size: 50%;
+                    
+                }
                 a {
                     margin-top: 1rem;
                     margin-bottom: 1rem;
@@ -559,10 +577,10 @@ main {
             }
             .card-action {
                 background: var(--tertiary-blue);
-                .comment-date {
+                .post-date {
                     font-size: 75%;
                 }
-                .comment-created-by {
+                .post-created-by {
                     font-size: 150%;
                 }
                 a {

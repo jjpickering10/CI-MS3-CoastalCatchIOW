@@ -400,15 +400,33 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .review-section-container .single-post .card {
   background: var(--secondary-blue);
 }
+.review-section-container .single-post .card .card-content {
+  background: var(--tertiary-blue);
+  word-wrap: break-word;
+}
 .review-section-container .single-post .card .card-content a .card-title {
   font-size: 3rem;
+  font-weight: 500;
 }
 .review-section-container .single-post .card .card-content p {
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: 200;
+}
+.review-section-container .single-post .card .collapsible-header {
+  color: var(--primary-brown);
 }
 .review-section-container .single-post .card .comment-section-container, .review-section-container .single-post .card .add-comment-section {
   padding: 24px;
+}
+.review-section-container .single-post .card .comment-section-container .comment-reply, .review-section-container .single-post .card .add-comment-section .comment-reply {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+.review-section-container .single-post .card .comment-section-container .comment-date, .review-section-container .single-post .card .add-comment-section .comment-date {
+  font-size: 50%;
+}
+.review-section-container .single-post .card .comment-section-container .comment-created, .review-section-container .single-post .card .add-comment-section .comment-created {
+  font-size: 50%;
 }
 .review-section-container .single-post .card .comment-section-container a, .review-section-container .single-post .card .add-comment-section a {
   margin-top: 1rem;
@@ -444,10 +462,10 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .review-section-container .single-post .card .card-action {
   background: var(--tertiary-blue);
 }
-.review-section-container .single-post .card .card-action .comment-date {
+.review-section-container .single-post .card .card-action .post-date {
   font-size: 75%;
 }
-.review-section-container .single-post .card .card-action .comment-created-by {
+.review-section-container .single-post .card .card-action .post-created-by {
   font-size: 150%;
 }
 .review-section-container .single-post .card .card-action a {
