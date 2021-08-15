@@ -481,6 +481,49 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.05);
 }
 
+.ask-guru-container {
+  position: relative;
+  margin: 5rem auto 0 auto;
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 3rem;
+}
+.ask-guru-container .ask-guru-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ask-guru-container .ask-guru-info-container .guru-text-content {
+  width: 75%;
+}
+.ask-guru-container .ask-guru-info-container .guru-text-content h3 {
+  font-size: 3rem;
+}
+.ask-guru-container .question-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.ask-guru-container .question-container .ask-question {
+  width: 100%;
+}
+.ask-guru-container .question-container .ask-question h3 {
+  font-size: 3rem;
+}
+.ask-guru-container .question-container .ask-question form {
+  margin-top: 5rem;
+}
+.ask-guru-container .question-container .ask-question form .row .input-field {
+  width: 100%;
+}
+
+.question-category-section {
+  margin-top: 5rem;
+}
+
 .questions-hide {
   display: none;
 }/*# sourceMappingURL=style.css.map */

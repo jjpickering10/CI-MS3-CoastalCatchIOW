@@ -605,6 +605,57 @@ main {
 
 // Questions Page
 
+.ask-guru-container {
+    position: relative;
+    margin: 5rem auto 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
+    .ask-guru-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        .guru-text-content {
+            width: 75%;
+            
+            h3 {
+                font-size: 3rem;
+            }
+        }
+        
+    }
+    .question-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        .ask-question {
+            width: 100%;
+            h3 {
+                font-size: 3rem;
+            }
+            form {
+                margin-top: 5rem;
+                
+                .row {
+                    .input-field {
+                        width: 100%;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+.question-category-section {
+    margin-top: 5rem;
+}
+
+
+
 .questions-hide {
     display: none;
 }
