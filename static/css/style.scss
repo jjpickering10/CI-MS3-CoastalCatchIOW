@@ -675,6 +675,27 @@ main {
     }
 }
 
+// view locations admin
+
+.view-locations-admin {
+    margin: 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 1rem;
+    transform: translateY(10vh);
+    .view-locations-text {
+        display: flex;
+        flex-direction: column;
+    }
+    img {
+        width: 100%;
+    }
+    a {
+        width: 25%;
+    }
+}
+
 // Questions Page
 
 .carousel {

@@ -539,6 +539,25 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   box-shadow: none;
 }
 
+.view-locations-admin {
+  margin: 0 auto;
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  gap: 1rem;
+  transform: translateY(10vh);
+}
+.view-locations-admin .view-locations-text {
+  display: flex;
+  flex-direction: column;
+}
+.view-locations-admin img {
+  width: 100%;
+}
+.view-locations-admin a {
+  width: 25%;
+}
+
 .carousel {
   z-index: 100;
 }

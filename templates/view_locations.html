@@ -14,37 +14,40 @@
       </div>
       {% endif %}
 
-      
+      <div class="view-locations-admin">
   {% for location in locations %}
-    <div>
+    
       {% set count = [] %}
       
-      <h2>{{ location.location_name }}</h2>
-      <h5>{{ location.location_description }}</h5>
-      {% if location.location_image %}
-          <img src="{{ url_for('file', filename=location.location_image) }}">
-          {% else %}
-          <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
-          {% endif %}
-      <a href="{{ url_for('edit_locations', location_id=location._id) }}" class="btn-small">Edit</a>
-      <a href="{{ url_for('delete_locations', location_id=location._id) }}" class="btn-small">Delete</a>
-      
-      
-      {% for review in reviews %}
-        {% if review.location_name == location.location_name %}
-        {% set __ = count.append(1) %}
-          
-        <p>{{ review.review_title }}</p>
+      <div>
+        <div class="view-locations-text">
+          <h2>{{ location.location_name }}</h2>
+          <a href="{{ url_for('edit_locations', location_id=location._id) }}" class="btn-small">Edit</a><br>
+          <a href="{{ url_for('delete_locations', location_id=location._id) }}" class="btn-small">Delete</a>
+          <h5>{{ location.location_description }}</h5>
+          {% for review in reviews %}
+          {% if review.location_name == location.location_name %}
+          {% set __ = count.append(1) %}
         
-      {% endif %}
+          <p>{{ review.review_title }}</p>
+        
+        {% endif %}
+        
+        {% endfor %}
+        <h5>Total Posts: {{ count|length }}</h5>
+        </div>
+        {% if location.location_image %}
+            <img src="{{ url_for('file', filename=location.location_image) }}">
+            {% else %}
+            <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+            {% endif %}
+      </div>
       
-      {% endfor %}
-      <h5>Total Posts: {{ count|length }}</h5>
-    </div>
-    <br>
-    <br>
-    <br>
+      
+      
+   
   {% endfor %}
+</div>
   
 
 
@@ -54,3 +57,4 @@
 
 
 {% endblock %}
+  
