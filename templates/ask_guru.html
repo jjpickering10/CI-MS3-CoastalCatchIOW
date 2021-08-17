@@ -59,8 +59,8 @@
     </div>
   </div>
 
+  {% if session.user %}
   <div class="question-container">
-    {% if session.user %}
     <div class="ask-question">
       <h3>Ask <span>question</span></h3>
       <form class="" method="POST" action="{{ url_for('ask_guru') }}">
@@ -102,8 +102,11 @@
       </form>
     </div>
   </div>
+  {% else %}
+  <div class="question-container"></div>
+  {% endif %}
 </div>
-{% endif %}
+
 
 <div class="row question-category-section">
   <div class="col s12 pagination center-align">
