@@ -509,6 +509,36 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.05);
 }
 
+.profile-info {
+  margin: 0 auto;
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  gap: 1rem;
+  transform: translateY(10vh);
+}
+
+.user-info {
+  margin: 0 auto;
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  gap: 1rem;
+  transform: translateY(10vh);
+}
+.user-info div {
+  background: var(--primary-brown);
+}
+.user-info div h2 {
+  margin: 0;
+  padding: 1rem;
+}
+.user-info div .collapsible {
+  padding: 1rem;
+  border: none;
+  box-shadow: none;
+}
+
 .carousel {
   z-index: 100;
 }

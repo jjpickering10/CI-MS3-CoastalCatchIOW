@@ -643,6 +643,38 @@ main {
     }
 }
 
+// Profile page
+
+.profile-info {
+    margin: 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 1rem;
+    transform: translateY(10vh);
+}
+
+.user-info {
+    margin: 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 1rem;
+    transform: translateY(10vh);
+    div {
+        background: var(--primary-brown);
+        h2 {
+            margin: 0;
+            padding: 1rem;
+        }
+        .collapsible {
+            padding: 1rem;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
+
 // Questions Page
 
 .carousel {
