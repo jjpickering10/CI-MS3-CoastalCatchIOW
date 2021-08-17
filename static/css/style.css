@@ -408,12 +408,12 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
-  background: var(--secondary-blue);
+  background: var(--primary-blue);
   text-transform: lowercase;
 }
 .post-section-container form .forum-button:hover, .post-section-container form .forum-button:focus {
   transition: 0.5s;
-  background: var(--primary-blue);
+  background: var(--secondary-blue);
   transform: scale(1.05);
 }
 
@@ -429,16 +429,26 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   background: var(--secondary-blue);
 }
 .review-section-container .single-post .card .card-content {
-  background: var(--tertiary-blue);
+  background: var(--secondary-blue);
   word-wrap: break-word;
+}
+.review-section-container .single-post .card .card-content a {
+  color: var(--white-color);
 }
 .review-section-container .single-post .card .card-content a .card-title {
   font-size: 3rem;
   font-weight: 500;
+  text-decoration: underline;
+  line-height: 1.25;
 }
 .review-section-container .single-post .card .card-content p {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 200;
+  margin-top: 2rem;
+  padding: 3rem;
+}
+.review-section-container .single-post .card .collapsible {
+  border: none;
 }
 .review-section-container .single-post .card .collapsible-header {
   color: var(--primary-brown);
@@ -469,11 +479,12 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.05);
 }
 .review-section-container .single-post .card .add-comment-section {
-  background: var(--primary-blue);
+  padding: 2rem;
 }
 .review-section-container .single-post .card .add-comment-section form {
-  background: var(--primary-blue);
-  padding: 24px;
+  background: var(--secondary-blue);
+  padding: 3rem;
+  box-shadow: 0 0 10px 0 black;
 }
 .review-section-container .single-post .card .add-comment-section form button {
   margin-top: 1rem;
@@ -484,11 +495,11 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 }
 .review-section-container .single-post .card .add-comment-section form button:hover, .review-section-container .single-post .card .add-comment-section form button:focus {
   transition: 0.5s;
-  background: var(--primary-blue);
+  background: var(--secondary-brown);
   transform: scale(1.05);
 }
 .review-section-container .single-post .card .card-action {
-  background: var(--tertiary-blue);
+  background: var(--primary-brown);
 }
 .review-section-container .single-post .card .card-action .post-date {
   font-size: 75%;
@@ -500,12 +511,13 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
-  background: var(--primary-brown);
+  background: var(--secondary-brown);
   text-transform: lowercase;
 }
 .review-section-container .single-post .card .card-action a:hover, .review-section-container .single-post .card .card-action a:focus {
   transition: 0.5s;
-  background: var(--primary-blue);
+  background: var(--white-color);
+  color: var(--primary-brown);
   transform: scale(1.05);
 }
 

@@ -527,13 +527,13 @@ main {
             margin-top: 1rem;
             margin-bottom: 1rem;
             border-radius: 0.5rem;
-            background: var(--secondary-blue);
+            background: var(--primary-blue);
             text-transform: lowercase;
 
             &:hover,
             &:focus {
                 transition: 0.5s;
-                background: var(--primary-blue);
+                background: var(--secondary-blue);
                 transform: scale(1.05);
             }
         }
@@ -548,18 +548,26 @@ main {
         box-shadow: -20px 20rem 20rem 5rem var(--tertiary-blue);
         .card {
             .card-content {
-                background: var(--tertiary-blue);
+                background: var(--secondary-blue);
                 word-wrap: break-word;
                 a {
+                    color: var(--white-color);
                     .card-title {
                         font-size: 3rem;
                         font-weight: 500;
+                        text-decoration: underline;
+                        line-height: 1.25;
                     }
                 }
                 p {
-                    font-size: 2rem;
+                    font-size: 1rem;
                     font-weight: 200;
+                    margin-top: 2rem;
+                    padding: 3rem;
                 }
+            }
+            .collapsible {
+                border: none;
             }
             .collapsible-header {
                 color: var(--primary-brown);
@@ -595,10 +603,11 @@ main {
                 }
             }
             .add-comment-section {
-                background: var(--primary-blue);
+                padding: 2rem;
                 form {
-                    background: var(--primary-blue);
-                    padding: 24px;
+                    background: var(--secondary-blue);
+                    padding: 3rem;
+                    box-shadow: 0 0 10px 0 black;
                     button {
                         margin-top: 1rem;
                         margin-bottom: 1rem;
@@ -609,14 +618,14 @@ main {
                     &:hover,
                     &:focus {
                         transition: 0.5s;
-                        background: var(--primary-blue);
+                        background: var(--secondary-brown);
                         transform: scale(1.05);
                     }
                     }
                 }
             }
             .card-action {
-                background: var(--tertiary-blue);
+                background: var(--primary-brown);
                 .post-date {
                     font-size: 75%;
                 }
@@ -627,13 +636,14 @@ main {
                     margin-top: 1rem;
                     margin-bottom: 1rem;
                     border-radius: 0.5rem;
-                    background: var(--primary-brown);
+                    background: var(--secondary-brown);
                     text-transform: lowercase;
     
                     &:hover,
                     &:focus {
                         transition: 0.5s;
-                        background: var(--primary-blue);
+                        background: var(--white-color);
+                        color: var(--primary-brown);
                         transform: scale(1.05);
                     }
                 }
