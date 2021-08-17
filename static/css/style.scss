@@ -165,21 +165,61 @@ nav {
     }
 }
 
-// Register Page
+// Register and Login Page
 
 .register-form-container {
+    .card-panel {
+        background: none;
+        box-shadow: none;
+    }
+
     .register-card {
-        background: var(--primary-brown);
-        transform: translateY(10vh);
+        transform:
+            translateY(10vh);
+
+        .register-text-field {
+            background: #394955c7;
+            box-shadow: 0rem 0rem 5rem 0rem #b68d5f;
+            padding: 3rem 2rem;
+        }
 
         .register-button {
-            background: var(--white-color);
-            color: black;
+            margin-top:
+                1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            background:
+                var(--white-color);
+            color: var(--primary-brown);
+            text-transform: lowercase;
+            width: 25%;
+
+            &:hover,
+            &:focus {
+                transition: 0.5s;
+                background:
+                    var(--secondary-brown);
+                transform: scale(1.1);
+            }
         }
     }
 
     .input-field>label {
-        color: var(--white-color);
+        color:
+            var(--white-color);
+    }
+}
+
+.register-text {
+    p {
+        font-size: 1rem;
+        font-weight: 100;
+
+        span {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--primary-blue);
+        }
     }
 }
 

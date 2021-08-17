@@ -132,16 +132,44 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   color: var(--white-color);
 }
 
+.register-form-container .card-panel {
+  background: none;
+  box-shadow: none;
+}
 .register-form-container .register-card {
-  background: var(--primary-brown);
   transform: translateY(10vh);
 }
+.register-form-container .register-card .register-text-field {
+  background: #394955c7;
+  box-shadow: 0rem 0rem 5rem 0rem #b68d5f;
+  padding: 3rem 2rem;
+}
 .register-form-container .register-card .register-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
   background: var(--white-color);
-  color: black;
+  color: var(--primary-brown);
+  text-transform: lowercase;
+  width: 25%;
+}
+.register-form-container .register-card .register-button:hover, .register-form-container .register-card .register-button:focus {
+  transition: 0.5s;
+  background: var(--secondary-brown);
+  transform: scale(1.1);
 }
 .register-form-container .input-field > label {
   color: var(--white-color);
+}
+
+.register-text p {
+  font-size: 1rem;
+  font-weight: 100;
+}
+.register-text p span {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--primary-blue);
 }
 
 main {
