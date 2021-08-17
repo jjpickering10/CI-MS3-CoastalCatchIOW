@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-  
-
-  <br>
+<br>
   <br>
 
   {% if session.admin|lower == "yes" %}
@@ -14,28 +12,17 @@
       </div>
       {% endif %}
 
-      
+      <div class="view-categories-section">
   {% for category in categories %}
-    <div>
+    
       
-      <h2>{{ category.category_name }}</h2>
-      <a href="{{ url_for('edit_categories', category_id=category._id) }}" class="btn-small">Edit</a>
-      <a href="{{ url_for('delete_categories', category_id=category._id) }}" class="btn-small">Delete</a>
-      
-      
-
-
-    </div>
-    <br>
-    <br>
-    <br>
+      <div>
+        <h2>{{ category.category_name }}</h2>
+        <a href="{{ url_for('edit_categories', category_id=category._id) }}" class="btn-small">Edit</a>
+        <a href="{{ url_for('delete_categories', category_id=category._id) }}" class="btn-small">Delete</a>
+        
+      </div>
   {% endfor %}
-  
-
-
-
-
-
-
+</div>
 
 {% endblock %}

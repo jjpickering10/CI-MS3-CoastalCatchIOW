@@ -696,6 +696,44 @@ main {
     }
 }
 
+// view categories section
+
+.view-categories-section {
+    margin: 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 3rem;
+    transform: translateY(10vh);
+    div {
+        color: var(--white-color);
+        width: 100%;
+        background: var(--secondary-brown);
+        box-shadow: 0 0 10px 10px var(--secondary-blue),
+                    inset 0 0 20px 2px var(--primary-brown);
+        h2 {
+            font-size: 2rem;
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        }
+        a {
+            font-size: 1rem;
+            font-weight: 200;
+            text-transform: lowercase;
+            margin: 0 1rem 2rem 1rem;
+            background: var(--primary-brown);
+            &:hover, &:focus {
+                transition: 0.5s;
+                transform: scale(1.1);
+                background: var(--white-color);
+                color: var(--primary-brown);
+            }
+        }
+        
+        
+    }
+}
+
 // Questions Page
 
 .carousel {
