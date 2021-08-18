@@ -1144,20 +1144,24 @@ main {
     top: 0;
     left: 0;
     // width: 100vw;
-    min-height: 50vh;
     width: 75%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 3rem;
-    pointer-events: none;
+    // pointer-events: none;
     transform: translateX(-200%);
     z-index: 10000;
-    background: var(--secondary-blue);
-    box-shadow: 0 0 20rem 20rem var(--secondary-blue);
+    background: #7f5b30cc;
+    box-shadow: 0 0 20rem 20rem var(--primary-brown);
+    cursor: pointer;
+    overflow: scroll;
+    border-radius: 2rem;
     div {
         background: var(--white-color);
         border-radius: 1rem;
-        margin: 2rem;
+        margin: 1rem;
+        overflow: scroll;
+        word-wrap: break-word;
+        height: 200px;
         p {
             color: black;
             font-weight: 100;
@@ -1175,7 +1179,6 @@ main {
 .liked-posts-transform {
     transition: 1s;
     transform: translateX(0%);
-    overflow: hidden;
 }
 
 .questions-hide {

@@ -205,7 +205,6 @@
       {% for reply in replies %}
       {% if reply.question_id == likedquestion._id %}
       <p>Answer: <span>{{ reply.reply }}</span></p>
-      <p>Reply from: <span>{{ reply.created_by }}</span></p>
       {% endif %}
       {% endfor %}
       <p>Like Count: <span>{{ likedquestion.like_count }}</span></p>

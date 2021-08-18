@@ -56,3 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
   likedPostsButton.addEventListener('click', () => {
     likedPosts.classList.toggle('liked-posts-transform')
   })
+
+  likedPosts.addEventListener('click', () => {
+    likedPosts.classList.toggle('liked-posts-transform')
+  })
