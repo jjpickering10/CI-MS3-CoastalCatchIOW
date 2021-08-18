@@ -28,14 +28,14 @@
           {% else %}
           <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
           {% endif %}
-          <span class="card-title">{{ user.username }}</span>
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+          <p>"I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively. I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively."</p>
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
+          <span class="card-title">{{ user.username }}</span>
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
   {% endfor %}
 </div>
 
-<p class="guru-background">Isle of Wight</p>
+<p class="guru-background">Ask a guru</p>
 
 <div class="ask-guru-container">
 
