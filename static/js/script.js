@@ -47,3 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     })
   })
+
+  // 
+
+  const likedPostsButton = document.querySelector('.liked-posts-button')
+  const likedPosts = document.querySelector('.liked-posts')
+
+  likedPostsButton.addEventListener('click', () => {
+    likedPosts.classList.toggle('liked-posts-transform')
+  })

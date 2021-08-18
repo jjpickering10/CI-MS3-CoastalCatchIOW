@@ -1110,6 +1110,65 @@ main {
     
 }
 
+.liked-posts-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 10rem;
+    margin: 0.5rem;
+    button {
+        font-family: "Poppins", sans-serif;
+        background: var(--bright-blue);
+        color: var(--white-color);
+        font-size: 1rem;
+        border-radius: 1rem;
+        border: none;
+        padding: 0.5rem;
+        &:hover, &:focus {
+            cursor: pointer;
+        }
+    }
+}
+
+.liked-posts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    // width: 100vw;
+    min-height: 50vh;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
+    pointer-events: none;
+    transform: translateX(-200%);
+    z-index: 10000;
+    background: var(--secondary-blue);
+    box-shadow: 0 0 20rem 20rem var(--secondary-blue);
+    div {
+        background: var(--white-color);
+        border-radius: 1rem;
+        margin: 2rem;
+        p {
+            color: black;
+            font-weight: 100;
+            font-size: 0.75rem;
+            padding: 1rem;
+            span {
+                color: var(--secondary-blue);
+                font-size: 2rem;
+                font-weight: 200;
+            }
+        }
+    }
+}
+
+.liked-posts-transform {
+    transition: 1s;
+    transform: translateX(0%);
+    overflow: hidden;
+}
+
 .questions-hide {
     display: none;
 }
