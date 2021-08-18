@@ -564,6 +564,17 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   box-shadow: none;
 }
 
+.location-add-button {
+  border-radius: 0.5rem;
+  text-transform: lowercase;
+  background: var(--primary-brown);
+}
+.location-add-button:hover, .location-add-button:focus {
+  transition: 0.5s;
+  background: var(--secondary-brown);
+  transform: scale(1.1);
+}
+
 .view-locations-admin {
   margin: 0 auto;
   width: 75%;
@@ -575,12 +586,39 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .view-locations-admin .view-locations-text {
   display: flex;
   flex-direction: column;
+  padding: 1rem 2rem;
+  background: var(--secondary-blue);
+  word-wrap: break-word;
+  box-shadow: 0 0 10rem 0 var(--secondary-brown);
+}
+.view-locations-admin .view-locations-text h2 {
+  font-weight: 500;
+}
+.view-locations-admin .view-locations-text h5 {
+  font-size: 1.25rem;
+  font-weight: 200;
+  line-height: 1.25;
+}
+.view-locations-admin .view-locations-text p {
+  font-size: 0.5rem;
+}
+.view-locations-admin .view-locations-text p span {
+  font-size: 1rem;
+  font-weight: 200;
+}
+.view-locations-admin .view-locations-text .location-edit-button {
+  width: 25%;
+  border-radius: 0.5rem;
+  text-transform: lowercase;
+  background: var(--primary-brown);
+}
+.view-locations-admin .view-locations-text .location-edit-button:hover, .view-locations-admin .view-locations-text .location-edit-button:focus {
+  transition: 0.5s;
+  background: var(--secondary-brown);
+  transform: scale(1.1);
 }
 .view-locations-admin img {
   width: 100%;
-}
-.view-locations-admin a {
-  width: 25%;
 }
 
 .view-categories-section {

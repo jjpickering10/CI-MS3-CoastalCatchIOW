@@ -700,6 +700,19 @@ main {
 
 // view locations admin
 
+.location-add-button {
+    border-radius: 0.5rem;
+    text-transform: lowercase;
+    background: var(--primary-brown);
+
+    &:hover,
+    &:focus {
+        transition: 0.5s;
+        background: var(--secondary-brown);
+        transform: scale(1.1);
+    }
+}
+
 .view-locations-admin {
     margin: 0 auto;
     width: 75%;
@@ -710,12 +723,41 @@ main {
     .view-locations-text {
         display: flex;
         flex-direction: column;
+        padding: 1rem 2rem;
+        background: var(--secondary-blue);
+        word-wrap: break-word;
+        box-shadow: 0 0 10rem 0 var(--secondary-brown);
+        h2 {
+            font-weight: 500;
+        }
+        h5 {
+            font-size: 1.25rem;
+            font-weight: 200;
+            line-height: 1.25;
+        }
+        p {
+            font-size: 0.5rem;
+
+            span {
+                font-size: 1rem;
+                font-weight: 200;
+            }
+            
+        }
+        .location-edit-button {
+            width: 25%;
+            border-radius: 0.5rem;
+            text-transform: lowercase;
+            background: var(--primary-brown);
+            &:hover, &:focus {
+                transition: 0.5s;
+                background: var(--secondary-brown);
+                transform: scale(1.1);
+            }
+        }
     }
     img {
         width: 100%;
-    }
-    a {
-        width: 25%;
     }
 }
 
