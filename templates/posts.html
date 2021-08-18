@@ -99,6 +99,7 @@
 </div>
 {% endif %}
 
+{% if reviews|length > 0 %}
 {% for review in reviews %}
 {% set favourite = [] %}
 <div class="row review-section-container">
@@ -177,4 +178,7 @@
 </div>
 
 {% endfor %}
+{% else %}
+<p class="no-posts-locations">No Posts Yet</p>
+{% endif %}
 {% endblock %}

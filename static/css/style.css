@@ -534,6 +534,12 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.05);
 }
 
+.no-posts-locations {
+  width: 100vw;
+  text-align: center;
+  margin-top: 5rem;
+}
+
 .profile-background {
   position: fixed;
   font-size: 20rem;
@@ -709,6 +715,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .carousel {
   z-index: 100;
   height: 800px;
+  margin-top: 5rem;
 }
 .carousel .carousel-item {
   width: 300px;
@@ -828,6 +835,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .question-category-section {
   position: relative;
   margin-top: 10rem;
+  margin-bottom: 10rem;
   z-index: 10;
 }
 .question-category-section .category-buttons {
