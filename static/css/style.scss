@@ -668,6 +668,15 @@ main {
 
 // Profile page
 
+.profile-background {
+    position: fixed;
+    font-size: 20rem;
+    width: 100vw;
+    transform: rotate(-25deg) scale(1.5);
+    z-index: -2;
+    color: rgb(127 91 48 / 25%);
+}
+
 .profile-info {
     margin: 0 auto;
     width: 75%;

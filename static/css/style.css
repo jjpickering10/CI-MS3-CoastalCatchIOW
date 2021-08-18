@@ -534,6 +534,15 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.05);
 }
 
+.profile-background {
+  position: fixed;
+  font-size: 20rem;
+  width: 100vw;
+  transform: rotate(-25deg) scale(1.5);
+  z-index: -2;
+  color: rgba(127, 91, 48, 0.25);
+}
+
 .profile-info {
   margin: 0 auto;
   width: 75%;
