@@ -230,6 +230,19 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.05);
 }
 
+.post-back-button {
+  transform: translateX(50%);
+  border-radius: 0.5rem;
+  text-transform: lowercase;
+  background: var(--primary-brown);
+  margin-top: 5rem;
+}
+.post-back-button:hover, .post-back-button:focus {
+  transition: 0.5s;
+  background: var(--secondary-brown);
+  transform: translateX(50%) scale(1.1);
+}
+
 .posts-info {
   position: relative;
   margin: 5rem auto 0 auto;

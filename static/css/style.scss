@@ -300,6 +300,19 @@ main {
 
 // Posts Page
 
+.post-back-button {
+    transform: translateX(50%);
+    border-radius: 0.5rem;
+    text-transform: lowercase;
+    background: var(--primary-brown);
+    margin-top: 5rem;
+    &:hover, &:focus {
+        transition: 0.5s;
+        background: var(--secondary-brown);
+        transform: translateX(50%) scale(1.1);
+    }
+}
+
 .posts-info {
     position: relative;
     margin: 5rem auto 0 auto;
