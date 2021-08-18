@@ -52,14 +52,14 @@
   
   <div class="user-info">
     <div>
-      <h2>Posts</h2>
+      <h2>your <span>Posts</span></h2>
       <ul class="collapsible">
         <li>
-          <div class="collapsible-header">Posts</div>
+          <div class="collapsible-header">Click to View</div>
       {% for review in created_reviews %}
       <div class="row collapsible-body">
         <div class="col s12">
-          <div class="card blue-grey darken-1">
+          <div class="card">
             <div class="card-content white-text">
               <span class="card-title">{{ review.location_name }}</span>
               <span class="card-title">{{ review.review_title }}</span>
@@ -80,14 +80,14 @@
   </ul>
     </div>
     <div>
-      <h2>Questions asked</h2>
+      <h2>your <span>Questions asked</span></h2>
       <ul class="collapsible">
         <li>
-          <div class="collapsible-header">Posts</div>
+          <div class="collapsible-header">Click to View</div>
       {% for question in asked_questions %}
       <div class="row collapsible-body">
         <div class="col s12">
-          <div class="card blue-grey darken-1">
+          <div class="card">
             <div class="card-content white-text">
               <span class="card-title">{{ question.question_title }}</span>
               <p>{{ question.question_description }}</p>
@@ -108,14 +108,14 @@
     </div>
     <div>
 
-      <h2>Fav Posts</h2>
+      <h2>your <span>Fav Posts</span></h2>
       <ul class="collapsible">
       <li>
-        <div class="collapsible-header">Posts</div>
+        <div class="collapsible-header">Click to View</div>
       {% for fav in fav_posts %}
       <div class="row collapsible-body">
         <div class="col s12">
-          <div class="card blue-grey darken-1">
+          <div class="card">
             <div class="card-content white-text">
               <a href="{{ url_for('view_post', post_id=fav.post_id)}}"><span>{{ fav.post_title }}</span></a>
               <p class="card-title">{{ fav.location_name }}</p>

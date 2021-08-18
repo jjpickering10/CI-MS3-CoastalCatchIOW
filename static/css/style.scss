@@ -685,15 +685,62 @@ main {
     gap: 1rem;
     transform: translateY(10vh);
     div {
-        background: var(--primary-brown);
         h2 {
+            font-size: 1.2rem;
             margin: 0;
             padding: 1rem;
+            font-weight: 200;
+            span {
+                font-weight: 300;
+                font-size: 3rem;
+                color: var(--primary-blue);
+                text-transform: lowercase;
+            }
         }
         .collapsible {
             padding: 1rem;
             border: none;
             box-shadow: none;
+            .collapsible-header {
+                background: var(--primary-brown);
+                border: none;
+                font-size: 1rem;
+                font-weight: 200;
+                width: 50%;
+                border-radius: 1rem;
+            }
+            .collapsible-body {
+                word-wrap: break-word;
+                .card {
+                    background: var(--secondary-blue);
+                    box-shadow: 0 0 10rem 0 var(--primary-brown);
+                    .card-action {
+                        a {
+                            text-transform: lowercase;
+                            background: var(--primary-brown);
+                            border-radius: 0.5rem;
+                            margin-top: 1rem;
+                            &:hover, &:focus {
+                                transition: 0.5s;
+                                background: var(--secondary-brown);
+                                transform: scale(1.1);
+                            }
+                        }
+                    }
+                }
+                .card-title {
+                    font-weight: 500;
+                }
+                .card-title:nth-of-type(2) {
+                    font-size: 2rem;
+                    font-weight: 300;
+                    text-decoration: underline;
+                    margin-bottom: 2rem;
+                }
+                p {
+                    font-weight: 200;
+                }
+            }
         }
     }
 }

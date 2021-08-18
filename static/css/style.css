@@ -551,17 +551,60 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   gap: 1rem;
   transform: translateY(10vh);
 }
-.user-info div {
-  background: var(--primary-brown);
-}
 .user-info div h2 {
+  font-size: 1.2rem;
   margin: 0;
   padding: 1rem;
+  font-weight: 200;
+}
+.user-info div h2 span {
+  font-weight: 300;
+  font-size: 3rem;
+  color: var(--primary-blue);
+  text-transform: lowercase;
 }
 .user-info div .collapsible {
   padding: 1rem;
   border: none;
   box-shadow: none;
+}
+.user-info div .collapsible .collapsible-header {
+  background: var(--primary-brown);
+  border: none;
+  font-size: 1rem;
+  font-weight: 200;
+  width: 50%;
+  border-radius: 1rem;
+}
+.user-info div .collapsible .collapsible-body {
+  word-wrap: break-word;
+}
+.user-info div .collapsible .collapsible-body .card {
+  background: var(--secondary-blue);
+  box-shadow: 0 0 10rem 0 var(--primary-brown);
+}
+.user-info div .collapsible .collapsible-body .card .card-action a {
+  text-transform: lowercase;
+  background: var(--primary-brown);
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+.user-info div .collapsible .collapsible-body .card .card-action a:hover, .user-info div .collapsible .collapsible-body .card .card-action a:focus {
+  transition: 0.5s;
+  background: var(--secondary-brown);
+  transform: scale(1.1);
+}
+.user-info div .collapsible .collapsible-body .card-title {
+  font-weight: 500;
+}
+.user-info div .collapsible .collapsible-body .card-title:nth-of-type(2) {
+  font-size: 2rem;
+  font-weight: 300;
+  text-decoration: underline;
+  margin-bottom: 2rem;
+}
+.user-info div .collapsible .collapsible-body p {
+  font-weight: 200;
 }
 
 .location-add-button {
