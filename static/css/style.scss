@@ -862,7 +862,110 @@ main {
     }
 }
 
+.questions-list {
+     > .col {
+        box-shadow: 0 0 10rem 0 var(--secondary-brown);
+    }
+    .card-content {
+        p {
+            font-size: 0.5rem;
+            span {
+                font-weight: 500;
+                font-size: 1rem;
+            }
+        }
+        .question-likes {
+            font-size: 0.5rem;
+            span {
+                font-size: 1rem;
+            }
+        }
+        .question-description-post {
+            padding: 3rem 3rem 0 3rem;
+            font-size: 2rem;
+            font-weight: 200;
+            font-style: italic;
+        }
+    }
+    .question-user {
+        .question-created-by {
+            font-size: 0.5rem;
+            span {
+                font-size: 1rem;
+            }
+        }
+        a {
+            background: var(--white-color);
+            color: var(--primary-brown);
+            text-transform: lowercase;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            &:hover, &:focus {
+                transition: 0.5s;
+                background: var(--primary-brown);
+                color: var(--white-color);
+                transform: scale(1.1);
+            }
+        }
 
+    }
+    .question-reply {
+        position: relative;
+        padding-left: calc(3rem + 24px);
+        font-size: 2rem;
+        font-weight: 500;
+        font-style: italic;
+        padding-top: 1rem;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-blue);
+            transform: translateX(calc(-100% + 3rem));
+        }
+    }
+    .question-reply-user {
+        font-size: 0.5rem;
+        padding-left: calc(3rem + 24px);
+    }
+    .question-buttons {
+        margin-left: calc(3rem + 24px);
+        a {
+            background: var(--primary-brown);
+            text-transform: lowercase;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            &:hover, &:focus {
+                transition: 0.5s;
+                background: var(--white-color);
+                color: var(--primary-brown);
+                transform: scale(1.1);
+            }
+        }
+    }
+    .reply-section {
+        padding: 5rem;
+        margin: 2rem 0 0 0;
+        background: var(--white-color);
+        box-shadow: 0 0 10rem 0 var(--secondary-blue), inset 0 0 2rem 0 var(--primary-brown);
+        button {
+            background: var(--secondary-blue);
+            color: var(--white-color);
+            text-transform: lowercase;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            &:hover, &:focus {
+                transition: 0.5s;
+                background: var(--primary-blue);
+                transform: scale(1.1);
+            }
+        }
+    }
+    
+}
 
 .questions-hide {
     display: none;
