@@ -322,7 +322,7 @@ main {
     gap: 3rem;
 
     .posts-background {
-        position: absolute;
+        position: fixed;
         font-size: 20rem;
         width: 100vw;
         transform: rotate(-25deg) scale(1.5);
@@ -640,10 +640,10 @@ main {
             .card-action {
                 background: var(--primary-brown);
                 .post-date {
-                    font-size: 75%;
+                    font-size: 0.5rem;
                 }
                 .post-created-by {
-                    font-size: 150%;
+                    font-size: 0.75rem;
                 }
                 a {
                     margin-top: 1rem;
@@ -1124,6 +1124,7 @@ main {
     right: 0;
     width: 10rem;
     margin: 0.5rem;
+    z-index: 10001;
     button {
         font-family: "Poppins", sans-serif;
         background: var(--bright-blue);

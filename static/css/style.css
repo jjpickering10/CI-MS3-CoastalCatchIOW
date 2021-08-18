@@ -252,7 +252,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   gap: 3rem;
 }
 .posts-info .posts-background {
-  position: absolute;
+  position: fixed;
   font-size: 20rem;
   width: 100vw;
   transform: rotate(-25deg) scale(1.5);
@@ -515,10 +515,10 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   background: var(--primary-brown);
 }
 .review-section-container .single-post .card .card-action .post-date {
-  font-size: 75%;
+  font-size: 0.5rem;
 }
 .review-section-container .single-post .card .card-action .post-created-by {
-  font-size: 150%;
+  font-size: 0.75rem;
 }
 .review-section-container .single-post .card .card-action a {
   margin-top: 1rem;
@@ -949,6 +949,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   right: 0;
   width: 10rem;
   margin: 0.5rem;
+  z-index: 10001;
 }
 .liked-posts-button button {
   font-family: "Poppins", sans-serif;
