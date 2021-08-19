@@ -835,13 +835,14 @@ main {
     div {
         color: var(--white-color);
         width: 100%;
-        background: var(--secondary-brown);
-        box-shadow: 0 0 10px 10px var(--secondary-blue),
-                    inset 0 0 20px 2px var(--primary-brown);
+        background: var(--secondary-blue);
+        box-shadow: 0 0 10rem 0rem var(--primary-brown);
+        border-radius: 0.5rem;
         h2 {
             font-size: 2rem;
-        font-weight: 700;
-        padding: 0.5rem 1rem;
+            font-weight: 500;
+            padding: 1rem;
+            margin: 0;
         }
         a {
             font-size: 1rem;
