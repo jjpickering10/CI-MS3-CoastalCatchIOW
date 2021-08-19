@@ -165,7 +165,7 @@ nav {
     }
 }
 
-// Register and Login Page
+// Register, Login and Edit Pages
 
 .register-form-container {
     .card-panel {
@@ -181,6 +181,9 @@ nav {
             background: #394955c7;
             box-shadow: 0rem 0rem 5rem 0rem #b68d5f;
             padding: 3rem 2rem;
+            .edit-location-image {
+                width: 100%;
+            }
         }
 
         .register-button {
@@ -1165,10 +1168,10 @@ main {
         }
     }
     .reply-section {
-        padding: 5rem;
+        padding: 1rem;
         margin: 2rem 0 0 0;
-        background: var(--white-color);
-        box-shadow: 0 0 10rem 0 var(--secondary-blue), inset 0 0 2rem 0 var(--primary-brown);
+        box-shadow: 0 0 10rem 0 var(--secondary-blue), inset 0 0 2rem 0 var(--secondary-blue);
+        border-radius: 1rem;
         button {
             background: var(--secondary-blue);
             color: var(--white-color);

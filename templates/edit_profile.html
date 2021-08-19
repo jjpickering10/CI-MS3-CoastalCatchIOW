@@ -2,33 +2,26 @@
 {% block content %}
 
   
-
-  <br>
-  <br>
-
-  <p>{{ user_details.user_description }}</p>
-
-  
-  <div class="row">
-    <form class="col s12" method="POST" action="{{ url_for('edit_profile', username_id=user_details._id) }}" enctype="multipart/form-data">
+  <div class="row register-form-container">
+    <form class="col s12 m6 offset-m3 register-card" method="POST" action="{{ url_for('edit_profile', username_id=user_details._id) }}" enctype="multipart/form-data">
       <h4 class="center-align">Edit Your Details</h4>
-      <div class="row">
+      <div class="row register-text-field">
         <div class="card-image center-align">
           {% if user_details.user_image %}
-          <img src="{{ url_for('file', filename=user_details.user_image) }}">
+          <img class="edit-location-image" src="{{ url_for('file', filename=user_details.user_image) }}">
           {% else %}
-          <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+          <img class="edit-location-image" src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
           {% endif %}
           <span class="card-title">Current Image</span>
         </div>
-        <div class="input-field col s6 offset-m3">
+        <div class="input-field col s12">
           <input id="user_image" name="user_image" type="file" class="validate">
           <label for="user_image">Your Image</label>
         </div>
       </div>
         <div class="row">
-            <div class="row">
-              <div class="input-field col s6 offset-m3">
+            <div class="row register-text-field">
+              <div class="input-field col s12">
                 <textarea id="user_description" name="user_description" class="materialize-textarea validate" required>
                   {{- user_details.user_description -}}
                 </textarea>
@@ -38,10 +31,10 @@
         </div>
         <div class="row">
           <div class="col s12 center-align">
-            <a href="" class="btn-large">
+            <a href="" class="btn-large register-button">
               Cancel
             </a>
-            <button type="submit" class="btn-large">
+            <button type="submit" class="btn-large register-button">
               Edit User
             </button>
           </div>

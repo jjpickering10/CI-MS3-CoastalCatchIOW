@@ -144,6 +144,9 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   box-shadow: 0rem 0rem 5rem 0rem #b68d5f;
   padding: 3rem 2rem;
 }
+.register-form-container .register-card .register-text-field .edit-location-image {
+  width: 100%;
+}
 .register-form-container .register-card .register-button {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -991,10 +994,10 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: scale(1.1);
 }
 .questions-list .reply-section {
-  padding: 5rem;
+  padding: 1rem;
   margin: 2rem 0 0 0;
-  background: var(--white-color);
-  box-shadow: 0 0 10rem 0 var(--secondary-blue), inset 0 0 2rem 0 var(--primary-brown);
+  box-shadow: 0 0 10rem 0 var(--secondary-blue), inset 0 0 2rem 0 var(--secondary-blue);
+  border-radius: 1rem;
 }
 .questions-list .reply-section button {
   background: var(--secondary-blue);
