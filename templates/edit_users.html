@@ -2,22 +2,27 @@
 {% block content %}
 
 {% if session.admin|lower == "yes" %}
-  <h2>Users</h2>
-  <div class="row">
+  <h2 class="guru-header">Users</h2>
+  <div class="guru-section">
   {% for user in users %}
   
     
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
+    <div class="col s12 m6 guru-users">
+      <div class="card">
         <div class="card-content white-text">
           <span class="card-title">{{ user.username }}</span>
+          <p class="guru-user-description">" {{ user.user_description }} "</p>
         </div>
         <div class="card-action">
-          <p>{{ user.is_guru }}</p>
-          
+          <p class="guru-status">Guru Status: <span>{{ user.is_guru }}</span></p>
+          {% if user.user_image %}
+          <img src="{{ url_for('file', filename=user.user_image) }}">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+          {% endif %}
         </div>
       </div>
-      <form class="col s12" method="POST" action="{{ url_for('update_user', username_id=user._id) }}">
+      <form class="col s12 guru-form" method="POST" action="{{ url_for('update_user', username_id=user._id) }}">
       <div class="switch">
         <label for="is_guru_{{ user.username }}">
           no

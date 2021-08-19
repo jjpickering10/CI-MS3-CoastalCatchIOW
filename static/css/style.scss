@@ -861,6 +861,72 @@ main {
     }
 }
 
+// Edit gurus section admin
+
+.guru-header {
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 3rem;
+}
+
+.guru-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 3rem;
+    width: 75%;
+    margin: 0 auto;
+    .guru-users {
+        margin-bottom: 2rem;
+        .card {
+            margin: 0;
+            background: var(--secondary-blue);
+            box-shadow: 0 0 10rem 0 var(--primary-brown);
+            border-radius: 1rem;
+            .card-content {
+                word-wrap: break-word;
+            }
+            .guru-user-description {
+                padding: 3rem;
+                font-size: 1.5rem;
+                font-weight: 100;
+                font-style: italic;
+            }
+        }
+        .card-title {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+        .guru-status {
+            font-size: 0.5rem;
+            font-weight: 100;
+            span {
+                font-size: 3rem;
+                color: var(--bright-blue);
+                font-weight: 300;
+            }
+        }
+        .guru-form {
+            padding: 2rem;
+            background: var(--secondary-brown);
+            border-radius: 0 0 1rem 1rem;
+            label {
+                font-size: 1rem;
+                color: var(--white-color);
+            }
+            button {
+                background: var(--primary-brown);
+                text-transform: lowercase;
+                border-radius: 0.5rem;
+                margin-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+        img {
+            width: 50%;
+        }
+    }
+}
+
 // Questions Page
 
 .carousel {

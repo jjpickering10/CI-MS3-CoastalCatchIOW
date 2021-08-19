@@ -712,6 +712,70 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   color: var(--primary-brown);
 }
 
+.guru-header {
+  text-align: center;
+  font-size: 5rem;
+  margin-bottom: 3rem;
+}
+
+.guru-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 3rem;
+  width: 75%;
+  margin: 0 auto;
+}
+.guru-section .guru-users {
+  margin-bottom: 2rem;
+}
+.guru-section .guru-users .card {
+  margin: 0;
+  background: var(--secondary-blue);
+  box-shadow: 0 0 10rem 0 var(--primary-brown);
+  border-radius: 1rem;
+}
+.guru-section .guru-users .card .card-content {
+  word-wrap: break-word;
+}
+.guru-section .guru-users .card .guru-user-description {
+  padding: 3rem;
+  font-size: 1.5rem;
+  font-weight: 100;
+  font-style: italic;
+}
+.guru-section .guru-users .card-title {
+  font-size: 3rem;
+  font-weight: 500;
+}
+.guru-section .guru-users .guru-status {
+  font-size: 0.5rem;
+  font-weight: 100;
+}
+.guru-section .guru-users .guru-status span {
+  font-size: 3rem;
+  color: var(--bright-blue);
+  font-weight: 300;
+}
+.guru-section .guru-users .guru-form {
+  padding: 2rem;
+  background: var(--secondary-brown);
+  border-radius: 0 0 1rem 1rem;
+}
+.guru-section .guru-users .guru-form label {
+  font-size: 1rem;
+  color: var(--white-color);
+}
+.guru-section .guru-users .guru-form button {
+  background: var(--primary-brown);
+  text-transform: lowercase;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+.guru-section .guru-users img {
+  width: 50%;
+}
+
 .carousel {
   z-index: 100;
   height: 800px;
