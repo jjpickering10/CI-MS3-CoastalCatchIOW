@@ -6,7 +6,13 @@ _Use CTRL+click or CMD+click to open links throughout the README in a new tab_
 
 ## Overview
 
-Coastal Catch Isle of Wight is a fishing blog/forum site that allows users to post their fishing experiences of certain locations on the island as well as ask questions for advice.
+Coastal Catch Isle of Wight is a fishing blog/forum site that allows users to post their fishing experiences of certain locations on the island as well as ask questions for advice. Users can posts comments, give a rating to a location and favourite a post.
+
+This projects showcases full CRUD functionality and consists of 4 different types of users. Those users are:
+Regular users who can only read. They can't post, like, comment, edit or delete anything.
+Logged in users who can make a post in various locations. Edit and delete their posts. Like and favourite other posts. Edit their profile.
+Guru users who can do everything a logged in user can do, but also have the privilege of being able to reply to questions in the Ask Guru section.
+Admin users who can do everything including edit and delete all posts, as well as add and edit locations and question categories.
 
 
 ---
@@ -23,23 +29,26 @@ Coastal Catch Isle of Wight is a fishing blog/forum site that allows users to po
 
 First Time Visitor Goals
 
-1. As a First Time Visitor, I want to - view locations on the island
-2. As a First Time Visitor, I want to - be able to read posts
+1. As a First Time Visitor, I want to - view various locations on the island and read about their description
+2. As a First Time Visitor, I want to - be able to read posts that others have made
 3. As a First Time Visitor, I want to - be able to view questions and answers
-4. As a First Time Visitor, I want to - register account
-5. As a First Time Visitor, I want to - read about the site
+4. As a First Time Visitor, I want to - register an account
+5. As a First Time Visitor, I want to - read about the site and contact the site
+6. As a First Time Visitor, I want to - search the site
 
 Returning Visitor Goals
 
 1. As a Returning Visitor, I want to - log in to my account
 2. As a Returning Visitor, I want to - reply to comments on my posts and others
 3. As a Returning Visitor, I want to - edit and delete posts and comments if necessary
+4. As a Returning Visitor, I want to - reply to questions if I am a guru user
 
 Frequent User Goals
 
 1. As a Frequent User, I want to - edit my profile
-2. As a Frequent User, I want to - apply to become guru
-3. As a Frequent User, I want to - 
+2. As a Frequent User, I want to - apply to become a guru user
+3. As a Frequent User, I want to - favourite certain posts
+4. As a Frequent User, I want to - like certain posts
 
 ### **Strategy**
 
@@ -59,13 +68,30 @@ Admin users will be able to decide who gets to be a guru user.
 ### **Scope**
 
 Fits in with skillset of current programming ability.
+The main focus of the site is to showcase CRUD functionality and present it in an easy to use manner.
 
 ### **Structure**
 
 Consistent navigation throughout site.
+Consistent footer throughout site.
 Logged in user can CRUD on posts and comment.
 Logged in guru user can CRUD on posts and answer specific questions.
 Logged in admin can CRUD on posts, but also manage locations.
+
+- Landing Page
+- Locations Page
+- Ask Guru Page
+- Profile Page
+- About Page
+- Contact Page
+- Login/Register Pages
+- Admin Pages
+
+- Search functionality
+- Category selection
+- Location selection
+- Upload profile images
+- Consistant theme
 
 
 ### **Skeleton**
@@ -90,9 +116,12 @@ Mix of blues, greys and browns to match sea and sand colors.
 
 Images:
 
-
+Use of images are uploaded my the user to the site, or by admin for the locations images.
+If images arent selected, a default image is posted.
 
 Typography:
+
+'Poppins' and 'Roboto' fonts are used.
 
 ---
 
@@ -132,6 +161,14 @@ Typography:
 
 [Google Fonts](https://fonts.google.com/) - for fonts
 
+[Flask](https://flask.palletsprojects.com/en/2.0.x/) - web application framework
+
+[Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - template engine for Python
+
+[PyMongo](https://pypi.org/project/pymongo/) - connecting MongoDB databse from Python
+
+Werkzeug
+
 ### Resources
 
 [ColorSpace](https://mycolor.space/) - for color palette
@@ -142,7 +179,7 @@ Typography:
 
 [W3Schools](https://www.w3schools.com/) - for general help
 
-[YouTube](https://youtube.com) - for general help
+[YouTube](https://youtube.com) - for general help 
 
 [Responsinator](http://www.responsinator.com/) - helping to test responsiveness
 
@@ -153,6 +190,14 @@ Typography:
 [Am I Responsive](http://ami.responsivedesign.is/) - for responsive help and README image
 
 [Autoprefixer](https://autoprefixer.github.io/) - adds vendor prefixes to CSS
+
+EmailJS
+
+MongoDB
+
+Heroku
+
+ThreeJS course
 
 Code Institute Course
 
@@ -192,7 +237,10 @@ Other Testing
 
 ### Project Barriers and Solutions
 
+- Issues with Gitpod deleting work. Had to rewrite a lot of code. Lesson has been learnt to regularly push to Github.
+
 ### Feature To Improve
+
 
 ### Code Validity
 
@@ -201,6 +249,17 @@ Other Testing
 ## Deployment
 
 Deployment
+
+- Repository initially set up on Github with Code Institute template.
+- Use of Gitpod for code editor.
+- Deployed using the master branch.
+
+Clone
+Environment variables, gitignore, procfile, 
+
+Heroku
+MongoDB
+
 
 
 Cloning
@@ -217,10 +276,15 @@ Forking
 
 ### Images and videos
 
+Images have been taken by myself as I live here.
+
 ### Written Content
+
+Written content throughout site has been provided from my father who is a keen fisherman on the island.
 
 ### Acknowledgments
 
 - Code Institute Software Development Course - for the education.
 - Code Institute Slack Community group - for the support.
+- Youtube Channels: Tech with Tim, Pretty Printed, 
 - My mentor [Antonio Rodriguez](https://github.com/AkaAnto) - for the guidance and support throughout.
