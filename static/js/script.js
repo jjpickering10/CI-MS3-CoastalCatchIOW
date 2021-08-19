@@ -1,3 +1,5 @@
+// Materialize JS initialisation
+
 M.AutoInit();
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var instancesCollapse = M.Collapsible.init(elemsCollapse);
   });
 
+  // Category selection for ask guru categories
+
   const questionsList = document.querySelectorAll('.questions-list')
   const categoryButtons = document.querySelectorAll('.category-buttons')
   const noPosts = document.querySelector('#no-posts')
@@ -24,31 +28,24 @@ document.addEventListener('DOMContentLoaded', function() {
   categoryButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
       noPosts.classList.add("questions-hide")
-
-      
-
       emptyPosts = 0
-
       const x = e.path[0].innerText.toLowerCase();
-     
       questionsList.forEach(question => {
-       
-      if (x == question.dataset.questions.toLowerCase()) {
-      
-        question.classList.toggle('questions-hide')
-      } else {
-        question.classList.add('questions-hide')
-        emptyPosts++
-        if (emptyPosts == questionsList.length) {
-          console.log("nothing");
-          noPosts.classList.toggle("questions-hide")
+        if (x == question.dataset.questions.toLowerCase()) {
+          question.classList.toggle('questions-hide')
+        } else {
+          question.classList.add('questions-hide')
+          emptyPosts++
+          if (emptyPosts == questionsList.length) {
+            console.log("nothing");
+            noPosts.classList.toggle("questions-hide")
+          }
         }
-      }
-    })
+      })
     })
   })
 
-  // 
+  // Function for popout most liked questions
 
   const likedPostsButton = document.querySelector('.liked-posts-button')
   const likedPosts = document.querySelector('.liked-posts')
