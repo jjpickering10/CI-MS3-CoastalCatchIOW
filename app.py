@@ -20,6 +20,9 @@ mongo = PyMongo(app)
 
 
 def get_date():
+    """
+    Returns current date without the microseconds
+    """
     current_date = datetime.datetime.utcnow().replace(microsecond=0)
     return current_date
 
@@ -27,11 +30,20 @@ def get_date():
 @app.route("/")
 @app.route("/home")
 def home():
+    """
+    Renders Landing Page
+    """
     return render_template("index.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Register Account.
+    Checks for pre existing username.
+    Redirects to profile page if successful,
+    otherwise redirects to register page
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get('username').lower()})
@@ -58,6 +70,13 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Login to account.
+    Checks for existing username.
+    Checks to match password.
+    Redirects to profile page if successful,
+    otherwise redirects to login page
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get('username').lower()})
@@ -94,6 +113,13 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Profile page
+    Checks for guru status.
+    Finds user details and reviews, questions, fav posts
+    of user.
+    Redirects to login page if user not in session
+    """
     if 'user' in session:
         username = mongo.db.users.find_one(
             {"username": session['user']})['username']
@@ -126,6 +152,11 @@ def profile(username):
 
 @app.route("/edit_profile/<username_id>", methods=["GET", "POST"])
 def edit_profile(username_id):
+    """
+    Edit profile page
+    Updates user description and image
+    Redirects to login page if user not in session
+    """
     user_details = mongo.db.users.find_one(
         {"_id": ObjectId(username_id)}, {"password": 0})
 
@@ -151,6 +182,10 @@ def edit_profile(username_id):
 
 @app.route("/logout")
 def logout():
+    """
+    Logs out user using pop() method
+    Redirects to login
+    """
     flash('You are logged out')
     session.pop('user')
     session.pop('admin')
@@ -160,11 +195,18 @@ def logout():
 
 @app.route("/file/<filename>")
 def file(filename):
+    """
+    Returns file from mongoDB
+    """
     return mongo.send_file(filename)
 
 
 @app.route("/get_locations")
 def get_locations():
+    """
+    Returns locations page with locations
+    and ratings of each from MongoDB
+    """
     locations = mongo.db.locations.find()
     ratings = list(mongo.db.ratings.find())
     return render_template(
@@ -173,6 +215,13 @@ def get_locations():
 
 @app.route("/locations/<location_id>", methods=["GET", "POST"])
 def locations(location_id):
+    """
+    Returns individual location page,
+    with comments, reviews, ratings connected to location ID.
+    If user in session, returns their rating and whether
+    or not they have favourited the post.
+    Inserts post to location page
+    """
     location = mongo.db.locations.find_one(
         {"_id": ObjectId(location_id)})
 
@@ -188,7 +237,6 @@ def locations(location_id):
     else:
         rating = None
         fav_user = None
-    print(ratings)
 
     if request.method == "POST":
         post_date = get_date()
@@ -214,8 +262,14 @@ def locations(location_id):
 
 @app.route("/view_post/<post_id>")
 def view_post(post_id):
+    """
+    View individual post from location page
+    in seperate page
+    Searches if user has favourited the post
+    If post doesnt exist, returns to locations page
+    with message.
+    """
     post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
-    print(bool(post))
     if post:
         comments = list(mongo.db.comments.find(
             {"location_id": post['location_id']}))
@@ -232,6 +286,12 @@ def view_post(post_id):
 
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
+    """
+    Edit post if user is in session,
+    otherwise redirects to login
+    Updates post and returns to location page
+    of the post
+    """
     if 'user' in session:
         post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
         if request.method == "POST":
@@ -249,7 +309,6 @@ def edit_post(post_id):
             return redirect(url_for(
                 'locations', location_id=post["location_id"]))
 
-        # posts = mongo.db.reviews.find().sort("location_name", 1)
         return render_template("edit_post.html", post=post)
 
     return redirect(url_for('login'))
@@ -257,6 +316,11 @@ def edit_post(post_id):
 
 @app.route("/delete_post/<post_id>")
 def delete_post(post_id):
+    """
+    If user in session, deletes post and
+    redirects to location page of the post.
+    Otherwise redirect to login.
+    """
     if 'user' in session:
         post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
         mongo.db.reviews.remove({"_id": ObjectId(post_id)})
@@ -269,6 +333,10 @@ def delete_post(post_id):
 
 @app.route("/add_comment/<post_id>", methods=["GET", "POST"])
 def add_comment(post_id):
+    """
+    Posts comment for post if user in session,
+    otherwise redirects to login
+    """
     if 'user' in session:
         posts = mongo.db.reviews.find_one(
             {"_id": ObjectId(post_id)})
@@ -291,6 +359,10 @@ def add_comment(post_id):
 
 @app.route("/edit_comment/<comment_id>", methods=["GET", "POST"])
 def edit_comment(comment_id):
+    """
+    Edit comment if user in session,
+    otherwise redirect to login
+    """
     if 'user' in session:
         comments = mongo.db.comments.find_one(
             {"_id": ObjectId(comment_id)})
@@ -315,6 +387,10 @@ def edit_comment(comment_id):
 
 @app.route("/delete_comment/<comment_id>")
 def delete_comment(comment_id):
+    """
+    Delete comment if user in session,
+    otherwise redirect to login
+    """
     if 'user' in session:
         comments = mongo.db.comments.find_one(
             {"_id": ObjectId(comment_id)})
@@ -328,6 +404,11 @@ def delete_comment(comment_id):
 
 @app.route("/view_locations")
 def view_locations():
+    """
+    Admin page for viewing locations.
+    Returns all locations and reviews from
+    database
+    """
     if 'user' in session and 'admin' in session:
         locations = list(mongo.db.locations.find().sort("location_name", 1))
         reviews = list(mongo.db.reviews.find().sort("review_title", 1))
@@ -339,9 +420,12 @@ def view_locations():
 
 @app.route("/view_categories")
 def view_categories():
+    """
+    Admin page for viewing categories.
+    Returns all categories from database
+    """
     if 'user' in session and 'admin' in session:
         categories = list(mongo.db.categories.find().sort("category_name", 1))
-        # reviews = list(mongo.db.reviews.find().sort("review_title", 1))
         return render_template(
             "view_categories.html", categories=categories)
 
@@ -350,6 +434,10 @@ def view_categories():
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
+    """
+    Admin page for adding category.
+    Redirects to admin category page
+    """
     if 'user' in session and 'admin' in session:
         if request.method == "POST":
 
@@ -368,6 +456,10 @@ def add_category():
 
 @app.route("/edit_categories/<category_id>", methods=["GET", "POST"])
 def edit_categories(category_id):
+    """
+    Admin page for editing categories.
+    Updates category name in database
+    """
     if 'user' in session and 'admin' in session:
         categories = mongo.db.categories.find_one(
             {"_id": ObjectId(category_id)})
@@ -388,6 +480,10 @@ def edit_categories(category_id):
 
 @app.route("/delete_categories/<category_id>")
 def delete_categories(category_id):
+    """
+    Admin page for deleting categories.
+    Redirects to admin category page.
+    """
     if 'user' in session and 'admin' in session:
         mongo.db.categories.remove({"_id": ObjectId(category_id)})
         flash("Category successfully deleted")
@@ -398,6 +494,10 @@ def delete_categories(category_id):
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
+    """
+    Admin page for adding location.
+    Inserts new location into database
+    """
     if 'user' in session and 'admin' in session:
         if request.method == "POST":
             if 'location_image' in request.files:
@@ -422,6 +522,11 @@ def add_location():
 
 @app.route("/edit_locations/<location_id>", methods=["GET", "POST"])
 def edit_locations(location_id):
+    """
+    Admin page for editing location.
+    Updates image and location description.
+    Location name can't be updated.
+    """
     if 'user' in session and 'admin' in session:
         locations = mongo.db.locations.find_one(
             {"_id": ObjectId(location_id)})
@@ -448,6 +553,10 @@ def edit_locations(location_id):
 
 @app.route("/delete_locations/<location_id>")
 def delete_locations(location_id):
+    """
+    Admin page for deleting locations.
+    Redirects to admin locations page
+    """
     if 'user' in session and 'admin' in session:
         mongo.db.locations.remove({"_id": ObjectId(location_id)})
         flash("Location successfully deleted")
@@ -458,6 +567,13 @@ def delete_locations(location_id):
 
 @app.route("/ask_guru", methods=["GET", "POST"])
 def ask_guru():
+    """
+    Returns ask guru page with all questions,
+    categories, replies, likes and users.
+    Searches for like in likes db collection.
+    Searches top 3 most liked questions.
+    Inserts new question into datebase
+    """
     questions = list(mongo.db.questions.find().sort("like_count", -1))
     liked_questions = questions[:3]
     categories = list(mongo.db.categories.find())
@@ -468,7 +584,6 @@ def ask_guru():
         liked_user = list(mongo.db.likes.find({"liked_user": session['user']}))
     else:
         liked_user = None
-    # print(liked_user)
     if request.method == "POST":
         category_id = request.form.get("category_id")
         category_id_name = mongo.db.categories.find_one(
@@ -495,6 +610,11 @@ def ask_guru():
 
 @app.route("/edit_question/<question_id>", methods=["GET", "POST"])
 def edit_question(question_id):
+    """
+    Edit page for user question if user in session,
+    otherwise redirect to login.
+    Updates db with edited question.
+    """
     if 'user' in session:
         question = mongo.db.questions.find_one(
             {"_id": ObjectId(question_id)})
@@ -513,7 +633,6 @@ def edit_question(question_id):
             flash('Edit successful')
             return redirect(url_for('ask_guru'))
 
-        # posts = mongo.db.reviews.find().sort("location_name", 1)
         return render_template("edit_question.html", question=question)
 
     return redirect(url_for('login'))
@@ -521,6 +640,10 @@ def edit_question(question_id):
 
 @app.route("/delete_question/<question_id>")
 def delete_question(question_id):
+    """
+    Deletes user question if user in session.
+    Redirects to ask guru page
+    """
     if 'user' in session:
         mongo.db.questions.remove({"_id": ObjectId(question_id)})
         flash("Question deleted")
@@ -531,6 +654,10 @@ def delete_question(question_id):
 
 @app.route("/like_question/<question_id>")
 def like_question(question_id):
+    """
+    If user in session, checks if user has liked question.
+    If so, removes like, otherwise adds like.
+    """
     if 'user' in session:
         like = list(mongo.db.likes.find(
             {"question_id": ObjectId(
@@ -567,6 +694,10 @@ def like_question(question_id):
 
 @app.route("/add_reply/<question_id>", methods=["GET", "POST"])
 def add_reply(question_id):
+    """
+    Adds reply to question if user is guru
+    user.
+    """
     if 'user' in session and 'guru' in session:
         question = mongo.db.questions.find_one(
             {"_id": ObjectId(question_id)})
@@ -586,6 +717,9 @@ def add_reply(question_id):
 
 @app.route("/edit_reply/<reply_id>", methods=["GET", "POST"])
 def edit_reply(reply_id):
+    """
+    Edits reply if user is guru
+    """
     if 'user' in session and 'guru' in session:
         replies = mongo.db.replies.find_one({"_id": ObjectId(reply_id)})
         if request.method == "POST":
@@ -607,6 +741,9 @@ def edit_reply(reply_id):
 
 @app.route("/delete_reply/<reply_id>")
 def delete_reply(reply_id):
+    """
+    Deletes reply if user is guru
+    """
     if 'user' in session and 'guru' in session:
         mongo.db.replies.remove({"_id": ObjectId(reply_id)})
         flash("Reply deleted")
@@ -617,6 +754,9 @@ def delete_reply(reply_id):
 
 @app.route("/update_user/<username_id>", methods=["GET", "POST"])
 def update_user(username_id):
+    """
+    Updates user guru status for admin
+    """
     if 'user' in session and 'admin' in session:
         if request.method == "POST":
             is_guru = "yes" if request.form.get("is_guru") else "no"
@@ -633,6 +773,9 @@ def update_user(username_id):
 
 @app.route("/edit_users")
 def edit_users():
+    """
+    Admin page for viewing all users guru status
+    """
     if 'user' in session and 'admin' in session:
         users = list(mongo.db.users.find({}, {"password": 0}))
         return render_template("edit_users.html", users=users)
@@ -642,6 +785,11 @@ def edit_users():
 
 @app.route("/rate_location/<location_id>", methods=['GET', "POST"])
 def rate_location(location_id):
+    """
+    Adds rating 1-5 from user for location.
+    If rating already exists, updates rating to
+    new rating.
+    """
     if 'user' in session:
         rating = list(mongo.db.ratings.find(
             {"location_id": ObjectId(
@@ -669,6 +817,11 @@ def rate_location(location_id):
 
 @app.route("/favourite_post/<post_id>")
 def favourite_post(post_id):
+    """
+    Favourites post for user.
+    If favourite already exists, removes
+    favourite. Otherwise adds favourite
+    """
     post = mongo.db.reviews.find_one({"_id": ObjectId(post_id)})
     if 'user' in session:
         favourite = list(mongo.db.favourites.find(
