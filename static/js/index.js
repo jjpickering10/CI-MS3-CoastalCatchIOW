@@ -1,15 +1,16 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.131.3';
 import { Water } from 'https://cdn.skypack.dev/three@0.131.3/examples/jsm/objects/Water.js';
 
-console.log(Water);
+/**
+ * Three JS javascript for background water and clouds animation
+ * Skills learnt from Bruno Simon ThreeJS course at 'https://threejs-journey.xyz/'
+ */
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
-
-// Objects
 
 // Water
 
@@ -26,7 +27,6 @@ const water = new Water(waterGeometry, {
   ),
   sunDirection: new THREE.Vector3(),
   sunColor: new THREE.Color(0x202020),
-//   sunColor: new THREE.Color(0x959eac),
   waterColor: new THREE.Color(0x006994),
   fog: scene.fog !== undefined,
 });
@@ -77,16 +77,11 @@ for (let i = 0; i < 10; i++) {
   scene.add(cloud);
 }
 
-// Materials
-
-// Mesh
-
 // Lights
 
 const light = new THREE.AmbientLight(0xb68d5f, 1);
 scene.add(light)
 scene.background = new THREE.Color(0x202020)
-// scene.background = new THREE.Color(0x959eac)
 
 /**
  * Sizes
@@ -126,7 +121,6 @@ scene.add(camera)
  */
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
-    // alpha: true
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
