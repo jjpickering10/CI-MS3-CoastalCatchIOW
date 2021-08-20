@@ -127,7 +127,66 @@ Typography:
 
 ## Features
 
--
+- Landing Page
+
+Use of [ThreeJS](https://threejs.org/) for background water and clouds animation. Water object has been taken from ThreeJS library and adapted.
+
+- Locations Page
+
+Structured using CSS Grid. Cards have tilt effect from [Vanilla Tilt JS](https://micku7zu.github.io/vanilla-tilt.js/).
+
+Micro interaction with spinning stars on hover.
+
+Current rating collected from database for each location is displayed in each card, along with total number of ratings. If there is no rating, a "no ratings yet" message is displayed. This is also displayed on each individual location page.
+
+Each individual location page has an image uploaded into the database. If there is no image uploaded, a default dummy image is used.
+
+Each individual location page has a form to rate the location for logged in users, with a display of your current rating. You can update your rating any time and the current rating, total ratings and your rating will adjust with the update in the database. Old ratings are removed for new ratings.
+
+Each individual location page has a form for posting into each location if user is logged in. It also has the posts displayed with a heart icon for favouriting the post. If favourited, the heart icon turns to full colour, if not favourited, the icon is just the outline fill. Only logged in users can favourite a post.
+
+Each individual location page has a collapsible toggle button showing total comments for each post as well as a reply section for logged in users.
+
+- Ask Guru Page
+
+Makes use of [materialize carousel](https://materializecss.com/carousel.html)] feature. Each carousel item shows the guru users who have guru privileges.
+
+Logged in users have the question form displayed.
+
+Categories of questions are displayed with toggle buttons using Javascript to display all questions associated with each category. If there are no questions, a "no posts yet" message is displayed.
+
+Each question has a thumbs up icon, giving users the option to like the question. Same as the heart favourite icon, if the user has liked the post, the thumbs up icon is filled, otherwise it is just outlined. Total likes from all users are displayed. Only logged in users can like.
+
+For guru users, a reply section is displayed for each question.
+
+Fixed toggle button in bottom right of page that pops out the top 3 most liked questions in the database.
+
+- Profile Page
+
+Only for logged in users. Displays admin and guru status if applicable.
+
+Displays profile image if user has uploaded an image as well as user description.
+
+3 separate sections for users own posts, questions asked and favourited posts with collapsible toggle buttons to display each.
+
+- About Page
+- Contact Page
+
+- Login/Register Pages
+
+Form for logging in and registering.
+
+- Admin Pages
+
+Admin has access to edit locations, edit categories and edit users to be able to edit and delete locations and categories as well as manage the guru status of each user.
+
+- Other site features
+
+Category selection for each question asked.
+
+Location selection for each post.
+
+Ability to upload images into database.
 
 ## Technologies Used
 
