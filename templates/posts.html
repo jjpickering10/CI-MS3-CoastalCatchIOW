@@ -78,7 +78,7 @@
 
 {% if session.user %}
 <div class="row post-section-container">
-  <form class="col s12 m6 darken-1" method="POST" action="{{ url_for('locations', location_id=location._id) }}">
+  <form class="col s12 m6 offset-m1 darken-1" method="POST" action="{{ url_for('locations', location_id=location._id) }}">
     <p>Post here about your experiences at <span>{{ location.location_name }}</span></p>
     <div class="row forum-text-field">
       <div class="input-field col s12">
@@ -103,7 +103,7 @@
 {% for review in reviews %}
 {% set favourite = [] %}
 <div class="row review-section-container">
-  <div class="col s12 m6 single-post">
+  <div class="col s12 m10 offset-m1 single-post">
     <div class="card">
       <div class="card-content white-text">
         <a href="{{ url_for('view_post', post_id=review._id)}}"><span
