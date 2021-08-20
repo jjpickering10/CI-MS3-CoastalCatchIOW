@@ -179,7 +179,7 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   background: var(--white-color);
   color: var(--primary-brown);
   text-transform: lowercase;
-  width: 25%;
+  width: 50%;
 }
 .register-form-container .register-card .register-button:hover, .register-form-container .register-card .register-button:focus {
   transition: 0.5s;
@@ -495,27 +495,34 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .review-section-container .single-post .card .collapsible-header {
   color: var(--primary-brown);
 }
-.review-section-container .single-post .card .comment-section-container, .review-section-container .single-post .card .add-comment-section {
+.review-section-container .single-post .card .comment-section-container,
+.review-section-container .single-post .card .add-comment-section {
   padding: 24px;
 }
-.review-section-container .single-post .card .comment-section-container .comment-reply, .review-section-container .single-post .card .add-comment-section .comment-reply {
+.review-section-container .single-post .card .comment-section-container .comment-reply,
+.review-section-container .single-post .card .add-comment-section .comment-reply {
   font-size: 1.5rem;
   font-weight: 200;
 }
-.review-section-container .single-post .card .comment-section-container .comment-date, .review-section-container .single-post .card .add-comment-section .comment-date {
+.review-section-container .single-post .card .comment-section-container .comment-date,
+.review-section-container .single-post .card .add-comment-section .comment-date {
   font-size: 50%;
 }
-.review-section-container .single-post .card .comment-section-container .comment-created, .review-section-container .single-post .card .add-comment-section .comment-created {
+.review-section-container .single-post .card .comment-section-container .comment-created,
+.review-section-container .single-post .card .add-comment-section .comment-created {
   font-size: 50%;
 }
-.review-section-container .single-post .card .comment-section-container a, .review-section-container .single-post .card .add-comment-section a {
+.review-section-container .single-post .card .comment-section-container a,
+.review-section-container .single-post .card .add-comment-section a {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   background: var(--primary-brown);
   text-transform: lowercase;
 }
-.review-section-container .single-post .card .comment-section-container a:hover, .review-section-container .single-post .card .comment-section-container a:focus, .review-section-container .single-post .card .add-comment-section a:hover, .review-section-container .single-post .card .add-comment-section a:focus {
+.review-section-container .single-post .card .comment-section-container a:hover, .review-section-container .single-post .card .comment-section-container a:focus,
+.review-section-container .single-post .card .add-comment-section a:hover,
+.review-section-container .single-post .card .add-comment-section a:focus {
   transition: 0.5s;
   background: var(--primary-blue);
   transform: scale(1.05);
@@ -580,18 +587,24 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 
 .profile-info {
   margin: 0 auto;
-  width: 75%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1rem;
   transform: translateY(10vh);
+}
+.profile-info .card-content {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
 }
 
 .user-info {
   margin: 0 auto;
-  width: 75%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  width: 75%;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1rem;
   transform: translateY(10vh);
 }
@@ -608,7 +621,6 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   text-transform: lowercase;
 }
 .user-info div .collapsible {
-  padding: 1rem;
   border: none;
   box-shadow: none;
 }
@@ -622,6 +634,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 }
 .user-info div .collapsible .collapsible-body {
   word-wrap: break-word;
+  padding: 2rem 0;
 }
 .user-info div .collapsible .collapsible-body .card {
   background: var(--secondary-blue);
@@ -664,9 +677,8 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 
 .view-locations-admin {
   margin: 0 auto;
-  width: 75%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1rem;
   transform: translateY(10vh);
 }
@@ -675,10 +687,10 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   flex-direction: column;
   padding: 1rem 2rem;
   background: var(--secondary-blue);
-  word-wrap: break-word;
   box-shadow: 0 0 10rem 0 var(--secondary-brown);
 }
 .view-locations-admin .view-locations-text h2 {
+  font-size: 3rem;
   font-weight: 500;
 }
 .view-locations-admin .view-locations-text h5 {
@@ -694,7 +706,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   font-weight: 200;
 }
 .view-locations-admin .view-locations-text .location-edit-button {
-  width: 25%;
+  width: 50%;
   border-radius: 0.5rem;
   text-transform: lowercase;
   background: var(--primary-brown);

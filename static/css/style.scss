@@ -66,9 +66,11 @@ nav {
 
             li {
                 text-transform: lowercase;
+
                 a {
                     font-size: 0.75rem;
                 }
+
                 &:hover,
                 &:focus {
                     a {
@@ -93,6 +95,7 @@ nav {
     top: 0;
     left: 0;
     overflow-x: hidden;
+
     h1 {
         position: relative;
         font-weight: 700;
@@ -175,16 +178,20 @@ nav {
             margin: 10rem auto 0 auto;
             font-size: 2.5rem;
             text-align: center;
+
             span {
                 font-size: 2.5rem;
             }
         }
+
         .home-text-content {
             transform: translate(0);
             margin: 3rem auto 0 auto;
+
             p {
                 font-size: 1rem;
             }
+
             .home-button:nth-of-type(2) {
                 margin-left: 0;
             }
@@ -208,6 +215,7 @@ nav {
             background: #394955c7;
             box-shadow: 0rem 0rem 5rem 0rem #b68d5f;
             padding: 3rem 2rem;
+
             .edit-location-image {
                 width: 100%;
             }
@@ -222,7 +230,7 @@ nav {
                 var(--white-color);
             color: var(--primary-brown);
             text-transform: lowercase;
-            width: 25%;
+            width: 50%;
 
             &:hover,
             &:focus {
@@ -336,7 +344,9 @@ main {
     text-transform: lowercase;
     background: var(--primary-brown);
     margin-top: 5rem;
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
         transition: 0.5s;
         background: var(--secondary-brown);
         transform: translateX(50%) scale(1.1);
@@ -376,9 +386,11 @@ main {
         justify-content: space-between;
         align-items: center;
         min-height: 100vh;
-        > div:nth-of-type(1) {
+
+        >div:nth-of-type(1) {
             text-align: center;
         }
+
         .posts-heading {
             margin: 0;
             font-size: 5rem;
@@ -584,15 +596,19 @@ main {
 
 .review-section-container {
     margin-top: 5rem;
+
     .single-post {
         background: #7f5b3000;
         box-shadow: -20px 20rem 20rem 5rem var(--tertiary-blue);
+
         .card {
             .card-content {
                 background: var(--secondary-blue);
                 word-wrap: break-word;
+
                 a {
                     color: var(--white-color);
+
                     .card-title {
                         font-size: 3rem;
                         font-weight: 500;
@@ -600,6 +616,7 @@ main {
                         line-height: 1.25;
                     }
                 }
+
                 p {
                     font-size: 1rem;
                     font-weight: 200;
@@ -607,34 +624,43 @@ main {
                     padding: 3rem;
                 }
             }
+
             .collapsible {
                 border: none;
             }
+
             .collapsible-header {
                 color: var(--primary-brown);
             }
+
             background: var(--secondary-blue);
-            .comment-section-container, .add-comment-section {
+
+            .comment-section-container,
+            .add-comment-section {
                 padding: 24px;
-                .comment-reply{
+
+                .comment-reply {
                     font-size: 1.5rem;
                     font-weight: 200;
                 }
-                .comment-date{
+
+                .comment-date {
                     font-size: 50%;
-                    
+
                 }
-                .comment-created{
+
+                .comment-created {
                     font-size: 50%;
-                    
+
                 }
+
                 a {
                     margin-top: 1rem;
                     margin-bottom: 1rem;
                     border-radius: 0.5rem;
                     background: var(--primary-brown);
                     text-transform: lowercase;
-    
+
                     &:hover,
                     &:focus {
                         transition: 0.5s;
@@ -643,43 +669,50 @@ main {
                     }
                 }
             }
+
             .add-comment-section {
                 padding: 2rem;
+
                 form {
                     background: var(--secondary-blue);
                     padding: 3rem;
                     box-shadow: 0 0 10px 0 black;
+
                     button {
                         margin-top: 1rem;
                         margin-bottom: 1rem;
                         border-radius: 0.5rem;
                         background: var(--primary-brown);
                         text-transform: lowercase;
-    
-                    &:hover,
-                    &:focus {
-                        transition: 0.5s;
-                        background: var(--secondary-brown);
-                        transform: scale(1.05);
-                    }
+
+                        &:hover,
+                        &:focus {
+                            transition: 0.5s;
+                            background: var(--secondary-brown);
+                            transform: scale(1.05);
+                        }
                     }
                 }
             }
+
             .card-action {
                 background: var(--primary-brown);
+
                 .post-date {
                     font-size: 0.5rem;
                 }
+
                 .post-created-by {
                     font-size: 0.75rem;
                 }
+
                 a {
                     margin-top: 1rem;
                     margin-bottom: 1rem;
                     border-radius: 0.5rem;
                     background: var(--secondary-brown);
                     text-transform: lowercase;
-    
+
                     &:hover,
                     &:focus {
                         transition: 0.5s;
@@ -689,7 +722,7 @@ main {
                     }
                 }
             }
-            
+
         }
     }
 }
@@ -713,26 +746,35 @@ main {
 
 .profile-info {
     margin: 0 auto;
-    width: 75%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 1rem;
     transform: translateY(10vh);
+
+    .card-content {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 auto;
+    }
 }
 
 .user-info {
     margin: 0 auto;
-    width: 75%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    width: 75%;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 1rem;
     transform: translateY(10vh);
+
     div {
         h2 {
             font-size: 1.2rem;
             margin: 0;
             padding: 1rem;
             font-weight: 200;
+
             span {
                 font-weight: 300;
                 font-size: 3rem;
@@ -740,10 +782,11 @@ main {
                 text-transform: lowercase;
             }
         }
+
         .collapsible {
-            padding: 1rem;
             border: none;
             box-shadow: none;
+
             .collapsible-header {
                 background: var(--primary-brown);
                 border: none;
@@ -752,18 +795,24 @@ main {
                 width: 50%;
                 border-radius: 1rem;
             }
+
             .collapsible-body {
                 word-wrap: break-word;
+                padding: 2rem 0;
+
                 .card {
                     background: var(--secondary-blue);
                     box-shadow: 0 0 10rem 0 var(--primary-brown);
+
                     .card-action {
                         a {
                             text-transform: lowercase;
                             background: var(--primary-brown);
                             border-radius: 0.5rem;
                             margin-top: 1rem;
-                            &:hover, &:focus {
+
+                            &:hover,
+                            &:focus {
                                 transition: 0.5s;
                                 background: var(--secondary-brown);
                                 transform: scale(1.1);
@@ -771,15 +820,18 @@ main {
                         }
                     }
                 }
+
                 .card-title {
                     font-weight: 500;
                 }
+
                 .card-title:nth-of-type(2) {
                     font-size: 2rem;
                     font-weight: 300;
                     text-decoration: underline;
                     margin-bottom: 2rem;
                 }
+
                 p {
                     font-weight: 200;
                 }
@@ -805,26 +857,31 @@ main {
 
 .view-locations-admin {
     margin: 0 auto;
-    width: 75%;
+    // width: 75%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 1rem;
     transform: translateY(10vh);
+
     .view-locations-text {
         display: flex;
         flex-direction: column;
         padding: 1rem 2rem;
         background: var(--secondary-blue);
-        word-wrap: break-word;
+        // word-wrap: break-word;
         box-shadow: 0 0 10rem 0 var(--secondary-brown);
+
         h2 {
+            font-size: 3rem;
             font-weight: 500;
         }
+
         h5 {
             font-size: 1.25rem;
             font-weight: 200;
             line-height: 1.25;
         }
+
         p {
             font-size: 0.5rem;
 
@@ -832,20 +889,24 @@ main {
                 font-size: 1rem;
                 font-weight: 200;
             }
-            
+
         }
+
         .location-edit-button {
-            width: 25%;
+            width: 50%;
             border-radius: 0.5rem;
             text-transform: lowercase;
             background: var(--primary-brown);
-            &:hover, &:focus {
+
+            &:hover,
+            &:focus {
                 transition: 0.5s;
                 background: var(--secondary-brown);
                 transform: scale(1.1);
             }
         }
     }
+
     img {
         width: 100%;
     }
@@ -860,33 +921,38 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 3rem;
     transform: translateY(10vh);
+
     div {
         color: var(--white-color);
         width: 100%;
         background: var(--secondary-blue);
         box-shadow: 0 0 10rem 0rem var(--primary-brown);
         border-radius: 0.5rem;
+
         h2 {
             font-size: 2rem;
             font-weight: 500;
             padding: 1rem;
             margin: 0;
         }
+
         a {
             font-size: 1rem;
             font-weight: 200;
             text-transform: lowercase;
             margin: 0 1rem 2rem 1rem;
             background: var(--primary-brown);
-            &:hover, &:focus {
+
+            &:hover,
+            &:focus {
                 transition: 0.5s;
                 transform: scale(1.1);
                 background: var(--white-color);
                 color: var(--primary-brown);
             }
         }
-        
-        
+
+
     }
 }
 
@@ -904,16 +970,20 @@ main {
     gap: 3rem;
     width: 75%;
     margin: 0 auto;
+
     .guru-users {
         margin-bottom: 2rem;
+
         .card {
             margin: 0;
             background: var(--secondary-blue);
             box-shadow: 0 0 10rem 0 var(--primary-brown);
             border-radius: 1rem;
+
             .card-content {
                 word-wrap: break-word;
             }
+
             .guru-user-description {
                 padding: 3rem;
                 font-size: 1.5rem;
@@ -921,27 +991,33 @@ main {
                 font-style: italic;
             }
         }
+
         .card-title {
             font-size: 3rem;
             font-weight: 500;
         }
+
         .guru-status {
             font-size: 0.5rem;
             font-weight: 100;
+
             span {
                 font-size: 3rem;
                 color: var(--bright-blue);
                 font-weight: 300;
             }
         }
+
         .guru-form {
             padding: 2rem;
             background: var(--secondary-brown);
             border-radius: 0 0 1rem 1rem;
+
             label {
                 font-size: 1rem;
                 color: var(--white-color);
             }
+
             button {
                 background: var(--primary-brown);
                 text-transform: lowercase;
@@ -950,6 +1026,7 @@ main {
                 padding-bottom: 1rem;
             }
         }
+
         img {
             width: 50%;
         }
@@ -962,35 +1039,42 @@ main {
     z-index: 100;
     height: 800px;
     margin-top: 5rem;
+
     .carousel-item {
         width: 300px;
         height: 800px;
+
         .card {
             border-radius: 1rem;
             background: var(--secondary-blue);
             box-shadow: 0 0 20rem 3rem var(--secondary-brown);
+
             .card-image {
                 transform: scale(0.95);
+
                 img {
                     width: 100%;
                     border-radius: 1rem;
                 }
             }
+
             .card-content {
                 p {
                     font-weight: 100;
                     font-style: italic;
                 }
             }
+
             .card-action {
                 border-radius: 1rem;
                 background: var(--primary-brown);
+
                 .card-title {
                     font-weight: 500;
                     color: var(--white-color);
                 }
             }
-            
+
         }
     }
 }
@@ -1012,6 +1096,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 3rem;
+
     // background: var(--tertiary-blue);
     .ask-guru-info-container {
         display: flex;
@@ -1019,7 +1104,7 @@ main {
         justify-content: flex-start;
         align-items: center;
         // box-shadow:  inset 0px 0px 4rem 4rem var(--secondary-blue);
-       
+
         .guru-text-content {
             display: flex;
             flex-direction: column;
@@ -1028,18 +1113,20 @@ main {
             width: 100%;
             // box-shadow: 0rem -0rem 20rem 10rem var(--secondary-blue);
             box-shadow: 40rem 0rem 20rem 20rem var(--secondary-blue);
-                        
+
             // background: rgba(0, 0, 0, 0.5);
             h3 {
                 font-size: 3rem;
                 padding: 2rem;
                 z-index: 10;
+
                 span {
                     font-size: 7rem;
                     font-weight: 700;
                     color: var(--primary-brown);
                 }
             }
+
             p {
                 padding: 2rem;
                 z-index: 10;
@@ -1048,47 +1135,53 @@ main {
                 font-size: 1.25rem;
             }
         }
-        
+
     }
+
     .question-container {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+
         .ask-question {
             width: 100%;
             box-shadow: -40rem 0rem 20rem 20rem #394955b8;
+
             h3 {
                 padding: 2rem;
                 font-size: 3rem;
+
                 span {
                     font-size: 7rem;
                     font-weight: 700;
                     color: var(--primary-brown);
                 }
             }
+
             form {
                 padding: 2rem;
                 margin-top: 5rem;
-                
+
                 .row {
                     .input-field {
                         width: 100%;
                     }
+
                     button {
                         border-radius: 0.5rem;
                         background: var(--primary-brown);
                         text-transform: lowercase;
-    
-                    &:hover,
-                    &:focus {
-                        transition: 0.5s;
-                        background: var(--secondary-brown);
-                        transform: scale(1.05);
-                    }
+
+                        &:hover,
+                        &:focus {
+                            transition: 0.5s;
+                            background: var(--secondary-brown);
+                            transform: scale(1.05);
+                        }
                     }
                 }
-                
+
             }
         }
     }
@@ -1099,6 +1192,7 @@ main {
     margin-top: 10rem;
     margin-bottom: 10rem;
     z-index: 10;
+
     .category-buttons {
         background-color: var(--white-color);
         color: var(--primary-brown);
@@ -1109,23 +1203,28 @@ main {
 }
 
 .questions-list {
-     > .col {
+    >.col {
         box-shadow: 0 0 10rem 0 var(--secondary-brown);
     }
+
     .card-content {
         p {
             font-size: 0.5rem;
+
             span {
                 font-weight: 500;
                 font-size: 1rem;
             }
         }
+
         .question-likes {
             font-size: 0.5rem;
+
             span {
                 font-size: 1rem;
             }
         }
+
         .question-description-post {
             padding: 3rem 3rem 0 3rem;
             font-size: 2rem;
@@ -1133,20 +1232,25 @@ main {
             font-style: italic;
         }
     }
+
     .question-user {
         .question-created-by {
             font-size: 0.5rem;
+
             span {
                 font-size: 1rem;
             }
         }
+
         a {
             background: var(--white-color);
             color: var(--primary-brown);
             text-transform: lowercase;
             border-radius: 0.5rem;
             margin-top: 1rem;
-            &:hover, &:focus {
+
+            &:hover,
+            &:focus {
                 transition: 0.5s;
                 background: var(--primary-brown);
                 color: var(--white-color);
@@ -1155,6 +1259,7 @@ main {
         }
 
     }
+
     .question-reply {
         position: relative;
         padding-left: calc(3rem + 24px);
@@ -1162,6 +1267,7 @@ main {
         font-weight: 500;
         font-style: italic;
         padding-top: 1rem;
+
         &:before {
             content: '';
             position: absolute;
@@ -1173,18 +1279,23 @@ main {
             transform: translateX(calc(-100% + 3rem));
         }
     }
+
     .question-reply-user {
         font-size: 0.5rem;
         padding-left: calc(3rem + 24px);
     }
+
     .question-buttons {
         margin-left: calc(3rem + 24px);
+
         a {
             background: var(--primary-brown);
             text-transform: lowercase;
             border-radius: 0.5rem;
             margin-top: 1rem;
-            &:hover, &:focus {
+
+            &:hover,
+            &:focus {
                 transition: 0.5s;
                 background: var(--white-color);
                 color: var(--primary-brown);
@@ -1192,25 +1303,29 @@ main {
             }
         }
     }
+
     .reply-section {
         padding: 1rem;
         margin: 2rem 0 0 0;
         box-shadow: 0 0 10rem 0 var(--secondary-blue), inset 0 0 2rem 0 var(--secondary-blue);
         border-radius: 1rem;
+
         button {
             background: var(--secondary-blue);
             color: var(--white-color);
             text-transform: lowercase;
             border-radius: 0.5rem;
             margin-top: 1rem;
-            &:hover, &:focus {
+
+            &:hover,
+            &:focus {
                 transition: 0.5s;
                 background: var(--primary-blue);
                 transform: scale(1.1);
             }
         }
     }
-    
+
 }
 
 .liked-posts-button {
@@ -1220,6 +1335,7 @@ main {
     width: 10rem;
     margin: 0.5rem;
     z-index: 10001;
+
     button {
         font-family: "Poppins", sans-serif;
         background: var(--bright-blue);
@@ -1228,7 +1344,9 @@ main {
         border-radius: 1rem;
         border: none;
         padding: 0.5rem;
-        &:hover, &:focus {
+
+        &:hover,
+        &:focus {
             cursor: pointer;
         }
     }
@@ -1250,6 +1368,7 @@ main {
     cursor: pointer;
     overflow: scroll;
     border-radius: 2rem;
+
     div {
         background: var(--white-color);
         border-radius: 1rem;
@@ -1257,11 +1376,13 @@ main {
         overflow: scroll;
         word-wrap: break-word;
         height: 200px;
+
         p {
             color: black;
             font-weight: 100;
             font-size: 0.75rem;
             padding: 1rem;
+
             span {
                 color: var(--secondary-blue);
                 font-size: 2rem;
@@ -1285,21 +1406,25 @@ main {
 @media only screen and (max-width: 650px) {
     .ask-guru-container {
         margin: 0;
+
         .ask-guru-info-container {
             .guru-text-content {
                 h3 {
                     font-size: 1.5rem;
+
                     span {
                         font-size: 3rem;
                     }
                 }
             }
-            
+
         }
+
         .question-container {
             .ask-question {
                 h3 {
                     font-size: 1.5rem;
+
                     span {
                         font-size: 3rem;
                     }
