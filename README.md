@@ -149,7 +149,7 @@ Each individual location page has a collapsible toggle button showing total comm
 
 - Ask Guru Page
 
-Makes use of [materialize carousel](https://materializecss.com/carousel.html)] feature. Each carousel item shows the guru users who have guru privileges.
+Makes use of [materialize carousel](https://materializecss.com/carousel.html) feature. Each carousel item shows the guru users who have guru privileges.
 
 Logged in users have the question form displayed.
 
