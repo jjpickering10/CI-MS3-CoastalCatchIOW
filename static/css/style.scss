@@ -24,6 +24,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+
     .main-content {
         flex: 1 0 auto;
         padding-bottom: 10vh;
@@ -1445,9 +1446,27 @@ main {
 
 .page-footer {
     padding-top: 20px;
-    color: #fff;
-    background-color: #ee6e73;
+    color: var(--white-color);
+    background: var(--secondary-blue);
     width: 100vw;
-    z-index: 100000;
-    // transform: translateY(10vh);
+    // z-index: 100000;
+    font-weight: 100;
+    text-transform: lowercase;
+    .footer-copyright {
+        .container {
+            a {
+                padding: 0 1rem;
+            }
+        }
+    }
+
+    .footer-links,
+    i {
+        &:hover,
+        &:focus {
+            transition: 0.3s;
+            color: var(--primary-brown);
+            transform: translateX(1%);
+        }
+    }
 }
