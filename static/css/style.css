@@ -1100,4 +1100,22 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 
 .questions-hide {
   display: none;
+}
+
+@media only screen and (max-width: 650px) {
+  .ask-guru-container {
+    margin: 0;
+  }
+  .ask-guru-container .ask-guru-info-container .guru-text-content h3 {
+    font-size: 1.5rem;
+  }
+  .ask-guru-container .ask-guru-info-container .guru-text-content h3 span {
+    font-size: 3rem;
+  }
+  .ask-guru-container .question-container .ask-question h3 {
+    font-size: 1.5rem;
+  }
+  .ask-guru-container .question-container .ask-question h3 span {
+    font-size: 3rem;
+  }
 }/*# sourceMappingURL=style.css.map */

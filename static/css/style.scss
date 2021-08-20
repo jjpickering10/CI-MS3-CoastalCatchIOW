@@ -958,7 +958,7 @@ main {
     }
 }
 
-// Questions Page
+// Guru Page
 
 .carousel {
     z-index: 100;
@@ -1280,4 +1280,33 @@ main {
 
 .questions-hide {
     display: none;
+}
+
+// Guru page media queries
+
+@media only screen and (max-width: 650px) {
+    .ask-guru-container {
+        margin: 0;
+        .ask-guru-info-container {
+            .guru-text-content {
+                h3 {
+                    font-size: 1.5rem;
+                    span {
+                        font-size: 3rem;
+                    }
+                }
+            }
+            
+        }
+        .question-container {
+            .ask-question {
+                h3 {
+                    font-size: 1.5rem;
+                    span {
+                        font-size: 3rem;
+                    }
+                }
+            }
+        }
+    }
 }
