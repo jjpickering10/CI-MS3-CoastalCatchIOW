@@ -21,6 +21,13 @@ body {
     background: var(--secondary-blue);
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .main-content {
+        flex: 1 0 auto;
+        padding-bottom: 10vh;
+    }
 }
 
 // Canvas 
@@ -91,9 +98,9 @@ nav {
 .home-page-container {
     height: 100vh;
     width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
     overflow-x: hidden;
 
     h1 {
@@ -1432,4 +1439,15 @@ main {
             }
         }
     }
+}
+
+// Footer
+
+.page-footer {
+    padding-top: 20px;
+    color: #fff;
+    background-color: #ee6e73;
+    width: 100vw;
+    z-index: 100000;
+    // transform: translateY(10vh);
 }
