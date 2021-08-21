@@ -19,7 +19,7 @@
 </head>
 <body>
     <!-- Main Navbar -->
-    <header>
+    <header class="transition-element">
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper navigation-main">
@@ -67,7 +67,7 @@
       </ul>
     </header>
 
-    <section>
+    <section class="transition-element">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -79,12 +79,12 @@
         {% endwith %}
     </section>
 
-    <canvas class="webgl"></canvas>
-    <section class="main-content">
+    <canvas class="webgl transition-element"></canvas>
+    <section class="main-content transition-element">
     {% block content %}
     {% endblock %}
     </section>
-    <footer class="page-footer">
+    <footer class="page-footer transition-element">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
@@ -139,11 +139,16 @@
       window.addEventListener('load', () => {
       tl.to(loadingContainer, {
       translateX: "100%",
-      duration: 2.5,
-      ease: "expo.out"
+      duration: 1.5,
+      ease: "power4.in"
       })
-      loadingBarElement.classList.add("ended");
-      loadingBarElement.style.transform = "";
+      .to('.transition-element', {
+        opacity: 1,
+        duration: 2.5,
+        ease: "power4.in",
+      }, "-=1.5")
+      // loadingBarElement.classList.add("ended");
+      // loadingBarElement.style.transform = "";
       })
     </script>
 </body>

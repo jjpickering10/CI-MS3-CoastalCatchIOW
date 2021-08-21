@@ -1155,6 +1155,10 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: translateX(1%);
 }
 
+.transition-element {
+  opacity: 0;
+}
+
 .loading {
   position: absolute;
   top: 0;
@@ -1182,8 +1186,4 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 }
 .loading .progress .indeterminate {
   background: var(--primary-brown);
-}
-.loading .progress.ended {
-  transform-origin: top right;
-  transition: transform 1.5s ease-in-out;
 }/*# sourceMappingURL=style.css.map */

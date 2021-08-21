@@ -24,7 +24,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
     .main-content {
         flex: 1 0 auto;
         padding-bottom: 10vh;
@@ -1471,6 +1470,11 @@ main {
     }
 }
 
+.transition-element {
+    // transform: translateX(-200%);
+    opacity: 0;
+}
+
 // Loading 
 
 .loading {
@@ -1500,8 +1504,4 @@ main {
             background: var(--primary-brown);
         }
     }
-    .progress.ended {
-        transform-origin: top right;
-        transition: transform 1.5s ease-in-out;
-      }
   }
