@@ -99,6 +99,21 @@
 </div>
 {% endif %}
 
+<div class="row card-panel search-container">
+  <form action="{{ url_for('search_posts', location_id=location._id) }}" method="POST" class="col s12 m6 offset-m3 search-form">
+    <div class="row valign-wrapper center-align">
+      <div class="input-field col s12 m8">
+        <input type="text" name="posts_query" id="posts_query" minlength="3" maxlength="25" required>
+        <label for="posts_query">Search Locations</label>
+      </div>
+      <div class="col s12 m4 search-buttons">
+        <a href="{{ url_for('locations', location_id=location._id) }}" class="btn-small">Reset</a>
+        <button type="submit" class="btn-small">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
 {% if reviews|length > 0 %}
 {% for review in reviews %}
 {% set favourite = [] %}
@@ -208,6 +223,6 @@
 
 {% endfor %}
 {% else %}
-<p class="no-posts-locations">No Posts Yet</p>
+<p class="no-posts-locations">No Posts Found</p>
 {% endif %}
 {% endblock %}

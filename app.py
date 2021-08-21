@@ -278,6 +278,44 @@ def locations(location_id):
         rating=rating, ratings=ratings, fav_user=fav_user)
 
 
+@app.route("/search_posts/<location_id>", methods=["GET", "POST"])
+def search_posts(location_id):
+    """
+    Search posts within individual location.
+    Searches all posts with the search, then loops through
+    to find matching location id and appends to new list
+    """
+    if request.method == "POST":
+        location = mongo.db.locations.find_one(
+            {"_id": ObjectId(location_id)})
+
+        comments = list(mongo.db.comments.find({"location_id": location_id}))
+        posts_query = request.form.get('posts_query')
+        all_reviews = list(mongo.db.reviews.find(
+            {"$text": {"$search": posts_query}}))
+        reviews = []
+        for review in all_reviews:
+            if review['location_id'] == location_id:
+                reviews.append(review)
+        ratings = list(mongo.db.ratings.find(
+            {"location_id": ObjectId(location_id)}))
+        if 'user' in session:
+            rating = mongo.db.ratings.find_one({"location_id": ObjectId(
+                location_id), "rating_user": session['user']})
+            fav_user = list(mongo.db.favourites.find(
+                {"favourite_user": session['user']}))
+        else:
+            rating = None
+            fav_user = None
+
+        return render_template(
+            "posts.html", location=location,
+            reviews=reviews, comments=comments,
+            rating=rating, ratings=ratings, fav_user=fav_user)
+
+    return redirect(url_for('get_locations'))
+
+
 @app.route("/view_post/<post_id>")
 def view_post(post_id):
     """
