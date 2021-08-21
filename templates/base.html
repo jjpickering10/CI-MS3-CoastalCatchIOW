@@ -115,13 +115,13 @@
         </div>
       </div>
     </footer>
-    <div class="loading">
+    <!-- <div class="loading">
       <p class="loading-background">CoastalCatch</p>
       <p>Loading...</p>
       <div class="progress">
         <div class="indeterminate"></div>
     </div>
-    </div>
+    </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script type="module" src="{{  url_for('static', filename='js/index.js') }}"></script>
@@ -129,7 +129,7 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}
-    <script>
+    <!-- <script>
       // Loading
 
       const loadingBarElement = document.querySelector(".progress");
@@ -150,6 +150,6 @@
       // loadingBarElement.classList.add("ended");
       // loadingBarElement.style.transform = "";
       })
-    </script>
+    </script> -->
 </body>
 </html>

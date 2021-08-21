@@ -1156,7 +1156,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 }
 
 .transition-element {
-  opacity: 0;
+  opacity: 1;
 }
 
 .modal {
