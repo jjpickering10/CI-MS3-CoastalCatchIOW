@@ -10,7 +10,7 @@
       {% endif %}
 
       <div class="row card-panel search-container">
-        <form action="" class="col s12 m6 offset-m3 search-form">
+        <form action="{{ url_for('search_locations') }}" method="POST" class="col s12 m6 offset-m3 search-form">
           <div class="row valign-wrapper center-align">
             <div class="input-field col s12 m8">
               <input type="text" name="location_query" id="location_query" minlength="3" maxlength="25" required>
@@ -24,6 +24,7 @@
         </form>
       </div>
 
+      {% if locations|length > 0 %}
       <main>
       {% for location in locations %}
       <div class="card locations-card" data-tilt data-tilt-max="2" data-tilt-speed="400" data-tilt-scale="1.02" data-tilt-perspective="1000" data-tilt-glare data-tilt-max-glare="0.2">
@@ -59,5 +60,8 @@
       </div>
       {% endfor %}
     </main>
+    {% else %}
+    <p class="no-posts-locations">Nothing Found :(</p>
+    {% endif %}
 
 {% endblock %}

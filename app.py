@@ -207,10 +207,28 @@ def get_locations():
     Returns locations page with locations
     and ratings of each from MongoDB
     """
-    locations = mongo.db.locations.find()
+    locations = list(mongo.db.locations.find())
     ratings = list(mongo.db.ratings.find())
     return render_template(
         "locations.html", locations=locations, ratings=ratings)
+
+
+@app.route("/search_locations", methods=["GET", "POST"])
+def search_locations():
+    """
+    Search locations
+    """
+    if request.method == "POST":
+        location_query = request.form.get('location_query')
+        print(location_query)
+        locations = list(mongo.db.locations.find(
+            {"$text": {"$search": location_query}}))
+        print(locations)
+        ratings = list(mongo.db.ratings.find())
+        return render_template(
+            "locations.html", locations=locations, ratings=ratings)
+
+    return redirect(url_for('get_locations'))
 
 
 @app.route("/locations/<location_id>", methods=["GET", "POST"])
