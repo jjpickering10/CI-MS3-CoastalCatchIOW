@@ -68,7 +68,19 @@
             <div class="card-action">
               <p>{{ review.created_by }}</p>
               {% if session.user|lower == review.created_by|lower or session.admin|lower == "yes" %}
-              <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>
+                        <!-- Modal -->
+
+      <!-- Modal Structure -->
+      <div id="modal-{{ review._id }}" class="modal">
+        <div class="modal-content">
+          <h4>Are you sure you want to delete?</h4>
+        </div>
+        <div class="modal-footer">
+          <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>
+          <a href="#!" class="modal-close btn-small">Close</a>
+        </div>
+      </div>
+      <a class="btn-small modal-trigger" href="#modal-{{ review._id }}">Delete</a>
               <a href="{{ url_for('edit_post', post_id=review._id) }}" class="btn-small">Edit</a>
               {% endif %}
             </div>
@@ -95,7 +107,19 @@
             <div class="card-action">
               <p>{{ question.created_by }}</p>
               {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
-              <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
+              <!-- Modal -->
+
+      <!-- Modal Structure -->
+      <div id="modal-{{ question._id }}" class="modal">
+        <div class="modal-content">
+          <h4>Are you sure you want to delete?</h4>
+        </div>
+        <div class="modal-footer">
+          <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
+          <a href="#!" class="modal-close btn-small">Close</a>
+        </div>
+      </div>
+      <a class="btn-small modal-trigger" href="#modal-{{ question._id }}">Delete</a>
               <a href="{{ url_for('edit_question', question_id=question._id) }}" class="btn-small">Edit</a>
               {% endif %}
             </div>
