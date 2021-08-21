@@ -234,3 +234,46 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+<script>
+  // Category selection for ask guru categories
+
+  const questionsList = document.querySelectorAll('.questions-list')
+  const categoryButtons = document.querySelectorAll('.category-buttons')
+  const noPosts = document.querySelector('#no-posts')
+  let emptyPosts = 0
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      noPosts.classList.add("questions-hide")
+      emptyPosts = 0
+      const x = e.target.innerText.toLowerCase();
+      questionsList.forEach(question => {
+        if (x == question.dataset.questions.toLowerCase()) {
+          question.classList.toggle('questions-hide')
+        } else {
+          question.classList.add('questions-hide')
+          emptyPosts++
+          if (emptyPosts == questionsList.length) {
+            noPosts.classList.toggle("questions-hide")
+          }
+        }
+      })
+    })
+  })
+
+  // Function for popout most liked questions
+
+  const likedPostsButton = document.querySelector('.liked-posts-button')
+  const likedPosts = document.querySelector('.liked-posts')
+
+  likedPostsButton.addEventListener('click', () => {
+    likedPosts.classList.toggle('liked-posts-transform')
+  })
+
+  likedPosts.addEventListener('click', () => {
+    likedPosts.classList.toggle('liked-posts-transform')
+  })
+</script>
+{% endblock %}
