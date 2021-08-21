@@ -847,6 +847,14 @@ def favourite_post(post_id):
     return redirect(url_for("locations", location_id=post['location_id']))
 
 
+@app.route("/contact_us")
+def contact_us():
+    """
+
+    """
+    return render_template('contact_us.html')
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

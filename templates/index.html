@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="home-page-container">
-        <h1><span>CoastalCatch</h1>
-        <div class="home-text-content">  
-            <p>explore various beautiful coastal locations and ask our expert gurus</p>
-            <p>in our fishing forum for the <span>Isle of Wight</span></p>
-            <a class="btn-large home-button" href="{{ url_for('get_locations') }}">View Locations</a>
-            <a class="btn-large home-button" href="{{ url_for('ask_guru') }}">Ask a Guru</a>
+        <div class="home-page-container">
+            <h1><span>CoastalCatch</h1>
+            <div class="home-text-content">
+                <p>explore various beautiful coastal locations and ask our expert gurus</p>
+                <p>in our fishing forum for the <span>Isle of Wight</span></p>
+                <a class="btn-large home-button" href="{{ url_for('get_locations') }}">View Locations</a>
+                <a class="btn-large home-button" href="{{ url_for('ask_guru') }}">Ask a Guru</a>
+            </div>
         </div>
-    </div>
+        
 {% endblock %}

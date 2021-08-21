@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row register-form-container">
+  <form class="col s12 m6 offset-m3" method="POST" action="">
+    <div class="card-panel register-card">
+        <!-- First Name -->
+      <div class="row register-text-field">
+          <div class="input-field col s12">
+              <input id="firstname" name="firstname" type="text" class="validate" required>
+              <label for="firstname">First Name</label>
+            </div>
+      </div>
+        <!-- Last Name -->
+      <div class="row register-text-field">
+          <div class="input-field col s12">
+              <input id="lastname" name="lastname" type="text" class="validate" required>
+              <label for="lastname">Last Name</label>
+            </div>
+      </div>
+        <!-- Username -->
+      <div class="row register-text-field">
+          <div class="input-field col s12">
+              <input id="username" name="username" type="text" class="validate" required>
+              <label for="username">Username</label>
+            </div>
+      </div>
+        <!-- Email -->
+      <div class="row register-text-field">
+          <div class="input-field col s12">
+              <input id="email" name="email" type="email" class="validate" required>
+              <label for="email">Email</label>
+            </div>
+      </div>
+      <div class="row register-text-field">
+        <div class="input-field col s12">
+          <textarea id="emailmessage" name="emailmessage" type="text" class="materialize-textarea validate" required></textarea>
+          <label for="emailmessage">Your Message</label>
+        </div>
+      </div>
+        <!-- Send Message -->
+        <div class="row">
+            <button type="submit" class="col s12 btn-large register-button">Send Message</button>
+        </div>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}
