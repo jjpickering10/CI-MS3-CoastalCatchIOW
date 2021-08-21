@@ -96,6 +96,9 @@
             <ul>
               <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('home') }}">Home</a></li>
               <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('contact_us') }}">Contact</a></li>
+              {% if session.user %}
+              <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('apply_guru') }}">Apply To Be A Guru</a></li>
+              {% endif %}
               <li class="footer-links"><a class="grey-text text-lighten-3" href="#!">About</a></li>
               <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('ask_guru') }}">Ask Guru</a></li>
               <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('get_locations') }}">Locations</a></li>

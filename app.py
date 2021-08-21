@@ -855,6 +855,20 @@ def contact_us():
     return render_template('contact_us.html')
 
 
+@app.route("/apply_guru/")
+def apply_guru():
+    """
+    Renders apply guru page for logged in
+    users
+    """
+    if 'user' in session:
+        username = mongo.db.users.find_one(
+            {"username": session['user']})['username']
+        return render_template('apply_guru.html', username=username)
+
+    return redirect(url_for('login'))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

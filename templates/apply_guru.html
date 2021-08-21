@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div id="contact-container" class="row register-form-container">
-  <form id="contact-us-form" class="col s12 m6 offset-m3" onsubmit="return sendEmail(this);">
+<div id="apply-guru-container" class="row register-form-container">
+  <form id="guru-apply-form" class="col s12 m6 offset-m3" onsubmit="return sendEmail(this);">
     <div class="card-panel register-card">
-        <!-- First Name -->
+        <!-- Username -->
       <div class="row register-text-field">
           <div class="input-field col s12">
-              <input id="firstname" name="firstname" type="text" class="validate" required>
-              <label for="firstname">First Name</label>
+              <input id="username" name="username" type="text" class="validate" value="{{ username }}" required>
             </div>
       </div>
         <!-- Email -->
@@ -21,12 +20,12 @@
       <div class="row register-text-field">
         <div class="input-field col s12">
           <textarea id="emailmessage" name="emailmessage" type="text" class="materialize-textarea validate" required></textarea>
-          <label for="emailmessage">Your Message</label>
+          <label for="emailmessage">Tell Us Why</label>
         </div>
       </div>
         <!-- Send Message -->
         <div class="row">
-            <button type="submit" class="col s12 btn-large register-button">Send Message</button>
+            <button type="submit" class="col s12 btn-large register-button">Apply Here</button>
         </div>
     </div>
   </form>
@@ -37,18 +36,18 @@
 {% block scripts %}
 <script>
   function sendEmail(contact){
-    emailjs.send("service_0tdljkb","template_pp1q18h", {
-        from_name: contact.firstname.value,
+    emailjs.send("service_0tdljkb","template_4id09th", {
+        username: contact.username.value,
         from_email: contact.email.value,
         message: contact.emailmessage.value
     })
     .then(function (response) {
-                const form = document.getElementById('contact-us-form');
+                const form = document.getElementById('guru-apply-form');
                 form.style.display = "none";
-                const contactContainer = document.getElementById('contact-container');
+                const contactContainer = document.getElementById('apply-guru-container');
                 const sent = document.createElement("p");
                 
-                sent.innerText = "Thanks for your message!";
+                sent.innerText = "Thanks for your application! We'll be in touch";
                 sent.style.textAlign = "center";
                 contactContainer.appendChild(sent);
             }),
