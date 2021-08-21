@@ -129,5 +129,22 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}
+    <script>
+      // Loading
+
+      const loadingBarElement = document.querySelector(".progress");
+      const loadingContainer = document.querySelector(".loading");
+      const tl = gsap.timeline();
+
+      window.addEventListener('load', () => {
+      tl.to(loadingContainer, {
+      translateX: "100%",
+      duration: 2.5,
+      ease: "expo.out"
+      })
+      loadingBarElement.classList.add("ended");
+      loadingBarElement.style.transform = "";
+      })
+    </script>
 </body>
 </html>

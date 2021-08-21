@@ -1500,4 +1500,8 @@ main {
             background: var(--primary-brown);
         }
     }
+    .progress.ended {
+        transform-origin: top right;
+        transition: transform 1.5s ease-in-out;
+      }
   }
