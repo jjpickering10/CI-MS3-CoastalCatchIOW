@@ -1184,6 +1184,33 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   opacity: 0.75;
 }
 
+.search-container {
+  background: transparent;
+  box-shadow: none;
+  transform: scale(0.75);
+}
+.search-container .search-form {
+  background: #f5f5f53b;
+  border-radius: 1rem;
+  padding: 0;
+}
+.search-container .search-form div:nth-of-type(1) {
+  margin: 0.5rem;
+}
+.search-container .search-form .search-buttons {
+  padding: 0;
+}
+.search-container .search-form .search-buttons a, .search-container .search-form .search-buttons button {
+  margin: 0.5rem;
+  background: var(--bright-blue);
+  text-transform: lowercase;
+  border-radius: 0.5rem;
+}
+.search-container .search-form .search-buttons a:hover, .search-container .search-form .search-buttons a:focus, .search-container .search-form .search-buttons button:hover, .search-container .search-form .search-buttons button:focus {
+  transition: 0.3s;
+  background: var(--tertiary-blue);
+}
+
 .loading {
   position: absolute;
   top: 0;
