@@ -1075,44 +1075,36 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   cursor: pointer;
 }
 
-.liked-posts {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 75%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  transform: translateX(-200%);
-  z-index: 10000;
-  background: #7f5b30cc;
-  box-shadow: 0 0 20rem 20rem var(--primary-brown);
-  cursor: pointer;
-  overflow: scroll;
-  border-radius: 2rem;
+#liked-posts-modal .modal-content div {
+  box-shadow: 20px 20px 20px 0px #00000059;
+  background: #b68d5f24;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
 }
-.liked-posts div {
-  background: var(--white-color);
-  border-radius: 1rem;
-  margin: 1rem;
-  overflow: scroll;
-  word-wrap: break-word;
-  height: 200px;
-}
-.liked-posts div p {
+#liked-posts-modal p {
   color: black;
-  font-weight: 100;
   font-size: 0.75rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
-.liked-posts div p span {
-  color: var(--secondary-blue);
+#liked-posts-modal p span {
+  color: var(--white-color);
   font-size: 2rem;
   font-weight: 200;
 }
-
-.liked-posts-transform {
-  transition: 1s;
-  transform: translateX(0%);
+#liked-posts-modal .modal-question-category span {
+  text-decoration: underline;
+  font-size: 1rem;
+}
+#liked-posts-modal .modal-question-description span {
+  font-style: italic;
+  font-weight: 100;
+}
+#liked-posts-modal .modal-question-reply span {
+  font-style: italic;
+  font-weight: 400;
+}
+#liked-posts-modal .modal-question-likecount span {
+  font-size: 0.75rem;
 }
 
 .questions-hide {
@@ -1160,13 +1152,15 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 }
 
 .modal {
-  background: var(--primary-blue);
+  background: var(--secondary-blue);
+  box-shadow: 0px 0px 20px 20px #394955;
 }
 .modal .modal-content p {
   font-weight: 100;
 }
 .modal .modal-footer {
   background: var(--secondary-brown);
+  border-radius: 0.5rem;
 }
 .modal .modal-footer a {
   background: var(--primary-brown);

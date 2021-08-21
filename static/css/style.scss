@@ -1359,49 +1359,50 @@ main {
     }
 }
 
-.liked-posts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    // width: 100vw;
-    width: 75%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    // pointer-events: none;
-    transform: translateX(-200%);
-    z-index: 10000;
-    background: #7f5b30cc;
-    box-shadow: 0 0 20rem 20rem var(--primary-brown);
-    cursor: pointer;
-    overflow: scroll;
-    border-radius: 2rem;
-
-    div {
-        background: var(--white-color);
-        border-radius: 1rem;
-        margin: 1rem;
-        overflow: scroll;
-        word-wrap: break-word;
-        height: 200px;
-
-        p {
-            color: black;
-            font-weight: 100;
-            font-size: 0.75rem;
-            padding: 1rem;
-
-            span {
-                color: var(--secondary-blue);
-                font-size: 2rem;
-                font-weight: 200;
-            }
+#liked-posts-modal {
+    .modal-content {
+        div {
+            box-shadow: 20px 20px 20px 0px #00000059;
+            background: #b68d5f24;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
         }
     }
-}
 
-.liked-posts-transform {
-    transition: 1s;
-    transform: translateX(0%);
+    p {
+        color: black;
+        font-size: 0.75rem;
+        padding: 0.5rem;
+
+        span {
+            color: var(--white-color);
+            font-size: 2rem;
+            font-weight: 200;
+        }
+    }  
+    .modal-question-category {
+        span {
+            text-decoration: underline;
+            font-size: 1rem;
+        }
+    }
+    .modal-question-description {
+        span {
+            font-style: italic;
+            font-weight: 100;
+    }
+    }
+    .modal-question-reply {
+        span {
+            font-style: italic;
+            font-weight: 400;
+    }
+    }
+    .modal-question-likecount {
+        span {
+            font-size: 0.75rem;
+        }
+    }
 }
 
 .questions-hide {
@@ -1478,7 +1479,8 @@ main {
 // Modals
 
 .modal {
-    background: var(--primary-blue);
+    background: var(--secondary-blue);
+    box-shadow: 0px 0px 20px 20px #394955;
     .modal-content {
         p {
             font-weight: 100;
@@ -1486,6 +1488,7 @@ main {
     }
     .modal-footer {
         background: var(--secondary-brown);
+        border-radius: 0.5rem;
         a {
             background: var(--primary-brown);
             text-transform: lowercase;

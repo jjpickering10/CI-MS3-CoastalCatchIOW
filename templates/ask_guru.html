@@ -213,30 +213,41 @@
 
 {% endfor %}
 
-<div class="liked-posts-button">
-  <button>View most liked questions</button>
-</div>
-<div class="liked-posts">
 
-  {% for likedquestion in liked_questions %}
 
-  <div>
-    <p>Category: <span>{{ likedquestion.category_name }}</span></p>
-    <p>Question: <span>{{ likedquestion.question_description }}</span></p>
-    {% for reply in replies %}
-    {% if reply.question_id == likedquestion._id %}
-    <p>Answer: <span>{{ reply.reply }}</span></p>
-    {% endif %}
-    {% endfor %}
-    <p>Like Count: <span>{{ likedquestion.like_count }}</span></p>
+
+  
+  <div id="liked-posts-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+    {% for likedquestion in liked_questions %}
+      <div>
+        <p class="modal-question-category">Category: <span>{{ likedquestion.category_name }}</span></p>
+        <p class="modal-question-description">Q: <span>"{{ likedquestion.question_description }}"</span></p>
+        {% for reply in replies %}
+        {% if reply.question_id == likedquestion._id %}
+        <p class="modal-question-reply">A: <span>{{ reply.reply }}</span></p>
+        {% endif %}
+        {% endfor %}
+        <p class="modal-question-likecount"><i class="fas fa-thumbs-up"></i> <span>{{ likedquestion.like_count }}</span></p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-small">Close</a>
+    </div>
   </div>
-  {% endfor %}
-</div>
+
+  <div class="liked-posts-button">
+   
+    <button data-target="liked-posts-modal" class="modal-trigger">View most liked questions</button>
+  
+  </div>
 
 {% endblock %}
 
 {% block scripts %}
 <script>
+  
   // Category selection for ask guru categories
 
   const questionsList = document.querySelectorAll('.questions-list')
@@ -263,17 +274,5 @@
     })
   })
 
-  // Function for popout most liked questions
-
-  const likedPostsButton = document.querySelector('.liked-posts-button')
-  const likedPosts = document.querySelector('.liked-posts')
-
-  likedPostsButton.addEventListener('click', () => {
-    likedPosts.classList.toggle('liked-posts-transform')
-  })
-
-  likedPosts.addEventListener('click', () => {
-    likedPosts.classList.toggle('liked-posts-transform')
-  })
 </script>
 {% endblock %}
