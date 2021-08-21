@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="{{  url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("user_ARtuH3puQWobePeXbaMDu");
+        })();
+    </script>
     <title>CoastalCatch</title>
 </head>
 <body>

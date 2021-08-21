@@ -850,7 +850,7 @@ def favourite_post(post_id):
 @app.route("/contact_us")
 def contact_us():
     """
-
+    Renders contact page
     """
     return render_template('contact_us.html')
 
