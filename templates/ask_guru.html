@@ -247,7 +247,7 @@
 
 {% block scripts %}
 <script>
-  
+
   // Category selection for ask guru categories
 
   const questionsList = document.querySelectorAll('.questions-list')
@@ -272,6 +272,27 @@
         }
       })
     })
+  })
+
+  gsap.from('.ask-guru-container', {
+    scrollTrigger: {
+    trigger: '.ask-guru-container',
+    toggleActions: 'restart pause resume restart'
+  },
+  translateX: '-25%',
+    opacity: 0,
+    duration: 1
+  })
+  gsap.from('.category-buttons', {
+    scrollTrigger: {
+    trigger: '.question-category-section',
+    toggleActions: 'restart pause resume restart'
+  },
+    translateX: '-10%',
+    opacity: 0,
+    rotation: 180,
+    stagger: 0.2,
+    duration: 2
   })
 
 </script>

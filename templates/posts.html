@@ -119,7 +119,7 @@
 {% set favourite = [] %}
 <div class="row review-section-container">
   <div class="col s12 m10 offset-m1 single-post">
-    <div class="card">
+    <div class="card review-card-post">
       <div class="card-content white-text">
         <a href="{{ url_for('view_post', post_id=review._id)}}"><span
             class="card-title">{{ review.review_title }}</span></a>
@@ -225,4 +225,32 @@
 {% else %}
 <p class="no-posts-locations">No Posts Found</p>
 {% endif %}
+{% endblock %}
+{% block scripts%}
+<script>
+
+let posts = gsap.utils.toArray('.review-card-post')
+
+posts.forEach(post => {
+  gsap.from(post, {
+    scrollTrigger: {
+    trigger: post,
+    toggleActions: 'restart pause resume restart'
+  },
+  translateX: '-25%',
+    opacity: 0,
+    duration: 1
+  })
+})
+
+  gsap.from('.post-section-container form', {
+    scrollTrigger: {
+    trigger: '.post-section-container',
+    toggleActions: 'restart pause resume restart'
+  },
+  translateX: '-25%',
+    opacity: 0,
+    duration: 1
+  })
+</script>
 {% endblock %}
