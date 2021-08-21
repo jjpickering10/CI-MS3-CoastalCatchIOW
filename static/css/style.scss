@@ -1475,6 +1475,35 @@ main {
     opacity: 0;
 }
 
+// Modals
+
+.modal {
+    background: var(--primary-blue);
+    .modal-content {
+        p {
+            font-weight: 100;
+        }
+    }
+    .modal-footer {
+        background: var(--secondary-brown);
+        a {
+            background: var(--primary-brown);
+            text-transform: lowercase;
+            border-radius: 0.5rem;
+            color: var(--white-color);
+            &:hover, &:focus {
+                transition: 0.3s;
+                background: var(--white-color);
+                color: var(--primary-brown);
+            }
+        }
+    }
+}
+
+.modal-overlay {
+    opacity: 0.75;
+}
+
 // Loading 
 
 .loading {

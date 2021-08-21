@@ -1159,6 +1159,31 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   opacity: 0;
 }
 
+.modal {
+  background: var(--primary-blue);
+}
+.modal .modal-content p {
+  font-weight: 100;
+}
+.modal .modal-footer {
+  background: var(--secondary-brown);
+}
+.modal .modal-footer a {
+  background: var(--primary-brown);
+  text-transform: lowercase;
+  border-radius: 0.5rem;
+  color: var(--white-color);
+}
+.modal .modal-footer a:hover, .modal .modal-footer a:focus {
+  transition: 0.3s;
+  background: var(--white-color);
+  color: var(--primary-brown);
+}
+
+.modal-overlay {
+  opacity: 0.75;
+}
+
 .loading {
   position: absolute;
   top: 0;
