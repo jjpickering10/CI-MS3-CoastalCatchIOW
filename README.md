@@ -182,6 +182,8 @@ Admin has access to edit locations, edit categories and edit users to be able to
 
 - Other site features
 
+Loading page animations
+
 Category selection for each question asked.
 
 Location selection for each post.
@@ -207,6 +209,8 @@ Ability to upload images into database.
 [Three.js](https://threejs.org/) - for 3D water and clouds background
 
 [Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) - for tilt effect on cards
+
+[GSAP](https://greensock.com/) - for animations
 
 [GitPod](https://www.gitpod.io/) - Online IDE
 
