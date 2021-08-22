@@ -194,6 +194,9 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   color: var(--white-color);
 }
 
+.register-text {
+  margin-top: 5rem;
+}
 .register-text p {
   font-size: 1rem;
   font-weight: 100;
@@ -1152,7 +1155,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 }
 
 .transition-element {
-  opacity: 1;
+  opacity: 0;
 }
 
 .modal {
@@ -1224,7 +1227,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   align-items: center;
   justify-content: center;
   background: var(--secondary-blue);
-  pointer-events: none;
+  pointer-events: all;
   flex-direction: column;
 }
 .loading .loading-background {
@@ -1234,7 +1237,7 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
   transform: rotate(-25deg);
 }
 .loading .progress {
-  width: 20%;
+  width: 10%;
   background: var(--secondary-brown);
 }
 .loading .progress .indeterminate {

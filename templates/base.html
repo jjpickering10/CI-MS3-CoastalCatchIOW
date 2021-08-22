@@ -169,15 +169,19 @@
 
     window.addEventListener('load', () => {
       tl.to(loadingContainer, {
-          translateX: "100%",
+          translateX: '100%',
+          opacity: 0,
           duration: 1.5,
-          ease: "power4.in"
+          ease: "circ.out"
         })
         .to('.transition-element', {
           opacity: 1,
-          duration: 2.5,
-          ease: "power4.in",
-        }, "-=1.5")
+          duration: 1.5,
+          ease: "circ.in",
+        }, "-=1.5"),
+        setTimeout(() => {
+          loadingContainer.style.display = "none"
+        }, 1500);
     })
   </script>
 </body>
