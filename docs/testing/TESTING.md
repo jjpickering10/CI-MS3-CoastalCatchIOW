@@ -136,7 +136,6 @@ Result: Achieved.
 
 ![Result](/docs/img/question-test.png)
 
-
 - # Profile
 
 Expected: Posts made by user shown in profile.
@@ -161,7 +160,7 @@ Expected: Logged in user can edit profile description and image.
 
 Result: Achieved.
 
-![Result]()
+![Result](/docs/img/edit-profile.png)
 
 - # Guru User
 
@@ -169,39 +168,41 @@ Expected: Guru user can reply to questions.
 
 Result: Achieved.
 
-![Result]()
+![Result](/docs/img/reply-validation.png)
+
+![Result](/docs/img/reply-test.png)
 
 Expected: Guru user can edit replies.
 
 Result: Achieved.
 
-![Result]()
+![Result](/docs/img/reply-edited.png)
 
 Expected: Guru user delete replies.
 
 Result: Achieved.
 
-![Result]()
-
 - # Admin User
 
-Expected: Admin user can edit/delete locations.
+Expected: Admin user can add/edit/delete locations.
 
 Result: Achieved.
 
-![Result]()
+![Result](/docs/img/location-edit.png)
 
-Expected: Admin user can delete categories. But not edit name, as this would break the Javascript loop.
+Expected: Admin user can add/delete categories. But not edit name, as this would break the Javascript loop.
 
 Result: Achieved.
 
-![Result]()
+![Result](/docs/img/category-add.png)
 
 Expected: Admin user can manage user guru status.
 
 Result: Achieved.
 
-![Result]()
+![Result](/docs/img/manage-gurus.png)
+
+![Result](/docs/img/manage-gurus-2.png)
 
 
 
