@@ -32,7 +32,7 @@
           <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="">About</a></li>
+            <li><a class="modal-trigger" href="#about-modal">About</a></li>
             <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
             <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
             {% if session.admin|lower == "yes" %}
@@ -54,7 +54,7 @@
     <!-- Mobile Navbar -->
     <ul class="sidenav" id="mobile-demo">
       <li><a href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="">About</a></li>
+      <li><a class="modal-trigger" href="#about-modal">About</a></li>
       <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
       <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
       {% if session.admin|lower == "yes" %}
@@ -106,7 +106,7 @@
             <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('apply_guru') }}">Apply To Be
                 A Guru</a></li>
             {% endif %}
-            <li class="footer-links"><a class="grey-text text-lighten-3" href="#!">About</a></li>
+            <li class="footer-links"><a class="grey-text text-lighten-3 modal-trigger" href="#about-modal">About</a></li>
             <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('ask_guru') }}">Ask Guru</a>
             </li>
             <li class="footer-links"><a class="grey-text text-lighten-3"
@@ -134,6 +134,20 @@
       <div class="indeterminate"></div>
     </div>
   </div>
+
+  <!-- About Modal -->
+
+  <!-- Modal Structure -->
+  <div id="about-modal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
