@@ -3,6 +3,106 @@
 ***User Stories***
 ***Code Validation***
 ***CRUD Testing***
+
+- # Register
+
+Expected: user cant register if both fields arent given.
+
+Result: Achieved.
+
+![Result](/docs/img/register-test-validation-2.png)
+
+Expected: user cant register if username field is not between 5-10 characters.
+
+Result: Achieved.
+
+![Result](/docs/img/register-test-validation.png)
+
+Expected: if correct information given, user can register.
+
+Result: Achieved.
+
+![Result](/docs/img/register-test.png)
+
+- # Login
+
+Expected: user CAN'T log in with incorrect username and/or password.
+
+Result: Achieved.
+
+![Result](/docs/img/login-validation.png)
+
+Expected: user CAN log in with correct username and/or password.
+
+Result: Achieved.
+
+![Result](/docs/img/login-successful.png)
+
+- # Posting
+
+Expected: logged in user can post in individual location.
+
+Result: Achieved.
+
+![Result](/docs/img/post-test.png)
+
+![Result](/docs/img/post-success.png)
+
+![Result](/docs/img/post-success-2.png)
+
+- # Favouriting Posts
+
+Expected: logged in user can favourite a post, displayed by filled icon.
+
+Result: Achieved.
+
+![Result](/docs/img/post-favourite.png)
+
+Expected: logged in user can un-favourite a post, displayed by un-filled icon.
+
+Result: Achieved.
+
+![Result](/docs/img/post-unfavourite.png)
+
+- # Editing Posts
+
+Expected: logged in user can edit posts.
+
+Result: Achieved.
+
+![Result](/docs/img/edit.png)
+
+![Result](/docs/img/post-edit-test.png)
+
+- # Deleting Posts
+
+Expected: logged in user can delete post with modal pop up asking for confirmation.
+
+Result: Achieved.
+
+![Result](/docs/img/delete-post-confirmation.png)
+
+![Result](/docs/img/delete-test.png)
+
+- # Profile
+
+Expected: Posts made by user shown in profile.
+
+Result: Achieved.
+
+![Result](/docs/img/profile-post.png)
+
+Expected: Favorited posts for user shown in profile.
+
+Result: Achieved.
+
+![Result](/docs/img/fav-posts-profile.png)
+
+
+
+
+
+
 ***Responsiveness***
 ***Navigation***
 ***Footer***
