@@ -140,7 +140,6 @@ def profile(username):
         else:
             session['guru'] = "yes"
 
-    # if session['user']:
         return render_template(
             "profile.html", username=username,
             created_reviews=created_reviews,
@@ -220,10 +219,8 @@ def search_locations():
     """
     if request.method == "POST":
         location_query = request.form.get('location_query')
-        print(location_query)
         locations = list(mongo.db.locations.find(
             {"$text": {"$search": location_query}}))
-        print(locations)
         ratings = list(mongo.db.ratings.find())
         return render_template(
             "locations.html", locations=locations, ratings=ratings)
@@ -270,7 +267,6 @@ def locations(location_id):
         flash('Post successful')
         return redirect(url_for(
             'locations', location_id=post["location_id"]))
-        # return redirect(url_for('get_locations'))
 
     return render_template(
         "posts.html", location=location,
@@ -648,7 +644,6 @@ def ask_guru():
         question = {
             "category_id": request.form.get("category_id"),
             "category_name": category_id_name["category_name"],
-            # "question_title": request.form.get("question_title"),
             "question_description": request.form.get("question_description"),
             "created_by": session['user'],
             "like_count": 0
@@ -678,7 +673,6 @@ def edit_question(question_id):
             updated_question = {
                 "category_id": question["category_id"],
                 "category_name": question["category_name"],
-                # "question_title": request.form.get("question_title"),
                 "question_description": request.form.get(
                     "question_description"),
                 "created_by": session['user'],
