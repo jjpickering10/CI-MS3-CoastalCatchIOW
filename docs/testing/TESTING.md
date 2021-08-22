@@ -205,6 +205,11 @@ Result: Achieved.
 ![Result](/docs/img/manage-gurus-2.png)
 
 ***Responsiveness***
+
+- Site tested on multiple screen sizes.
+
+- Used [responsitor](https://www.responsinator.com/) to check multiple phones/tablets.
+
 ***Navigation***
 
 - Tested all navigation links to ensure they all work, including about modal. Edit categories, edit locations and edit users links only visible to admin users.
