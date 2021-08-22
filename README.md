@@ -84,6 +84,7 @@ Logged in admin can CRUD on posts, but also manage locations.
 - Profile Page
 - About Page
 - Contact Page
+- Apply Guru Page
 - Login/Register Pages
 - Admin Pages
 
@@ -96,11 +97,11 @@ Logged in admin can CRUD on posts, but also manage locations.
 
 ### **Skeleton**
 
-Navigation, including dropdown locations menu
-Landing page
-Locations page
-Posts page
-Guru page
+- Navigation
+- Landing page
+- Locations page
+- Posts page
+- Guru page
 
 
 
@@ -127,11 +128,11 @@ Typography:
 
 ## Features
 
-- Landing Page
+- ***Landing Page***
 
 Use of [ThreeJS](https://threejs.org/) for background water and clouds animation. Water object has been taken from ThreeJS library and adapted.
 
-- Locations Page
+- ***Locations Page***
 
 Structured using CSS Grid. Cards have tilt effect from [Vanilla Tilt JS](https://micku7zu.github.io/vanilla-tilt.js/).
 
@@ -147,7 +148,7 @@ Each individual location page has a form for posting into each location if user 
 
 Each individual location page has a collapsible toggle button showing total comments for each post as well as a reply section for logged in users.
 
-- Ask Guru Page
+- ***Ask Guru Page***
 
 Makes use of [materialize carousel](https://materializecss.com/carousel.html) feature. Each carousel item shows the guru users who have guru privileges.
 
@@ -161,7 +162,7 @@ For guru users, a reply section is displayed for each question.
 
 Fixed toggle button in bottom right of page that pops out the top 3 most liked questions in the database.
 
-- Profile Page
+- ***Profile Page***
 
 Only for logged in users. Displays admin and guru status if applicable.
 
@@ -169,26 +170,31 @@ Displays profile image if user has uploaded an image as well as user description
 
 3 separate sections for users own posts, questions asked and favourited posts with collapsible toggle buttons to display each.
 
-- About Page
-- Contact Page
+- ***About Page***
+- ***Contact Page***
+- ***Apply Guru Page***
 
-- Login/Register Pages
+- ***Login/Register Pages***
 
 Form for logging in and registering.
 
-- Admin Pages
+- ***Admin Pages***
 
 Admin has access to edit locations, edit categories and edit users to be able to edit and delete locations and categories as well as manage the guru status of each user.
 
-- Other site features
+- ***Other Site Features***
 
-Loading page animations
+Loading page animations using [GSAP](https://greensock.com/)
 
-Category selection for each question asked.
+Scroll animations using [GSAP](https://greensock.com/)
+
+Category selection for questions asked.
 
 Location selection for each post.
 
 Ability to upload images into database.
+
+Search functionality on locations page and ask guru page.
 
 ## Technologies Used
 
@@ -196,7 +202,7 @@ Ability to upload images into database.
 
 [HTML5](https://en.wikipedia.org/wiki/HTML5)
 
-[CSS3](https://en.wikipedia.org/wiki/CSS)
+[CSS3](https://en.wikipedia.org/wiki/CSS) - code written with SCSS, then compiled into CSS using Sass compiler extension in Gitpod.
 
 [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 
@@ -260,7 +266,7 @@ MongoDB
 
 Heroku
 
-ThreeJS course
+[ThreeJS course](https://threejs-journey.xyz/) - for background water and clouds 3D effect.
 
 Code Institute Course
 
@@ -279,9 +285,6 @@ Chrome Dev Tools
 - Issues with Gitpod deleting work. Had to rewrite a lot of code. Lesson has been learnt to regularly push to Github.
 
 ### Feature To Improve
-
-
-### Code Validity
 
 ---
 
@@ -325,5 +328,6 @@ Written content throughout site has been provided from my father who is a keen f
 
 - Code Institute Software Development Course - for the education.
 - Code Institute Slack Community group - for the support.
-- Youtube Channels: Tech with Tim, Pretty Printed, 
+- Youtube Channels: Tech with Tim, Pretty Printed. 
+- Bruno Simon [THREEJS course](https://threejs-journey.xyz/) - side course I have undertaken.
 - My mentor [Antonio Rodriguez](https://github.com/AkaAnto) - for the guidance and support throughout.

@@ -1,5 +1,16 @@
 - After logging out, you could go back in the browser and still post/edit/delete. Fixed this by adding if statements to routes.
 
+***User Stories***
+***Code Validation***
+***CRUD Testing***
+***Responsiveness***
+***Navigation***
+***Footer***
+***Searching***
+***Contact Forms***
+***User Stories***
+***User Stories***
+
 First Time Visitor Goals
 
 Returning Visitor Goals
