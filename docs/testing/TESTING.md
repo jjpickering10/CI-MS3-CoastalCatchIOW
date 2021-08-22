@@ -204,13 +204,6 @@ Result: Achieved.
 
 ![Result](/docs/img/manage-gurus-2.png)
 
-
-
-
-
-
-
-
 ***Responsiveness***
 ***Navigation***
 
@@ -234,10 +227,19 @@ Result: Achieved.
 - If there is no match. A message is displayed to the user indicating no results found. This is for both the locations page and each individual locations page.
 
 ***Contact Forms***
+
+- Tested both apply guru form and contact form. Both need all required fields.
+
+- Both successful form posts return notification message.
+
 ***User Stories***
 ***Other***
 
-- Logout function returns to login page
+- Tested 404 error page with URL that doesnt exist. Returns the custom 404 page.
+
+- Logout function returns to login page.
+
+- Clicking back in the browser after logging out will return to login page if the previous page required session data.
 
 First Time Visitor Goals
 
