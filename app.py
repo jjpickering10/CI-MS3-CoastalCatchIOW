@@ -919,6 +919,22 @@ def apply_guru():
     return redirect(url_for('login'))
 
 
+@app.errorhandler(404)
+def not_found(e):
+    """
+    Renders error page for 404
+    """
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    """
+    Renders error page for 500
+    """
+    return render_template('500.html'), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
