@@ -1,156 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{  url_for('static', filename='css/style.css') }}" type="text/css">
-    {% block styles %}
-    {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("user_ARtuH3puQWobePeXbaMDu");
-        })();
-    </script>
-    <title>CoastalCatch</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{  url_for('static', filename='css/style.css') }}" type="text/css">
+  {% block styles %}
+  {% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("user_ARtuH3puQWobePeXbaMDu");
+    })();
+  </script>
+  <title>CoastalCatch</title>
 </head>
+
 <body>
-    <!-- Main Navbar -->
-    <header class="transition-element">
+  <!-- Main Navbar -->
+  <header class="transition-element">
     <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper navigation-main">
-              <a href="{{ url_for('home') }}" class="brand-logo nav-logo hide-on-med-and-down">CoastalCatch</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
-                <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
-                {% if session.admin|lower == "yes" %}
-                <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
-                <li><a href="{{ url_for('view_categories') }}">Edit Categories</a></li>
-                <li><a href="{{ url_for('edit_users') }}">Edit Users</a></li>
-                {% endif %}
-                {% if session.user %}
-                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                {% else %}
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-                {% endif %}
-              </ul>
-            </div>
-          </nav>
+      <nav>
+        <div class="nav-wrapper navigation-main">
+          <a href="{{ url_for('home') }}" class="brand-logo nav-logo hide-on-med-and-down">CoastalCatch</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
+            <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
+            {% if session.admin|lower == "yes" %}
+            <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
+            <li><a href="{{ url_for('view_categories') }}">Edit Categories</a></li>
+            <li><a href="{{ url_for('edit_users') }}">Edit Users</a></li>
+            {% endif %}
+            {% if session.user %}
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
     </div>
     <!-- Mobile Navbar -->
-      <ul class="sidenav" id="mobile-demo">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
-        <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
-        {% if session.admin|lower == "yes" %}
-        <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
-        <li><a href="{{ url_for('view_categories') }}">Edit Categories</a></li>
-        <li><a href="{{ url_for('edit_users') }}">Edit Users</a></li>
-        {% endif %}  
-        {% if session.user %}
-        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        {% else %}
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        {% endif %}
-      </ul>
-    </header>
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="">About</a></li>
+      <li><a href="{{ url_for('ask_guru') }}">Ask a Guru</a></li>
+      <li><a href="{{ url_for('get_locations') }}">Locations</a></li>
+      {% if session.admin|lower == "yes" %}
+      <li><a href="{{ url_for('view_locations') }}">Edit Locations</a></li>
+      <li><a href="{{ url_for('view_categories') }}">Edit Categories</a></li>
+      <li><a href="{{ url_for('edit_users') }}">Edit Users</a></li>
+      {% endif %}
+      {% if session.user %}
+      <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      {% else %}
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('register') }}">Register</a></li>
+      {% endif %}
+    </ul>
+  </header>
 
-    <section class="transition-element">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flashes">
-                        <h4 class="center-align">{{ message }}</h4>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </section>
+  <section class="transition-element">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row flashes">
+      <h4 class="center-align">{{ message }}</h4>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </section>
 
-    <canvas class="webgl transition-element"></canvas>
-    <section class="main-content transition-element">
+  <canvas class="webgl transition-element"></canvas>
+  <section class="main-content transition-element">
     {% block content %}
     {% endblock %}
-    </section>
-    <footer class="page-footer transition-element">
+  </section>
+  <footer class="page-footer transition-element">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">CoastalCatch</h5>
+          <p class="grey-text text-lighten-4">Fishing forum for the Isle of Wight.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('home') }}">Home</a></li>
+            <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('contact_us') }}">Contact</a>
+            </li>
+            {% if session.user %}
+            <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('apply_guru') }}">Apply To Be
+                A Guru</a></li>
+            {% endif %}
+            <li class="footer-links"><a class="grey-text text-lighten-3" href="#!">About</a></li>
+            <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('ask_guru') }}">Ask Guru</a>
+            </li>
+            <li class="footer-links"><a class="grey-text text-lighten-3"
+                href="{{ url_for('get_locations') }}">Locations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
       <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">CoastalCatch</h5>
-            <p class="grey-text text-lighten-4">Fishing forum for the Isle of Wight.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('home') }}">Home</a></li>
-              <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('contact_us') }}">Contact</a></li>
-              {% if session.user %}
-              <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('apply_guru') }}">Apply To Be A Guru</a></li>
-              {% endif %}
-              <li class="footer-links"><a class="grey-text text-lighten-3" href="#!">About</a></li>
-              <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('ask_guru') }}">Ask Guru</a></li>
-              <li class="footer-links"><a class="grey-text text-lighten-3" href="{{ url_for('get_locations') }}">Locations</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
         © 2021 Jonathan Pickering
-        <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
-        <a class="grey-text text-lighten-4 right" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram-square"></i></a>
-        <a class="grey-text text-lighten-4 right" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter-square"></i></a>
-        </div>
+        <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/" target="_blank"><i
+            class="fab fa-facebook-square"></i></a>
+        <a class="grey-text text-lighten-4 right" href="https://www.instagram.com/" target="_blank"><i
+            class="fab fa-instagram-square"></i></a>
+        <a class="grey-text text-lighten-4 right" href="https://www.twitter.com/" target="_blank"><i
+            class="fab fa-twitter-square"></i></a>
       </div>
-    </footer>
-    <div class="loading">
-      <p class="loading-background">CoastalCatch</p>
-      <p>Loading...</p>
-      <div class="progress">
-        <div class="indeterminate"></div>
     </div>
+  </footer>
+  <div class="loading">
+    <p class="loading-background">CoastalCatch</p>
+    <p>Loading...</p>
+    <div class="progress">
+      <div class="indeterminate"></div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-    <!-- <script type="module" src="{{  url_for('static', filename='js/index.js') }}"></script> -->
-    <script src="{{ url_for('static', filename='js/vanilla-tilt.min.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script>
-      // Loading
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+  <script src="{{ url_for('static', filename='js/vanilla-tilt.min.js') }}"></script>
+  {% block scripts %}
+  {% endblock %}
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script>
+    // Loading
 
-      const loadingBarElement = document.querySelector(".progress");
-      const loadingContainer = document.querySelector(".loading");
-      const tl = gsap.timeline();
+    const loadingBarElement = document.querySelector(".progress");
+    const loadingContainer = document.querySelector(".loading");
+    const tl = gsap.timeline();
 
-      window.addEventListener('load', () => {
+    window.addEventListener('load', () => {
       tl.to(loadingContainer, {
-      translateX: "100%",
-      duration: 1.5,
-      ease: "power4.in"
-      })
-      .to('.transition-element', {
-        opacity: 1,
-        duration: 2.5,
-        ease: "power4.in",
-      }, "-=1.5")
-      // loadingBarElement.classList.add("ended");
-      // loadingBarElement.style.transform = "";
-      })
-    </script>
+          translateX: "100%",
+          duration: 1.5,
+          ease: "power4.in"
+        })
+        .to('.transition-element', {
+          opacity: 1,
+          duration: 2.5,
+          ease: "power4.in",
+        }, "-=1.5")
+    })
+  </script>
 </body>
+
 </html>

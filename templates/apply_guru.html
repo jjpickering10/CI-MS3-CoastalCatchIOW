@@ -4,58 +4,61 @@
 <div id="apply-guru-container" class="row register-form-container">
   <form id="guru-apply-form" class="col s12 m6 offset-m3" onsubmit="return sendEmail(this);">
     <div class="card-panel register-card">
-        <!-- Username -->
-      <div class="row register-text-field">
-          <div class="input-field col s12">
-              <input id="username" name="username" type="text" class="validate" value="{{ username }}" required>
-            </div>
-      </div>
-        <!-- Email -->
-      <div class="row register-text-field">
-          <div class="input-field col s12">
-              <input id="email" name="email" type="email" class="validate" required>
-              <label for="email">Email</label>
-            </div>
-      </div>
+      <!-- Username -->
       <div class="row register-text-field">
         <div class="input-field col s12">
-          <textarea id="emailmessage" name="emailmessage" type="text" class="materialize-textarea validate" required></textarea>
+          <input id="username" name="username" type="text" class="validate" value="{{ username }}" required>
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="row register-text-field">
+        <div class="input-field col s12">
+          <input id="email" name="email" type="email" class="validate" required>
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <!-- Message -->
+      <div class="row register-text-field">
+        <div class="input-field col s12">
+          <textarea id="emailmessage" name="emailmessage" type="text" class="materialize-textarea validate"
+            required></textarea>
           <label for="emailmessage">Tell Us Why</label>
         </div>
       </div>
-        <!-- Send Message -->
-        <div class="row">
-            <button type="submit" class="col s12 btn-large register-button">Apply Here</button>
-        </div>
+      <!-- Send Message -->
+      <div class="row">
+        <button type="submit" class="col s12 btn-large register-button">Apply Here</button>
+      </div>
     </div>
   </form>
 </div>
 
-
 {% endblock %}
 {% block scripts %}
+
 <script>
-  function sendEmail(contact){
-    emailjs.send("service_0tdljkb","template_4id09th", {
+  function sendEmail(contact) {
+    emailjs.send("service_0tdljkb", "template_4id09th", {
         username: contact.username.value,
         from_email: contact.email.value,
         message: contact.emailmessage.value
-    })
-    .then(function (response) {
-                const form = document.getElementById('guru-apply-form');
-                form.style.display = "none";
-                const contactContainer = document.getElementById('apply-guru-container');
-                const sent = document.createElement("p");
-                
-                sent.innerText = "Thanks for your application! We'll be in touch";
-                sent.style.textAlign = "center";
-                contactContainer.appendChild(sent);
-            }),
-            function (error) {
-                alert("Oh No! There's been an error. Please refresh the page and fill out the form again", error);
-            };
-    
+      })
+      .then(function (response) {
+        const form = document.getElementById('guru-apply-form');
+        form.style.display = "none";
+        const contactContainer = document.getElementById('apply-guru-container');
+        const sent = document.createElement("p");
+
+        sent.innerText = "Thanks for your application! We'll be in touch";
+        sent.style.textAlign = "center";
+        contactContainer.appendChild(sent);
+      }),
+      function (error) {
+        alert("Oh No! There's been an error. Please refresh the page and fill out the form again", error);
+      };
+
     return false;
-}
+  }
 </script>
+
 {% endblock %}

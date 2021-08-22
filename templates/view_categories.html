@@ -1,40 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-<br>
-  <br>
+{% if session.admin|lower == "yes" %}
+<div class="row">
+  <div class="col s12 m12 center-align">
+    <a href="{{ url_for('add_category') }}" class="btn-large location-add-button">Add Category</a>
+  </div>
+</div>
+{% endif %}
 
-  {% if session.admin|lower == "yes" %}
-      <div class="row">
-        <div class="col s12 m12 center-align">
-          <a href="{{ url_for('add_category') }}" class="btn-large location-add-button">Add Category</a>
-        </div>
-      </div>
-      {% endif %}
-
-      <div class="view-categories-section">
+<div class="view-categories-section">
   {% for category in categories %}
-    
-      
-      <div>
-        <h2>{{ category.category_name }}</h2>
-        <!-- Modal -->
 
-      <!-- Modal Structure -->
-      <div id="modal-{{ category._id }}" class="modal">
-        <div class="modal-content">
-          <h4>Are you sure you want to delete?</h4>
-        </div>
-        <div class="modal-footer">
-          <a href="{{ url_for('delete_categories', category_id=category._id) }}" class="btn-small">Delete</a>
-          <a href="#!" class="modal-close btn-small">Close</a>
-        </div>
+  <div>
+    <h2>{{ category.category_name }}</h2>
+    <!-- Modal -->
+
+    <!-- Modal Structure -->
+    <div id="modal-{{ category._id }}" class="modal">
+      <div class="modal-content">
+        <h4>Are you sure you want to delete?</h4>
       </div>
-      <a class="btn-small modal-trigger" href="#modal-{{ category._id }}">Delete</a>
-        <a href="{{ url_for('edit_categories', category_id=category._id) }}" class="btn-small">Edit</a>
-        
-        
+      <div class="modal-footer">
+        <a href="{{ url_for('delete_categories', category_id=category._id) }}" class="btn-small">Delete</a>
+        <a href="#!" class="modal-close btn-small">Close</a>
       </div>
+    </div>
+    <a class="btn-small modal-trigger" href="#modal-{{ category._id }}">Delete</a>
+    <a href="{{ url_for('edit_categories', category_id=category._id) }}" class="btn-small">Edit</a>
+
+  </div>
   {% endfor %}
 </div>
 

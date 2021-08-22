@@ -1,43 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
-  
-
-  <br>
-  <br>
-
-  
-  <div class="row register-form-container">
-    <form class="col s12 m6 offset-m3 register-card" method="POST" action="{{ url_for('edit_comment', comment_id=comments._id) }}">
-      <h4 class="center-align">Edit Comment</h4>
-        <div class="row">
-            <div class="row register-text-field">
-              <div class="input-field col s12">
-                <textarea id="comments" name="comments" class="materialize-textarea validate" required>
+<div class="row register-form-container">
+  <form class="col s12 m6 offset-m3 register-card" method="POST"
+    action="{{ url_for('edit_comment', comment_id=comments._id) }}">
+    <h4 class="center-align">Edit Comment</h4>
+    <div class="row">
+      <div class="row register-text-field">
+        <div class="input-field col s12">
+          <textarea id="comments" name="comments" class="materialize-textarea validate" required>
                   {{- comments.comments -}}
                 </textarea>
-                <label for="comments">Description</label>
-              </div>
-            </div>
+          <label for="comments">Description</label>
         </div>
-        <div class="row">
-          <div class="col s12 center-align">
-            <a href="{{ url_for('locations', location_id=comments.location_id)}}" class="btn-large register-button">
-              Cancel
-            </a>
-            <button type="submit" class="btn-large register-button">
-              Edit Comment
-            </button>
-          </div>
-        </div>
-    </form>
-  </div>
-  
-
-
-
-
-
-
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <a href="{{ url_for('locations', location_id=comments.location_id)}}" class="btn-large register-button">
+          Cancel
+        </a>
+        <button type="submit" class="btn-large register-button">
+          Edit Comment
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 
 {% endblock %}

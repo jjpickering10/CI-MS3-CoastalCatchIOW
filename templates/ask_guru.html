@@ -54,36 +54,25 @@
         <div class="row">
           <div class="input-field">
             <select id="category_id" name="category_id" class="validate" required>
-              <!-- <option value="" disabled selected>Choose Category</option> -->
               {% for category in categories %}
               <option value="{{ category._id }}">{{ category.category_name }}</option>
               {% endfor %}
-
             </select>
             <label for="category_id">Question Category</label>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="input-field">
-            <input id="question_title" name="question_title" type="text" class="validate" required>
-            <label for="question_title">Title</label>
-          </div>
-        </div> -->
-        <div class="row">
 
+        <div class="row">
           <div class="input-field">
             <textarea id="question_description" name="question_description" class="materialize-textarea validate"
               required></textarea>
             <label for="question_description">Description</label>
           </div>
-
         </div>
         <div class="row">
-
           <button type="submit" class="btn-large">
             Submit Question
           </button>
-
         </div>
       </form>
     </div>
@@ -115,8 +104,6 @@
       <div class="card-content white-text">
         <p class="card-title">Category: <span>{{ question.category_name }}</span></p>
 
-
-
         {% for like in likes %}
         {% if question._id == like.question_id %}
         {% set __ = count.append(1) %}
@@ -137,8 +124,6 @@
         {% else %}
         <a href="{{ url_for('like_question', question_id=question._id) }}"><i class="far fa-thumbs-up"></i></a>
         {% endif %}
-
-        
 
         <p class="question-description-post">
           "{{ question.question_description }}"
@@ -190,16 +175,16 @@
         {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
         <!-- Modal -->
 
-      <!-- Modal Structure -->
-      <div id="modal-{{ question._id }}" class="modal">
-        <div class="modal-content">
-          <h4>Are you sure you want to delete?</h4>
+        <!-- Modal Structure -->
+        <div id="modal-{{ question._id }}" class="modal">
+          <div class="modal-content">
+            <h4>Are you sure you want to delete?</h4>
+          </div>
+          <div class="modal-footer">
+            <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
+            <a href="#!" class="modal-close btn-small">Close</a>
+          </div>
         </div>
-        <div class="modal-footer">
-          <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
-          <a href="#!" class="modal-close btn-small">Close</a>
-        </div>
-      </div>
         <div>
           <a class="btn-small modal-trigger" href="#modal-{{ question._id }}">Delete</a>
           <a href="{{ url_for('edit_question', question_id=question._id) }}" class="btn-small">Edit</a>
@@ -213,41 +198,35 @@
 
 {% endfor %}
 
-
-
-
-  
-  <div id="liked-posts-modal" class="modal modal-fixed-footer">
-    <div class="modal-content">
+<div id="liked-posts-modal" class="modal modal-fixed-footer">
+  <div class="modal-content">
     {% for likedquestion in liked_questions %}
-      <div>
-        <p class="modal-question-category">Category: <span>{{ likedquestion.category_name }}</span></p>
-        <p class="modal-question-description">Q: <span>"{{ likedquestion.question_description }}"</span></p>
-        {% for reply in replies %}
-        {% if reply.question_id == likedquestion._id %}
-        <p class="modal-question-reply">A: <span>{{ reply.reply }}</span></p>
-        {% endif %}
-        {% endfor %}
-        <p class="modal-question-likecount"><i class="fas fa-thumbs-up"></i> <span>{{ likedquestion.like_count }}</span></p>
-      </div>
+    <div>
+      <p class="modal-question-category">Category: <span>{{ likedquestion.category_name }}</span></p>
+      <p class="modal-question-description">Q: <span>"{{ likedquestion.question_description }}"</span></p>
+      {% for reply in replies %}
+      {% if reply.question_id == likedquestion._id %}
+      <p class="modal-question-reply">A: <span>{{ reply.reply }}</span></p>
+      {% endif %}
       {% endfor %}
+      <p class="modal-question-likecount"><i class="fas fa-thumbs-up"></i> <span>{{ likedquestion.like_count }}</span>
+      </p>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close btn-small">Close</a>
-    </div>
+    {% endfor %}
   </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-small">Close</a>
+  </div>
+</div>
 
-  <div class="liked-posts-button">
-   
-    <button data-target="liked-posts-modal" class="modal-trigger">View most liked questions</button>
-  
-  </div>
+<div class="liked-posts-button">
+  <button data-target="liked-posts-modal" class="modal-trigger">View most liked questions</button>
+</div>
 
 {% endblock %}
 
 {% block scripts %}
 <script>
-
   // Category selection for ask guru categories
 
   const questionsList = document.querySelectorAll('.questions-list')
@@ -276,24 +255,24 @@
 
   gsap.from('.ask-guru-container', {
     scrollTrigger: {
-    trigger: '.ask-guru-container',
-    toggleActions: 'restart pause resume restart'
-  },
-  translateX: '-25%',
+      trigger: '.ask-guru-container',
+      toggleActions: 'restart pause resume restart'
+    },
+    translateX: '-25%',
     opacity: 0,
     duration: 1
   })
   gsap.from('.category-buttons', {
     scrollTrigger: {
-    trigger: '.question-category-section',
-    toggleActions: 'restart pause resume restart'
-  },
+      trigger: '.question-category-section',
+      toggleActions: 'restart pause resume restart'
+    },
     translateX: '-10%',
     opacity: 0,
     rotation: 180,
     stagger: 0.2,
     duration: 2
   })
-
 </script>
+
 {% endblock %}

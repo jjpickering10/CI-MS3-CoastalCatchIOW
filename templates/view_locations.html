@@ -1,28 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-  
+{% if session.admin|lower == "yes" %}
+<div class="row">
+  <div class="col s12 m12 center-align">
+    <a href="{{ url_for('add_location') }}" class="btn-large location-add-button">Add Location</a>
+  </div>
+</div>
+{% endif %}
 
-  <br>
-  <br>
-
-  {% if session.admin|lower == "yes" %}
-      <div class="row">
-        <div class="col s12 m12 center-align">
-          <a href="{{ url_for('add_location') }}" class="btn-large location-add-button">Add Location</a>
-        </div>
-      </div>
-      {% endif %}
-
-      <div class="view-locations-admin">
+<div class="view-locations-admin">
   {% for location in locations %}
-    
-      {% set count = [] %}
-      
-      <div>
-        <div class="view-locations-text">
-          <h2>{{ location.location_name }}</h2>
-          <!-- Modal -->
+
+  {% set count = [] %}
+
+  <div>
+    <div class="view-locations-text">
+      <h2>{{ location.location_name }}</h2>
+      <!-- Modal -->
 
       <!-- Modal Structure -->
       <div id="modal-{{ location._id }}" class="modal">
@@ -34,39 +29,30 @@
           <a href="#!" class="modal-close btn-small">Close</a>
         </div>
       </div>
-          <a href="{{ url_for('edit_locations', location_id=location._id) }}" class="btn-small location-edit-button">Edit</a><br>
-          <a class="btn-small modal-trigger location-edit-button" href="#modal-{{ location._id }}">Delete</a>
-          <h5>{{ location.location_description }}</h5>
-          {% for review in reviews %}
-          {% if review.location_name == location.location_name %}
-          {% set __ = count.append(1) %}
-        
-          <p>Post Title: <span><a href="{{ url_for('view_post', post_id=review._id) }}">{{ review.review_title }}</a></span></p>
-        
-        {% endif %}
-        
-        {% endfor %}
-        <h5>Total Posts: {{ count|length }}</h5>
-        </div>
-        {% if location.location_image %}
-            <img src="{{ url_for('file', filename=location.location_image) }}">
-            {% else %}
-            <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
-            {% endif %}
-      </div>
-      
-      
-      
-   
+      <a href="{{ url_for('edit_locations', location_id=location._id) }}"
+        class="btn-small location-edit-button">Edit</a><br>
+      <a class="btn-small modal-trigger location-edit-button" href="#modal-{{ location._id }}">Delete</a>
+      <h5>{{ location.location_description }}</h5>
+      {% for review in reviews %}
+      {% if review.location_name == location.location_name %}
+      {% set __ = count.append(1) %}
+
+      <p>Post Title: <span><a href="{{ url_for('view_post', post_id=review._id) }}">{{ review.review_title }}</a></span>
+      </p>
+
+      {% endif %}
+
+      {% endfor %}
+      <h5>Total Posts: {{ count|length }}</h5>
+    </div>
+    {% if location.location_image %}
+    <img src="{{ url_for('file', filename=location.location_image) }}">
+    {% else %}
+    <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+    {% endif %}
+  </div>
+
   {% endfor %}
 </div>
-  
-
-
-
-
-
-
 
 {% endblock %}
-  

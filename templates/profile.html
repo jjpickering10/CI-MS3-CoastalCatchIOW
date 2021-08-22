@@ -2,157 +2,152 @@
 {% block content %}
 
 <div class="row register-form-container">
-    <form class="col s12 m8 offset-m2">
-      <div class="card-panel register-card">
-          <h3>
-            {{ username }}'s Profile
-          </h3>
-          {% if session.admin|lower == "yes" %}
-          <p>Is Admin</p>
-          {% endif %}
-          {% if session.guru|lower == "yes" %}
-          <p>Is Guru</p>
-          {% endif %}
+  <form class="col s12 m8 offset-m2">
+    <div class="card-panel register-card">
+      <h3>
+        {{ username }}'s Profile
+      </h3>
+      {% if session.admin|lower == "yes" %}
+      <p>Is Admin</p>
+      {% endif %}
+      {% if session.guru|lower == "yes" %}
+      <p>Is Guru</p>
+      {% endif %}
+    </div>
+  </form>
+</div>
+
+<p class="profile-background">{{ username }}</p>
+
+<div class="row profile-info">
+  <div class="col">
+    <div class="card">
+      <div class="card-image">
+        {% if user_details.user_image %}
+        <img src="{{ url_for('file', filename=user_details.user_image) }}">
+        {% else %}
+        <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+        {% endif %}
+        <span class="card-title">{{ user_details.username }}</span>
       </div>
-    </form>
+    </div>
+  </div>
+  <div class="card-content">
+    {% if user_details.user_description %}
+    <p>{{ user_details.user_description }}</p>
+    {% else %}
+    <p>No information yet</p>
+    {% endif %}
+
+    <div class="card-action">
+      <a href="{{ url_for('edit_profile', username_id=user_details._id) }}">Edit My Profile</a>
+    </div>
   </div>
 
-  <p class="profile-background">{{ username }}</p>
 
-  <div class="row profile-info">
-    <div class="col">
-      <div class="card">
-        <div class="card-image">
-          {% if user_details.user_image %}
-          <img src="{{ url_for('file', filename=user_details.user_image) }}">
-          {% else %}
-          <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
-          {% endif %}
-          <span class="card-title">{{ user_details.username }}</span>
-        </div>
-      </div>
-    </div>
-        <div class="card-content">
-          {% if user_details.user_description %}
-          <p>{{ user_details.user_description }}</p>
-          {% else %}
-          <p>No information yet</p>
-          {% endif %}
-        
-        <div class="card-action">
-          <a href="{{ url_for('edit_profile', username_id=user_details._id) }}">Edit My Profile</a>
-        </div>
-      </div>
-      
-    
-  </div>
+</div>
 
-  <br>
-  <br>
-  
-  <div class="user-info">
-    <div>
-      <h2>your <span>Posts</span></h2>
-      <ul class="collapsible">
-        <li>
-          <div class="collapsible-header">Click to View</div>
-      {% for review in created_reviews %}
-      <div class="row collapsible-body">
-        <div class="col s12">
-          <div class="card">
-            <div class="card-content white-text">
-              <span class="card-title">{{ review.location_name }}</span>
-              <span class="card-title">{{ review.review_title }}</span>
-              <p>{{ review.review_description }}</p>
-            </div>
-            <div class="card-action">
-              <p>{{ review.created_by }}</p>
-              {% if session.user|lower == review.created_by|lower or session.admin|lower == "yes" %}
-                        <!-- Modal -->
-
-      <!-- Modal Structure -->
-      <div id="modal-{{ review._id }}" class="modal">
-        <div class="modal-content">
-          <h4>Are you sure you want to delete?</h4>
-        </div>
-        <div class="modal-footer">
-          <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>
-          <a href="#!" class="modal-close btn-small">Close</a>
-        </div>
-      </div>
-      <a class="btn-small modal-trigger" href="#modal-{{ review._id }}">Delete</a>
-              <a href="{{ url_for('edit_post', post_id=review._id) }}" class="btn-small">Edit</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </li>
-  </ul>
-    </div>
-    <div>
-      <h2>your <span>Questions asked</span></h2>
-      <ul class="collapsible">
-        <li>
-          <div class="collapsible-header">Click to View</div>
-      {% for question in asked_questions %}
-      <div class="row collapsible-body">
-        <div class="col s12">
-          <div class="card">
-            <div class="card-content white-text">
-              
-              <p>{{ question.question_description }}</p>
-            </div>
-            <div class="card-action">
-              <p>{{ question.created_by }}</p>
-              {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
-              <!-- Modal -->
-
-      <!-- Modal Structure -->
-      <div id="modal-{{ question._id }}" class="modal">
-        <div class="modal-content">
-          <h4>Are you sure you want to delete?</h4>
-        </div>
-        <div class="modal-footer">
-          <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
-          <a href="#!" class="modal-close btn-small">Close</a>
-        </div>
-      </div>
-      <a class="btn-small modal-trigger" href="#modal-{{ question._id }}">Delete</a>
-              <a href="{{ url_for('edit_question', question_id=question._id) }}" class="btn-small">Edit</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </li>
-  </ul>
-    </div>
-    <div>
-
-      <h2>your <span>Fav Posts</span></h2>
-      <ul class="collapsible">
+<div class="user-info">
+  <div>
+    <h2>your <span>Posts</span></h2>
+    <ul class="collapsible">
       <li>
         <div class="collapsible-header">Click to View</div>
-      {% for fav in fav_posts %}
-      <div class="row collapsible-body">
-        <div class="col s12">
-          <div class="card">
-            <div class="card-content white-text">
-              <a href="{{ url_for('view_post', post_id=fav.post_id)}}"><span>{{ fav.post_title }}</span></a>
-              <p class="card-title">{{ fav.location_name }}</p>
+        {% for review in created_reviews %}
+        <div class="row collapsible-body">
+          <div class="col s12">
+            <div class="card">
+              <div class="card-content white-text">
+                <span class="card-title">{{ review.location_name }}</span>
+                <span class="card-title">{{ review.review_title }}</span>
+                <p>{{ review.review_description }}</p>
+              </div>
+              <div class="card-action">
+                <p>{{ review.created_by }}</p>
+                {% if session.user|lower == review.created_by|lower or session.admin|lower == "yes" %}
+                <!-- Modal -->
+
+                <!-- Modal Structure -->
+                <div id="modal-{{ review._id }}" class="modal">
+                  <div class="modal-content">
+                    <h4>Are you sure you want to delete?</h4>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="{{ url_for('delete_post', post_id=review._id) }}" class="btn-small">Delete</a>
+                    <a href="#!" class="modal-close btn-small">Close</a>
+                  </div>
+                </div>
+                <a class="btn-small modal-trigger" href="#modal-{{ review._id }}">Delete</a>
+                <a href="{{ url_for('edit_post', post_id=review._id) }}" class="btn-small">Edit</a>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {% endfor %}
-    </li>
+        {% endfor %}
+      </li>
     </ul>
-    </div>
   </div>
+  <div>
+    <h2>your <span>Questions asked</span></h2>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">Click to View</div>
+        {% for question in asked_questions %}
+        <div class="row collapsible-body">
+          <div class="col s12">
+            <div class="card">
+              <div class="card-content white-text">
 
+                <p>{{ question.question_description }}</p>
+              </div>
+              <div class="card-action">
+                <p>{{ question.created_by }}</p>
+                {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
+                <!-- Modal -->
 
+                <!-- Modal Structure -->
+                <div id="modal-{{ question._id }}" class="modal">
+                  <div class="modal-content">
+                    <h4>Are you sure you want to delete?</h4>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="{{ url_for('delete_question', question_id=question._id) }}" class="btn-small">Delete</a>
+                    <a href="#!" class="modal-close btn-small">Close</a>
+                  </div>
+                </div>
+                <a class="btn-small modal-trigger" href="#modal-{{ question._id }}">Delete</a>
+                <a href="{{ url_for('edit_question', question_id=question._id) }}" class="btn-small">Edit</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </li>
+    </ul>
+  </div>
+  <div>
+
+    <h2>your <span>Fav Posts</span></h2>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">Click to View</div>
+        {% for fav in fav_posts %}
+        <div class="row collapsible-body">
+          <div class="col s12">
+            <div class="card">
+              <div class="card-content white-text">
+                <a href="{{ url_for('view_post', post_id=fav.post_id)}}"><span>{{ fav.post_title }}</span></a>
+                <p class="card-title">{{ fav.location_name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </li>
+    </ul>
+  </div>
+</div>
 
 {% endblock %}
