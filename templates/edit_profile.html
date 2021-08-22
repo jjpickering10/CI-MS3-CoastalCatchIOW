@@ -22,10 +22,10 @@
         <div class="row">
             <div class="row register-text-field">
               <div class="input-field col s12">
-                <textarea id="user_description" name="user_description" class="materialize-textarea validate" required>
+                <textarea id="user_description" name="user_description" class="materialize-textarea validate" minlength="10" maxlength="500">
                   {{- user_details.user_description -}}
                 </textarea>
-                <label for="user_description">Your Description</label>
+                <label for="user_description">Tell us a bit about yourself</label>
               </div>
             </div>
         </div>

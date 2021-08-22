@@ -174,7 +174,7 @@
         <form class="col s12" method="POST" action="{{ url_for('add_reply', question_id=question._id) }}">
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="reply" name="reply" class="materialize-textarea validate"></textarea>
+              <textarea id="reply" name="reply" class="materialize-textarea validate" required></textarea>
               <label for="reply">Reply here</label>
             </div>
             <button type="submit" class="btn-small">

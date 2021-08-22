@@ -157,6 +157,54 @@ Result: Achieved.
 
 ![Result](/docs/img/question-profile.png)
 
+Expected: Logged in user can edit profile description and image.
+
+Result: Achieved.
+
+![Result]()
+
+- # Guru User
+
+Expected: Guru user can reply to questions.
+
+Result: Achieved.
+
+![Result]()
+
+Expected: Guru user can edit replies.
+
+Result: Achieved.
+
+![Result]()
+
+Expected: Guru user delete replies.
+
+Result: Achieved.
+
+![Result]()
+
+- # Admin User
+
+Expected: Admin user can edit/delete locations.
+
+Result: Achieved.
+
+![Result]()
+
+Expected: Admin user can delete categories. But not edit name, as this would break the Javascript loop.
+
+Result: Achieved.
+
+![Result]()
+
+Expected: Admin user can manage user guru status.
+
+Result: Achieved.
+
+![Result]()
+
+
+
 
 
 
