@@ -213,11 +213,31 @@ Result: Achieved.
 
 ***Responsiveness***
 ***Navigation***
+
+- Tested all navigation links to ensure they all work, including about modal. Edit categories, edit locations and edit users links only visible to admin users.
+
 ***Footer***
+
+- Tested all footer links to ensure they all work, including about modal. Social Media links all open in new tab.
+- Apply to be guru link only visible to logged in users.
+
 ***Searching***
+
+- Tested search function in locations page. Returned the correct results depending on the search. Location search queries locations name and description in the database. 
+
+- Tested search function in individual locations pages. Results show only those queries that include the ID of the location.
+
+- Tested searches without input, returns validation that it requires an input.
+
+- Tested reset button which reloads full page.
+
+- If there is no match. A message is displayed to the user indicating no results found. This is for both the locations page and each individual locations page.
+
 ***Contact Forms***
 ***User Stories***
-***User Stories***
+***Other***
+
+- Logout function returns to login page
 
 First Time Visitor Goals
 
