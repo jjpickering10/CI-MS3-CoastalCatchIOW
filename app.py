@@ -648,7 +648,7 @@ def ask_guru():
         question = {
             "category_id": request.form.get("category_id"),
             "category_name": category_id_name["category_name"],
-            "question_title": request.form.get("question_title"),
+            # "question_title": request.form.get("question_title"),
             "question_description": request.form.get("question_description"),
             "created_by": session['user'],
             "like_count": 0
@@ -678,7 +678,7 @@ def edit_question(question_id):
             updated_question = {
                 "category_id": question["category_id"],
                 "category_name": question["category_name"],
-                "question_title": request.form.get("question_title"),
+                # "question_title": request.form.get("question_title"),
                 "question_description": request.form.get(
                     "question_description"),
                 "created_by": session['user'],
