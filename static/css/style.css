@@ -1198,13 +1198,16 @@ main .locations-card .card-links .locations-links:hover, main .locations-card .c
 .search-container .search-form .search-buttons {
   padding: 0;
 }
-.search-container .search-form .search-buttons a, .search-container .search-form .search-buttons button {
+.search-container .search-form .search-buttons a,
+.search-container .search-form .search-buttons button {
   margin: 0.5rem;
   background: var(--bright-blue);
   text-transform: lowercase;
   border-radius: 0.5rem;
 }
-.search-container .search-form .search-buttons a:hover, .search-container .search-form .search-buttons a:focus, .search-container .search-form .search-buttons button:hover, .search-container .search-form .search-buttons button:focus {
+.search-container .search-form .search-buttons a:hover, .search-container .search-form .search-buttons a:focus,
+.search-container .search-form .search-buttons button:hover,
+.search-container .search-form .search-buttons button:focus {
   transition: 0.3s;
   background: var(--tertiary-blue);
 }
