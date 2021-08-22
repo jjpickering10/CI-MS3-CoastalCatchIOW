@@ -1,5 +1,5 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.131.3';
-import { Water } from 'https://cdn.skypack.dev/three@0.131.3/examples/jsm/objects/Water.js';
+import {Water} from 'https://cdn.skypack.dev/three@0.131.3/examples/jsm/objects/Water.js';
 
 /**
  * Three JS javascript for background water and clouds animation
@@ -87,23 +87,22 @@ scene.background = new THREE.Color(0x202020)
  * Sizes
  */
 const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
+  width: window.innerWidth,
+  height: window.innerHeight
 }
 
-window.addEventListener('resize', () =>
-{
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+window.addEventListener('resize', () => {
+  // Update sizes
+  sizes.width = window.innerWidth
+  sizes.height = window.innerHeight
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
+  // Update camera
+  camera.aspect = sizes.width / sizes.height
+  camera.updateProjectionMatrix()
 
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  // Update renderer
+  renderer.setSize(sizes.width, sizes.height)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
 /**
@@ -120,7 +119,7 @@ scene.add(camera)
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
+  canvas: canvas,
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -131,26 +130,25 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 const clock = new THREE.Clock()
 
-const tick = () =>
-{
-    const elapsedTime = clock.getElapsedTime()
+const tick = () => {
+  const elapsedTime = clock.getElapsedTime()
 
-    // Cloud Movement
+  // Cloud Movement
 
-    cloudArray.forEach((cloud) => {
-        cloud.rotation.z += 0.0005;
-        cloud.opacity = Math.random();
-      });
+  cloudArray.forEach((cloud) => {
+    cloud.rotation.z += 0.0005;
+    cloud.opacity = Math.random();
+  });
 
-    // Water Movement
+  // Water Movement
 
-    water.material.uniforms["time"].value -= 0.002;
+  water.material.uniforms["time"].value -= 0.002;
 
-    // Render
-    renderer.render(scene, camera)
+  // Render
+  renderer.render(scene, camera)
 
-    // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
+  // Call tick again on the next frame
+  window.requestAnimationFrame(tick)
 }
 
 tick()
