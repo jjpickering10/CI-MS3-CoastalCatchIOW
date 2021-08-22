@@ -40,6 +40,12 @@ Result: Achieved.
 
 - # Posting
 
+Expected: logged in user must fill out all post fields.
+
+Result: Achieved.
+
+![Result](/docs/img/post-validation.png)
+
 Expected: logged in user can post in individual location.
 
 Result: Achieved.
@@ -84,6 +90,53 @@ Result: Achieved.
 
 ![Result](/docs/img/delete-test.png)
 
+- # Questions
+
+Expected: logged in user can ask question in ask guru page.
+
+Result: Achieved.
+
+![Result](/docs/img/question-success.png)
+
+![Result](/docs/img/question-test.png)
+
+Expected: logged in user must fill out all question fields.
+
+Result: Achieved.
+
+![Result](/docs/img/question-validation.png)
+
+- # Editing Questions
+
+Expected: logged in user can edit question.
+
+Result: Achieved.
+
+![Result](/docs/img/question-edit.png)
+
+- # Deleting Questions
+
+Expected: logged in user can delete question with modal pop up asking for confirmation.
+
+Result: Achieved.
+
+![Result](/docs/img/question-delete-test.png)
+
+- # Liking Questions
+
+Expected: logged in user can "like" a question, displayed by filled icon.
+
+Result: Achieved.
+
+![Result](/docs/img/question-like.png)
+
+Expected: logged in user can un-like a question, displayed by un-filled icon.
+
+Result: Achieved.
+
+![Result](/docs/img/question-test.png)
+
+
 - # Profile
 
 Expected: Posts made by user shown in profile.
@@ -97,6 +150,12 @@ Expected: Favorited posts for user shown in profile.
 Result: Achieved.
 
 ![Result](/docs/img/fav-posts-profile.png)
+
+Expected: Questions asked from user shown in profile.
+
+Result: Achieved.
+
+![Result](/docs/img/question-profile.png)
 
 
 
