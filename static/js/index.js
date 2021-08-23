@@ -128,15 +128,12 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  * Animate
  */
 
-const clock = new THREE.Clock()
-
 const tick = () => {
-  const elapsedTime = clock.getElapsedTime()
 
   // Cloud Movement
 
   cloudArray.forEach((cloud) => {
-    cloud.rotation.z += 0.0005;
+    cloud.rotation.z += 0.001;
     cloud.opacity = Math.random();
   });
 
