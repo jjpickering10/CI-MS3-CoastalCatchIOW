@@ -162,6 +162,8 @@ Each individual location page has a form for posting into each location if user 
 
 Each individual location page has a collapsible toggle button showing total comments for each post as well as a reply section for logged in users.
 
+There are two toggle buttons, one for highest rated locations which displays the current highest rated locations and one for top forums which displays the forums with the current most posts.
+
 - ***Ask Guru Page***
 
 Makes use of [materialize carousel](https://materializecss.com/carousel.html) feature. Each carousel item shows the guru users who have guru privileges.
