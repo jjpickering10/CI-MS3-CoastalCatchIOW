@@ -7,15 +7,15 @@
       <!-- Username -->
       <div class="row register-text-field">
         <div class="input-field col s12">
-          <input id="username" name="username" type="text" class="validate" minlength="5" maxlength="10" required />
-          <label for="username">Username (5-10 Characters)</label>
+          <input id="username" name="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
+          <label class="register-span" for="username">Username <span>(5-15 Alpha Numeric Characters)</span></label>
         </div>
       </div>
       <!-- Password -->
       <div class="row register-text-field">
         <div class="input-field col s12">
-          <input id="password" name="password" type="password" class="validate" required />
-          <label for="password">Password</label>
+          <input id="password" name="password" type="password" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
+          <label class="register-span" for="password">Password <span>(5-15 Alpha Numeric Characters)</span></label>
         </div>
       </div>
       <!-- Register -->

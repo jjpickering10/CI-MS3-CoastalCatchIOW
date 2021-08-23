@@ -176,6 +176,10 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
 .register-form-container .register-card .register-text-field .edit-location-image {
   width: 100%;
 }
+.register-form-container .register-card .register-text-field .register-span span {
+  font-size: 50%;
+  font-weight: 100;
+}
 .register-form-container .register-card .register-button {
   margin-top: 1rem;
   margin-bottom: 1rem;
