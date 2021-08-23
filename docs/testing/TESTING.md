@@ -251,14 +251,161 @@ Result: Achieved.
 
 ***User Stories***
 
-First Time Visitor Goals
+### User Stories
 
-Returning Visitor Goals
+First Time Visitor Goals - As a first time visiter:
 
-Frequent User Goals
+Expected: **I want to - view various locations on the island and read about their description**
+
+  - Tested by visiting the landing page. There is a clear call to action to view locations.
+
+  - This then brings up all locations in individual cards with a call to action to view each.
+
+  - This then brings up the location I wanted with it's description.
+
+  - Result: Achieved.
+
+Expected: **I want to - be able to read posts that others have made**
+
+  - Tested this by viewing each location page.
+
+  - Scrolling down the page I see the posts that have been made. I see who the post was made by and a clear call to action to view comments on the post
+
+  - Result: Achieved.
+
+Expected: **I want to - be able to view questions and answers**
+
+  - Tested by visiting the landing page. There is a clear call to action to ask gurus.
+
+  - As I scroll down the page I see several buttons with a category name. Upon clicking on each I am shown various questions related to that category.
+
+  - The question is clear but not every question has a reply.
+
+    - Fix: added 'no reply yet' comment to show question hasn't been answered by a guru yet
+
+  - Result: Achieved.
+
+Expected: **I want to - register an account**
+
+  - Tested by visiting the landing page. The navigation has a link to register.
+
+  - Registered following the instructions and was directed to my new profile.
+
+  - Result: Achieved.
+
+Expected: **I want to - read about the site and contact the site**
+
+  - Tested by visiting the landing page. The navigation has an about link.
+
+  - Pop up with clear text describing the site is displayed. Text also informs of contacting the site.
+
+  - Searched the site for contact. There is a link in the footer section. Whilst it isn't displayed in the main navigation, it is common for footers to contain contact information.
+
+  - Clicked the link and filled out the form. Was shown a 'success' message.
+
+  - Result: Achieved.
+
+Expected: **I want to - search the site**
+
+  - Navigated the site and came to the locations page where a search bar is displayed. I searched several keywords and was displayed various results including a notification when nothing was found.
+
+  - Underneath the search bar are two buttons indicating top rated locations and most popular forums. Clicking these displayed three locations for each.
+
+  - Was able to reset with a reset button and am shown all locations again.
+
+  - Further navigation of the site on each individual location page I am shown a search bar. Tested by searching different terms within each location. I am shown various posts relating to my searches and a notification when nothing is found.
+
+  - Further navigation I am unable to find another search bar but in the ask guru section there are buttons to display questions under each category. There is no search bar though.
+
+    - Fix: ***due to time constraints, some desired features aren't implemented. More search functionality would be applied to site in the future and detailed further in 'Features to improve' section in README.md***
+
+  - Result: Achieved.
+
+
+Returning Visitor Goals - As a returning visiter:
+
+Expected: **I want to - log in to my account**
+
+  - Tested by visiting landing page where there is a link in the navigation to login.
+
+  - Logged in with my username and password and was shown my profile.
+
+  - Result: Achieved.
+
+Expected: **I want to - add, edit and delete posts, comments and questions if necessary**
+
+  - Tested by logging in and am shown a form to make a post in each location page. Successfully posted.
+
+  - Went to ask guru page and am shown ask question form. Posted questions under various categories.
+
+  - Commented on various posts with the add comment form clearly displayed.
+
+  - Was able to edit my posts, questions and comments.
+
+  - Upon each add, edit or delete the page is refreshed.
+
+    Fix: ***This is detailed further in README.md, further improvement would be to prevent page refreshing***
+
+  - Result: Achieved.
+
+Expected: **I want to - reply to comments on my posts and others**
+
+  - Tested by viewing posts and was shown add comment form. Added a comment and was flashed successful message.
+
+  - I could then view the post again with my comments. Same issue as above with page refreshing.
+
+  - Result: Achieved. 
+
+Expected: **I want to - reply to questions if I am a guru user**
+
+  - Tested by changing account to guru account. In the ask guru section I am now shown reply form whereas before I was not. I sent a reply to a question and it is displayed, replacing the 'no reply yet' comment. My profile is also in the carousel at the top of the page.
+
+  - Result: Achieved.
+
+Frequent User Goals - As a frequent user:
+
+Expected: **I want to - edit my profile**
+
+  - Logged into my profile and am shown a default image and a clear 'edit profile' link. This takes me to a page where I can update my description about me and upload a profile picture. Upon update, my profile now shows my uploaded image and new description and as a guru user this is shown in ask guru carousel.
+
+  - If I edit my profile again but dont choose a new image, my profile image reverts back to default image.
+
+    Fix: ***This was fixed with adding a conditional statement in the app.py edit_profile function to check if a file was uploaded, and if not, only the description was updated which contains their old description and/or any update***
+
+  - Result: Achieved.
+
+Expected: **I want to - apply to become a guru user**
+
+  - Logged in and visited ask guru section, there is a link to apply to be a guru contact page. Filled out form which has my username already in the input. Show successful message upon completing form.
+
+  - Apply guru is visible in the footer when I am logged in. It is also mentioned in about section.
+
+  - Result: Achieved.
+
+Expected: **I want to - favourite certain posts**
+
+  - Clicked heart icon on posts and the icon is now filled. It is also displayed in my profile under 'fav posts'.
+
+  - Clicked heart icon again and the icon is now not filled. It is no longer displayed in my profile under 'fav posts'.
+
+  - Result: Achieved.
+
+Expected: **I want to - like certain posts**
+
+  - Clicked thumbs up icon on question and the icon is now filled. Like count increased by 1.
+
+  - Clicked heart icon again and the icon is now not filled. Like count decreased by 1.
+
+  - Result: Achieved.
 
 Other Testing
 
 - Contrast colours
 
+  - Colours contract well with light text on dark backgrounds and dark text on light backgrounds. Chrome tools was used throughout to judge contrast.
+
 - Image sizes
+
+  - Images uploaded into database have a huge impact on the site. I have reduced the file sizes for the files I have used in the site but anyone who uploads a large file would cause a decrease in performance in the site.
+
+  - ***This is mentioned further in 'Features to improve' in README.md***
