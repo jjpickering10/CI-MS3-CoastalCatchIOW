@@ -27,7 +27,7 @@
 <div class="row">
   <col class="s12 m6">
     <button id="ratings-button" class="btn-small">Top Rated Locations</button>
-    <a href="" class="btn-small">Most Popular Locations</a>
+    <button id="popular-button" href="" class="btn-small">Most Popular Forums</button>
     <a href="{{ url_for('get_locations') }}" class="btn-small">Reset</a>
   </col>
 </div>
@@ -67,7 +67,7 @@
       <p>Current Rating: N/A</p>
       <p>No Ratings Yet</p>
       {% endif %}
-      <p>Total Posts: {{ count|length }}</p>
+      <p>Total Posts: <span class="current-posts-total">{{ count|length }}</span></p>
 
     </div>
     <div class="card-links">
@@ -84,9 +84,12 @@
 
 {% block scripts %}
 <script>
-  // Loop for showing top rated locations
+  
   const locationsCards = document.querySelectorAll(".locations-card")
   const ratingsButton = document.querySelector("#ratings-button")
+  const popularButton = document.querySelector("#popular-button")
+
+  // Loop for showing top rated locations
 
   ratingsButton.addEventListener('click', () => {
     let topRatings = {}
@@ -114,5 +117,35 @@
       })
     }
   })
+
+  // Loop for showing most popular forums
+
+  popularButton.addEventListener('click', () => {
+    let topForums = {}
+    let displayForums = [];
+    locationsCards.forEach((forum) => {
+      forum.style.display = "none"
+      const y = forum.querySelector('.card-title').innerText
+      const x = forum.querySelector('.current-posts-total');
+      if (x !== null) {
+        const total = parseFloat(x.innerText)
+        topForums[y] = total
+        // Adapted from https://javascript.plainenglish.io/sorting-objects-39a3cc47f9fe
+        const newForums = (Object.entries(topForums).sort((a, b) => b[1] - a[1])).slice(0, 3)
+        displayForums = newForums
+      }
+    })
+    if (displayForums.length > 0) {
+      locationsCards.forEach(forum => {
+        const y = forum.querySelector('.card-title').innerText
+        displayForums.forEach(display => {
+          if (y.toLowerCase() === display[0].toLowerCase()) {
+            forum.style.display = "block"
+          }
+        })
+      })
+    }
+  })
+
 </script>
 {% endblock %}
