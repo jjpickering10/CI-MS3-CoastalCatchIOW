@@ -158,18 +158,29 @@ def edit_profile(username_id):
     """
     user_details = mongo.db.users.find_one(
         {"_id": ObjectId(username_id)}, {"password": 0})
-
     if request.method == "POST":
         if 'user_image' in request.files:
             user_image = request.files["user_image"]
-            mongo.save_file(user_image.filename, user_image)
+            if user_image.filename:
+                mongo.save_file(user_image.filename, user_image)
+                updated_user = {
+                    "$set": {"user_description": request.form.get(
+                        "user_description"), "user_image": user_image.filename}
+                }
+                mongo.db.users.update_one(
+                    {"_id": ObjectId(username_id)}, updated_user)
+                flash('Edit successful')
+                return redirect(url_for('profile', username=session['user']))
+            else:
+                updated_user = {
+                    "$set": {"user_description": request.form.get(
+                        "user_description")}
+                }
+                mongo.db.users.update_one(
+                    {"_id": ObjectId(username_id)}, updated_user)
+                flash('Edit successful')
+                return redirect(url_for('profile', username=session['user']))
 
-        updated_user = {
-            "$set": {"user_description": request.form.get(
-                "user_description"), "user_image": user_image.filename}
-        }
-        mongo.db.users.update_one({"_id": ObjectId(username_id)}, updated_user)
-        flash('Edit successful')
         return redirect(url_for('profile', username=session['user']))
 
     if 'user' in session:
