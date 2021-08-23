@@ -2,7 +2,33 @@
 
 - HTML Validity
 
+  - All pages put through [W3C Markup Validator](https://validator.w3.org/nu/) using 'View Page Source' on webpage due to Jinja language.
+
+  - Any errors including missing alt tags and other errors were fixed.
+
 - CSS Validity
+
+  - CSS validated using [W3C CSS Validation](https://jigsaw.w3.org/css-validator/)
+
+  - No issues found.
+
+![Result](/docs/img/css-valid.png)
+
+- JS Validity
+
+  - Javascript validated using [JSHint](https://jshint.com/)
+
+  - Any errors including unused variables were fixed.
+
+- Python Validity
+
+  - Python validated checked with python linter extension in Gitpod.
+
+    - Only warning is "'env' imported but unused".
+
+  - Syntax checked with [Python Syntax Checker](https://extendsclass.com/python-tester.html)
+
+    - No syntax errors found.
 
 ***CRUD Testing***
 
