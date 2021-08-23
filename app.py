@@ -203,13 +203,14 @@ def file(filename):
 @app.route("/get_locations")
 def get_locations():
     """
-    Returns locations page with locations
+    Returns locations page with locations, posts
     and ratings of each from MongoDB
     """
     locations = list(mongo.db.locations.find())
     ratings = list(mongo.db.ratings.find())
+    posts = list(mongo.db.reviews.find())
     return render_template(
-        "locations.html", locations=locations, ratings=ratings)
+        "locations.html", locations=locations, ratings=ratings, posts=posts)
 
 
 @app.route("/search_locations", methods=["GET", "POST"])

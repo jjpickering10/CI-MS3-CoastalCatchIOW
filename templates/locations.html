@@ -27,6 +27,7 @@
 {% if locations|length > 0 %}
 <main>
   {% for location in locations %}
+  {% set count = [] %}
   <div class="card locations-card" data-tilt data-tilt-max="2" data-tilt-speed="400" data-tilt-scale="1.02"
     data-tilt-perspective="1000" data-tilt-glare data-tilt-max-glare="0.2">
     <div class="card-image">
@@ -46,6 +47,11 @@
       {% set __ = rating_score.append(rating.rating) %}
       {% endif %}
       {% endfor %}
+      {% for post in posts %}
+      {% if post.location_name == location.location_name %}
+      {% set count = count.append(1) %}
+      {% endif %}
+      {% endfor %}
       {% if rating_score|length > 0 %}
       <p>Current Rating: {{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }} <i class="fas fa-star"></i></p>
       <p>Total Ratings: <span class="rating-total">{{ rating_score|length }}</span></p>
@@ -53,6 +59,7 @@
       <p>Current Rating: N/A</p>
       <p>No Ratings Yet</p>
       {% endif %}
+      <p>Total Posts: {{ count|length }}</p>
 
     </div>
     <div class="card-links">
