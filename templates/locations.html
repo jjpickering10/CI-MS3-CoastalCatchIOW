@@ -25,24 +25,24 @@
 </div>
 
 <div class="row center-align toggle-locations-container">
-  <col class="s12 m6">
+  <div class="s12 m6">
     <button id="ratings-button" class="btn-small">Top Rated Locations</button>
-    <button id="popular-button" href="" class="btn-small">Most Popular Forums</button>
+    <button id="popular-button" class="btn-small">Most Popular Forums</button>
     <a href="{{ url_for('get_locations') }}" class="btn-small">Reset</a>
-  </col>
+  </div>
 </div>
 
 {% if locations|length > 0 %}
-<main>
+<section class="locations-main-container">
   {% for location in locations %}
   {% set count = [] %}
   <div class="card locations-card" data-tilt data-tilt-max="2" data-tilt-speed="400" data-tilt-scale="1.02"
     data-tilt-perspective="1000" data-tilt-glare data-tilt-max-glare="0.2">
     <div class="card-image">
       {% if location.location_image %}
-      <img src="{{ url_for('file', filename=location.location_image) }}">
+      <img src="{{ url_for('file', filename=location.location_image) }}" alt="{{ location.location_name}}">
       {% else %}
-      <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+      <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}" alt="default-image">
       {% endif %}
     </div>
     <div class="card-content locations-info">
@@ -75,7 +75,7 @@
     </div>
   </div>
   {% endfor %}
-</main>
+</section>
 {% else %}
 <p class="no-posts-locations">Nothing Found :(</p>
 {% endif %}

@@ -89,9 +89,6 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   margin-top: 10rem;
   z-index: -1000;
 }
-.home-page-container h1 span {
-  font-size: calc(10vw + 1rem);
-}
 .home-page-container .home-text-content {
   transform: translate(5rem);
   width: 70%;
@@ -229,7 +226,7 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   background: var(--bright-blue);
 }
 
-main {
+.locations-main-container {
   margin: 0 auto;
   width: 90%;
   display: grid;
@@ -237,52 +234,52 @@ main {
   gap: 1rem;
   transform: translateY(10vh);
 }
-main .locations-card {
+.locations-main-container .locations-card {
   background: var(--tertiary-blue);
   overflow: hidden;
   border-radius: 1rem;
 }
-main .locations-card .card-content .card-title {
+.locations-main-container .locations-card .card-content .card-title {
   color: var(--secondary-blue);
   font-weight: 400;
   font-size: 2rem;
 }
-main .locations-card .card-content .title-background {
+.locations-main-container .locations-card .card-content .title-background {
   position: absolute;
   z-index: -1;
   font-size: 4rem;
   color: rgba(255, 255, 255, 0.05);
   transform: rotate(45deg) scale(1.5);
 }
-main .locations-card .card-content p {
+.locations-main-container .locations-card .card-content p {
   font-family: "Roboto", sans-serif;
   color: var(--secondary-blue);
   font-weight: 300;
   font-size: 0.8rem;
 }
-main .locations-card .card-content p i {
+.locations-main-container .locations-card .card-content p i {
   color: var(--secondary-brown);
   transition: 1s;
 }
-main .locations-card .card-content p i:hover {
+.locations-main-container .locations-card .card-content p i:hover {
   transition: 1s;
   transform: scale(1.5) rotate(720deg);
 }
-main .locations-card .card-content p .rating-total {
+.locations-main-container .locations-card .card-content p .rating-total {
   font-weight: 400;
 }
-main .locations-card .card-links {
+.locations-main-container .locations-card .card-links {
   position: relative;
   padding: 24px;
 }
-main .locations-card .card-links .locations-links {
+.locations-main-container .locations-card .card-links .locations-links {
   color: var(--white-color);
   background: var(--primary-brown);
   text-transform: lowercase;
   border-radius: 0.5rem;
   transition: 0.5s;
 }
-main .locations-card .card-links .locations-links:hover, main .locations-card .card-links .locations-links:focus {
+.locations-main-container .locations-card .card-links .locations-links:hover, .locations-main-container .locations-card .card-links .locations-links:focus {
   background: var(--secondary-brown);
   transform: scale(1.05);
 }

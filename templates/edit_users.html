@@ -15,9 +15,9 @@
       <div class="card-action">
         <p class="guru-status">Guru Status: <span>{{ user.is_guru }}</span></p>
         {% if user.user_image %}
-        <img src="{{ url_for('file', filename=user.user_image) }}">
+        <img src="{{ url_for('file', filename=user.user_image) }}" alt="image-for-{{ user.username }}">
         {% else %}
-        <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+        <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}" alt="default-image">
         {% endif %}
       </div>
     </div>

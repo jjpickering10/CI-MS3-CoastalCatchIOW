@@ -46,9 +46,9 @@
       <h5>Total Posts: {{ count|length }}</h5>
     </div>
     {% if location.location_image %}
-    <img src="{{ url_for('file', filename=location.location_image) }}">
+    <img src="{{ url_for('file', filename=location.location_image) }}" alt="{{ location.location_name }}">
     {% else %}
-    <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}">
+    <img src="{{ url_for('static', filename='img/blank_profile_image.png') }}" alt="default-image">
     {% endif %}
   </div>
 

@@ -7,7 +7,7 @@
     <h4 class="center-align">Edit {{ locations.location_name }} Description</h4>
     <div class="row register-text-field">
       <div class="card-image center-align">
-        <img class="edit-location-image" src="{{ url_for('file', filename=locations.location_image) }}">
+        <img class="edit-location-image" src="{{ url_for('file', filename=locations.location_image) }}" alt="{{ locations.location_name }}">
         <span class="card-title">Current Image</span>
       </div>
       <div class="input-field col s12">

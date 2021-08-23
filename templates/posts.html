@@ -39,7 +39,7 @@
     <form class="post-form" method="POST" action="{{ url_for('rate_location', location_id=location._id) }}">
       <div class="">
         <div class="input-field">
-          <select id="rating_score" name="rating_score" class="validate" required>
+          <select id="rating_score" name="rating_score" class="validate">
 
             <option value="1">1 Star</option>
             <option value="2">2 Star</option>
@@ -82,7 +82,7 @@
     </div>
     <div class="row forum-text-field">
       <div class="input-field col s12">
-        <textarea id="review_description" name="review_description" type="text" class="materialize-textarea validate"
+        <textarea id="review_description" name="review_description" class="materialize-textarea validate"
           required></textarea>
         <label for="review_description">Description</label>
       </div>
