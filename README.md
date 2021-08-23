@@ -318,6 +318,34 @@ Chrome Dev Tools
 
 ### Feature To Improve
 
+Due to time constraints there are many things I would have liked to add to improve the site. These I would like to implement in the future. They include:
+
+- More search functionality
+
+- More profile information
+
+- Added CSS improvements, including small profile pic in comments section
+
+- Dashboards throughout site
+
+- Post notifications
+
+- Using Flask-login. I only discovered this midway through the project
+
+- More animations
+
+- Preventing page reload. I tried using barbaJS, but I kept having issues with it. So I decided against it. I used GSAP animations to improve the UX by waiting until page load to view page as some images werent loaded straight away when the page opened.
+
+---
+
+### Known issues
+
+- Image files uploaded don't have a unique name. So if two people upload a file with the same filename, there is an issue. This would need to be fixed in future work on the project.
+
+- Image files uploaded can drastically slow the site down. I would have to look into this issue further when continuing on with this project. At the moment all images uploaded by myself are small so it doesn't have to much of an effect but a larger upload slows down the site. I used loading animations with GSAP to be improve the UX of this, but it can be slow.
+
+- Page refreshing can be frustrating as it takes you away from where you were on the site.
+
 ---
 
 ## Deployment

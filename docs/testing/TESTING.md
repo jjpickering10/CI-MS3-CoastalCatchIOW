@@ -275,6 +275,10 @@ Result: Achieved.
 
 - Tested rating functionality. If logged in users havent rated a location. The message 'You havent rated this yet" is displayed. After successful rating. This is updated to their rating. Total rating for location is updated along with it.
 
+- Tested that only certain links are visible to certain users, for both regular and mobile nav view.
+
+- Tested on various browsers.
+
 ***User Stories***
 
 ### User Stories
