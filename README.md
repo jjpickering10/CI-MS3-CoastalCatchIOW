@@ -258,6 +258,8 @@ Consistant theme
 
 [Google Fonts](https://fonts.google.com/) - for fonts
 
+[Favicon Generator](https://favicon.io/favicon-generator/) - for favicon
+
 [Flask](https://flask.palletsprojects.com/en/2.0.x/) - web application framework
 
 [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - template engine for Python
