@@ -8,18 +8,15 @@ _Use CTRL+click or CMD+click to open links throughout the README in a new tab_
 
 Coastal Catch Isle of Wight is a fishing blog/forum site that allows users to post their fishing experiences of certain locations on the island as well as ask questions for advice. Users can posts comments, give a rating to a location and favourite a post.
 
-This projects showcases full CRUD functionality and consists of 4 different types of users. Those users are:
-Regular users who can only read. They can't post, like, comment, edit or delete anything.
-Logged in users who can make a post in various locations. Edit and delete their posts. Like and favourite other posts. Edit their profile.
-Guru users who can do everything a logged in user can do, but also have the privilege of being able to reply to questions in the Ask Guru section.
-Admin users who can do everything including edit and delete all posts, as well as add and edit locations and question categories.
-
-
 ---
 
 ## Description
 
-
+This projects showcases full CRUD functionality and consists of 4 different types of users. Those users are:
+- Regular users who can only read. They can't post, like, comment, edit or delete anything.
+- Logged in users who can make a post in various locations. Edit and delete their posts. Like and favourite other posts. Edit their profile and give ratings to locations.
+- Guru users who can do everything a logged in user can do, but also have the privilege of being able to reply to questions in the Ask Guru section.
+- Admin users who can do everything including edit and delete all posts, as well as add and edit locations and question categories, as well as change users guru status.
 
 ---
 
@@ -54,57 +51,71 @@ Frequent User Goals
 
 #### External User's Goals
 
-Visiting users will be able to read in the information on the site.
-Registered users will be able to create, read, update and delete posts on the site.
-Registered users will be able to create, read, update and delete information in their profile.
-Guru users will be able to do everything a registered user can, but will be able to answer specific questions.
+*Enjoy a visually appealing site to post and learn about fishing on the Isle of Wight*
 
+Visiting users will be able to read the information on the site.
+Registered users will be able to create, read, update and delete posts on the site.
+Registered users will be able to create, read, update and delete questions on the site.
+Registered users will be able to create, read, update and delete information in their profile.
+Registered users will be able to like posts and favourite questions.
+Registered users will be able to give a rating to locations.
+Registered users will be able to visual their posts, questions and favourited posts in their profile.
+Guru users will be able to do everything a registered user can, but will be able to answer specific questions.
 
 #### Site Owner's Goals
 
+*Provide a visually appealing place for people who enjoy fishing on the Isle of Wight*
+
 Admin users will be able to create, read, update and delete locations.
+Admin users will be able to create, read, update and delete categories.
 Admin users will be able to decide who gets to be a guru user.
 
 ### **Scope**
 
 Fits in with skillset of current programming ability.
+- Which includes HTML, CSS, Javscript, Python and the use of Flask, MongoDB and some Javascript libraries.
 The main focus of the site is to showcase CRUD functionality and present it in an easy to use manner.
 
 ### **Structure**
 
-Consistent navigation throughout site.
-Consistent footer throughout site.
-Logged in user can CRUD on posts and comment.
-Logged in guru user can CRUD on posts and answer specific questions.
-Logged in admin can CRUD on posts, but also manage locations.
-
-- Landing Page
-- Locations Page
-- Ask Guru Page
-- Profile Page
-- About Page
-- Contact Page
-- Apply Guru Page
-- Login/Register Pages
-- Admin Pages
-
-- Search functionality
-- Category selection
-- Location selection
-- Upload profile images
-- Consistant theme
+*Consistent navigation throughout site.*
+*Consistent footer throughout site.*
+*Logged in user has access to 'apply to be a guru' contact form.*
+*Logged in guru user can has access to reply section in ask guru page.*
+*Logged in admin has access to edit locations, edit categories and edit users pages.*
 
 
 ### **Skeleton**
 
-- Navigation
-- Landing page
-- Locations page
-- Posts page
-- Guru page
+- Landing Page
+  - Made with [threejs](https://threejs.org/) to display pleasant visual of dark rippling ocean with moving clouds
 
+- Locations Page
+  - CSS Grid based layout with a card for each location and button to individual forum. Cards use [tilt effect](https://micku7zu.github.io/vanilla-tilt.js/).
+  - Individual location page has post option for logged in users and displays posts.
 
+- Ask Guru Page
+  - Displays current guru users
+  - Question form for logged in users
+  - Displays posted questions and reply section for guru users
 
+- Profile Page
+  - Displays your profile, including image and description
+
+- About Page
+  - Popout modal displaying about information
+
+- Contact Page
+  - Form to contact the site with. Made functional with [EmailJS](https://www.emailjs.com/)
+
+- Apply Guru Page
+  - Form for logged in users to contact the site with, to apply to be a guru. Made functional with [EmailJS](https://www.emailjs.com/)
+
+- Login/Register Pages
+  - Displays login and register functionality
+
+- Admin Pages
+  - Additional pages for admin
 
 ### **Surface**
 
@@ -114,7 +125,6 @@ Mix of blues, greys and browns to match sea and sand colors.
 
 ![Color Palette](/docs/img/colorscheme.png) - color palette
 
-
 Images:
 
 Use of images are uploaded my the user to the site, or by admin for the locations images.
@@ -123,6 +133,10 @@ If images arent selected, a default image is posted.
 Typography:
 
 'Poppins' and 'Roboto' fonts are used.
+
+Animations:
+
+[GSAP](https://greensock.com/) animations throughout site for fluid, appealing UX experience.
 
 ---
 
@@ -171,16 +185,26 @@ Displays profile image if user has uploaded an image as well as user description
 3 separate sections for users own posts, questions asked and favourited posts with collapsible toggle buttons to display each.
 
 - ***About Page***
+
+Pop out modal displaying text information about the site. Font awesome icons used.
+
 - ***Contact Page***
+
+Form with [EmailJS](https://www.emailjs.com/) and success message displayed when form is sent
+
 - ***Apply Guru Page***
+
+Form with [EmailJS](https://www.emailjs.com/) and success message displayed when form is sent
 
 - ***Login/Register Pages***
 
-Form for logging in and registering.
+Form for logging in and registering. Makes use of landing page theejs background.
 
 - ***Admin Pages***
 
 Admin has access to edit locations, edit categories and edit users to be able to edit and delete locations and categories as well as manage the guru status of each user.
+
+Toggle switch for users displaying their guru status.
 
 - ***Other Site Features***
 
@@ -196,6 +220,8 @@ Ability to upload images into database.
 
 Search functionality on locations page and ask guru page.
 
+Consistant theme
+
 ## Technologies Used
 
 ### Languages
@@ -210,7 +236,7 @@ Search functionality on locations page and ask guru page.
 
 ### Frameworks, Libraries and Programs Used
 
-[Materialize](https://materializecss.com/) - for responsive design and grid layout
+[Materialize](https://materializecss.com/) - for responsive design and layout
 
 [Three.js](https://threejs.org/) - for 3D water and clouds background
 
@@ -236,8 +262,6 @@ Search functionality on locations page and ask guru page.
 
 [PyMongo](https://pypi.org/project/pymongo/) - connecting MongoDB databse from Python
 
-Werkzeug
-
 ### Resources
 
 [ColorSpace](https://mycolor.space/) - for color palette
@@ -260,13 +284,13 @@ Werkzeug
 
 [Autoprefixer](https://autoprefixer.github.io/) - adds vendor prefixes to CSS
 
-EmailJS
+[EmailJS](https://www.emailjs.com/) - for email functionality
 
-MongoDB
+[MongoDB](https://www.mongodb.com/) - database
 
-Heroku
+[Heroku](https://www.heroku.com/) - cloud platform service for deployment
 
-[ThreeJS course](https://threejs-journey.xyz/) - for background water and clouds 3D effect.
+[ThreeJS course](https://threejs-journey.xyz/) - for background water and clouds 3D effect
 
 Code Institute Course
 
@@ -283,6 +307,12 @@ Chrome Dev Tools
 ### Project Barriers and Solutions
 
 - Issues with Gitpod deleting work. Had to rewrite a lot of code. Lesson has been learnt to regularly push to Github.
+
+- After logging out, you could go back in the browser and still post/edit/delete. Fixed this by adding if statements to routes.
+
+- Ask guru toggle categories functionality had issues on firefox and mobile. This was because in the script I used 'e.path'. Changed this to 'e.target'
+
+- Due to the way the Javascript loop is written, if you change the category name this causes issues with questions being displayed. Fixed this by preventing any editing of categories. This isn't an issue as the names of these categories would not need to be edited.
 
 ### Feature To Improve
 
@@ -316,6 +346,10 @@ Forking
 
 ### Code Snippets
 
+CI walkthrough project helped me throughout this project.
+
+Water effect from threeJS is used and adapted for my own style.
+
 ### Images and videos
 
 Images have been taken by myself as I live here.
@@ -328,6 +362,6 @@ Written content throughout site has been provided from my father who is a keen f
 
 - Code Institute Software Development Course - for the education.
 - Code Institute Slack Community group - for the support.
-- Youtube Channels: Tech with Tim, Pretty Printed. 
+- Youtube Channels: Tech with Tim, Pretty Printed, Julian Nash. 
 - Bruno Simon [THREEJS course](https://threejs-journey.xyz/) - side course I have undertaken.
 - My mentor [Antonio Rodriguez](https://github.com/AkaAnto) - for the guidance and support throughout.
