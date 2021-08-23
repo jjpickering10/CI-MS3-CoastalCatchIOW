@@ -211,6 +211,10 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   color: var(--primary-blue);
 }
 
+.locations-hide {
+  display: none;
+}
+
 main {
   margin: 0 auto;
   width: 90%;

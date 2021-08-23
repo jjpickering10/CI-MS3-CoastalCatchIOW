@@ -17,11 +17,19 @@
         <label for="location_query"><i class="fas fa-search"></i> Search Locations</label>
       </div>
       <div class="col s12 m4 search-buttons">
-        <a href="" class="btn-small">Reset</a>
+        <a href="{{ url_for('get_locations') }}" class="btn-small">Reset</a>
         <button type="submit" class="btn-small">Search</button>
       </div>
     </div>
   </form>
+</div>
+
+<div class="row">
+  <col class="s12 m6">
+    <button id="ratings-button" class="btn-small">Top Rated Locations</button>
+    <a href="" class="btn-small">Most Popular Locations</a>
+    <a href="{{ url_for('get_locations') }}" class="btn-small">Reset</a>
+  </col>
 </div>
 
 {% if locations|length > 0 %}
@@ -53,7 +61,7 @@
       {% endif %}
       {% endfor %}
       {% if rating_score|length > 0 %}
-      <p>Current Rating: {{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }} <i class="fas fa-star"></i></p>
+      <p>Current Rating: <span class="current-rating">{{ ((rating_score|sum)/rating_score|length)|round(1, 'ceil') }}</span> <i class="fas fa-star"></i></p>
       <p>Total Ratings: <span class="rating-total">{{ rating_score|length }}</span></p>
       {% else %}
       <p>Current Rating: N/A</p>
@@ -72,4 +80,39 @@
 <p class="no-posts-locations">Nothing Found :(</p>
 {% endif %}
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Loop for showing top rated locations
+  const locationsCards = document.querySelectorAll(".locations-card")
+  const ratingsButton = document.querySelector("#ratings-button")
+
+  ratingsButton.addEventListener('click', () => {
+    let topRatings = {}
+    let displayRatings = [];
+    locationsCards.forEach((rating) => {
+      rating.style.display = "none"
+      const y = rating.querySelector('.card-title').innerText
+      const x = rating.querySelector('.current-rating');
+      if (x !== null) {
+        const score = parseFloat(x.innerText)
+        topRatings[y] = score
+        // Adapted from https://javascript.plainenglish.io/sorting-objects-39a3cc47f9fe
+        const newRatings = (Object.entries(topRatings).sort((a, b) => b[1] - a[1])).slice(0, 3)
+        displayRatings = newRatings
+      }
+    })
+    if (displayRatings.length > 0) {
+      locationsCards.forEach(rating => {
+        const y = rating.querySelector('.card-title').innerText
+        displayRatings.forEach(display => {
+          if (y.toLowerCase() === display[0].toLowerCase()) {
+            rating.style.display = "block"
+          }
+        })
+      })
+    }
+  })
+</script>
 {% endblock %}

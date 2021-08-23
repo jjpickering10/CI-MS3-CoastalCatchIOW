@@ -223,8 +223,10 @@ def search_locations():
         locations = list(mongo.db.locations.find(
             {"$text": {"$search": location_query}}))
         ratings = list(mongo.db.ratings.find())
+        posts = list(mongo.db.reviews.find())
         return render_template(
-            "locations.html", locations=locations, ratings=ratings)
+            "locations.html", locations=locations,
+            ratings=ratings, posts=posts)
 
     return redirect(url_for('get_locations'))
 
