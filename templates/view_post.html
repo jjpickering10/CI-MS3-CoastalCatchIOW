@@ -31,13 +31,15 @@
 
       <ul class="collapsible">
         <li>
-          <div class="collapsible-header">View comments</div>
+          
+          {% set comments_array = [] %}
           {% for comment in comments %}
           {% if comment.post_id == post._id %}
+          {% set __ = comments_array.append(1) %}
           <div class="comment-section-container collapsible-body">
-            <p class="comment-reply">{{ comment.comments }}</p>
+            <p class="comment-reply"><i class="far fa-comment"></i> {{ comment.comments }}</p>
             <p class="comment-date">{{ comment.date_created }}</p>
-            <p class="comment-created">{{ comment.created_by }}</p>
+            <p class="comment-created"><i class="fas fa-user"></i> {{ comment.created_by }}</p>
             {% if session.user|lower == comment.created_by|lower or session.admin|lower == "yes" %}
             <!-- Modal -->
 
@@ -59,6 +61,7 @@
 
           {% endif %}
           {% endfor %}
+          <div class="collapsible-header"><i class="far fa-comments"></i> View {{ comments_array|length }} comments</div>
         </li>
       </ul>
 
@@ -83,7 +86,7 @@
 
       <div class="card-action">
         <p class="post-date">Date: {{ post.date_created }}</p>
-        <p class="post-created-by">Posted by: {{ post.created_by }}</p>
+        <p class="post-created-by"><i class="fas fa-user"></i> Posted by: {{ post.created_by }}</p>
         {% if session.user|lower == post.created_by|lower or session.admin|lower == "yes" %}
         <!-- Modal -->
 

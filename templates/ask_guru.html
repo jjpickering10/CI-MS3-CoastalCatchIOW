@@ -131,8 +131,8 @@
       </div>
       {% for reply in replies %}
       {% if reply.question_id == question._id %}
-      <p class="question-reply">{{ reply.reply }}</p>
-      <p class="question-reply-user">Reply from: {{ reply.created_by }}</p>
+      <p class="question-reply"><i class="far fa-comment"></i> {{ reply.reply }}</p>
+      <p class="question-reply-user"><i class="fas fa-user"></i> Reply from: {{ reply.created_by }}</p>
       {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
       <!-- Modal -->
 
@@ -160,7 +160,7 @@
           <div class="row">
             <div class="input-field col s12">
               <textarea id="reply" name="reply" class="materialize-textarea validate" required></textarea>
-              <label for="reply">Reply here</label>
+              <label for="reply"><i class="far fa-comment"></i> Reply here</label>
             </div>
             <button type="submit" class="btn-small">
               Add Reply
@@ -171,7 +171,7 @@
 
       {% endif %}
       <div class="question-user card-content white-text">
-        <p class="question-created-by">Question from: <span>{{ question.created_by }}</span></p>
+        <p class="question-created-by"> <i class="fas fa-user"></i> Question from: <span>{{ question.created_by }}</span></p>
         {% if session.user|lower == question.created_by|lower or session.admin|lower == "yes" %}
         <!-- Modal -->
 
