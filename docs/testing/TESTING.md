@@ -1,7 +1,9 @@
-- After logging out, you could go back in the browser and still post/edit/delete. Fixed this by adding if statements to routes.
-
-***User Stories***
 ***Code Validation***
+
+- HTML Validity
+
+- CSS Validity
+
 ***CRUD Testing***
 
 - # Register
@@ -10,13 +12,13 @@ Expected: user cant register if both fields arent given.
 
 Result: Achieved.
 
-![Result](/docs/img/register-test-validation-2.png)
+![Result](/docs/img/register-validation.png)
 
-Expected: user cant register if username field is not between 5-10 characters.
+Expected: user cant register if username and password fields are not between 5-15 characters and matches RegEx pattern.
 
 Result: Achieved.
 
-![Result](/docs/img/register-test-validation.png)
+![Result](/docs/img/register-validation-2.png)
 
 Expected: if correct information given, user can register.
 
@@ -237,7 +239,6 @@ Result: Achieved.
 
 - Both successful form posts return notification message.
 
-***User Stories***
 ***Other***
 
 - Tested 404 error page with URL that doesnt exist. Returns the custom 404 page.
@@ -245,6 +246,10 @@ Result: Achieved.
 - Logout function returns to login page.
 
 - Clicking back in the browser after logging out will return to login page if the previous page required session data.
+
+- Tested rating functionality. If logged in users havent rated a location. The message 'You havent rated this yet" is displayed. After successful rating. This is updated to their rating. Total rating for location is updated along with it.
+
+***User Stories***
 
 First Time Visitor Goals
 
@@ -254,18 +259,6 @@ Frequent User Goals
 
 Other Testing
 
-- Responsiveness
-
-- HTML Validity
-
-- CSS Validity
-
 - Contrast colours
 
-- Code cleaned up
-
-- Spelling
-
 - Image sizes
-
-- CSS autoprefixer
