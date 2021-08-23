@@ -280,6 +280,22 @@ nav {
     display: none;
 }
 
+.toggle-locations-container {
+    button, a {
+        text-transform: lowercase;
+        background: var(--primary-brown);
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        &:hover, &:focus {
+            background: var(--white-color);
+            color: var(--primary-brown);
+        }
+    }
+    a {
+        background: var(--bright-blue);
+    }
+}
+
 main {
     margin: 0 auto;
     width: 90%;

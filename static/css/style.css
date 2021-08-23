@@ -215,6 +215,20 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   display: none;
 }
 
+.toggle-locations-container button, .toggle-locations-container a {
+  text-transform: lowercase;
+  background: var(--primary-brown);
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+.toggle-locations-container button:hover, .toggle-locations-container button:focus, .toggle-locations-container a:hover, .toggle-locations-container a:focus {
+  background: var(--white-color);
+  color: var(--primary-brown);
+}
+.toggle-locations-container a {
+  background: var(--bright-blue);
+}
+
 main {
   margin: 0 auto;
   width: 90%;

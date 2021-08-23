@@ -24,7 +24,7 @@
   </form>
 </div>
 
-<div class="row">
+<div class="row center-align toggle-locations-container">
   <col class="s12 m6">
     <button id="ratings-button" class="btn-small">Top Rated Locations</button>
     <button id="popular-button" href="" class="btn-small">Most Popular Forums</button>
@@ -84,6 +84,13 @@
 
 {% block scripts %}
 <script>
+
+  const toggleLocations = document.querySelector('.toggle-locations-container')
+
+  if (window.location.pathname == '/search_locations') {
+    toggleLocations.style.display = 'none'
+  }
+  
   
   const locationsCards = document.querySelectorAll(".locations-card")
   const ratingsButton = document.querySelector("#ratings-button")
