@@ -1582,6 +1582,7 @@ nav {
     background: var(--secondary-blue);
     pointer-events: all;
     flex-direction: column;
+    margin-top: 64px;
 
     .loading-background {
         position: absolute;

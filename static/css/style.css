@@ -1248,6 +1248,7 @@ nav .navigation-main ul li:hover a, nav .navigation-main ul li:focus a {
   background: var(--secondary-blue);
   pointer-events: all;
   flex-direction: column;
+  margin-top: 64px;
 }
 .loading .loading-background {
   position: absolute;
