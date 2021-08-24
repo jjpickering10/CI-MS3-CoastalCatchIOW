@@ -54,12 +54,19 @@ Frequent User Goals
 *Enjoy a visually appealing site to post and learn about fishing on the Isle of Wight*
 
 Visiting users will be able to read the information on the site.
+
 Registered users will be able to create, read, update and delete posts on the site.
+
 Registered users will be able to create, read, update and delete questions on the site.
+
 Registered users will be able to create, read, update and delete information in their profile.
+
 Registered users will be able to like posts and favourite questions.
+
 Registered users will be able to give a rating to locations.
+
 Registered users will be able to visual their posts, questions and favourited posts in their profile.
+
 Guru users will be able to do everything a registered user can, but will be able to answer specific questions.
 
 #### Site Owner's Goals
@@ -67,31 +74,62 @@ Guru users will be able to do everything a registered user can, but will be able
 *Provide a visually appealing place for people who enjoy fishing on the Isle of Wight*
 
 Admin users will be able to create, read, update and delete locations.
+
 Admin users will be able to create, read, update and delete categories.
+
 Admin users will be able to decide who gets to be a guru user.
 
 ### **Scope**
 
 Fits in with skillset of current programming ability.
+
 - Which includes HTML, CSS, Javscript, Python and the use of Flask, MongoDB and some Javascript libraries.
+
 The main focus of the site is to showcase CRUD functionality and present it in an easy to use manner.
 
 ### **Structure**
 
 *Consistent navigation throughout site.*
+
 *Consistent footer throughout site.*
+
 *Logged in user has access to 'apply to be a guru' contact form.*
+
 *Logged in guru user can has access to reply section in ask guru page.*
+
 *Logged in admin has access to edit locations, edit categories and edit users pages.*
+
+# Datebase Schema
+
+![Databse Schema](/docs/img/databaseschema.png)
 
 
 ### **Skeleton**
+
+# Wireframes
+
+[Landing Page](/docs/wireframes/landingpage.png)
+
+[Landing Page Mobile](/docs/wireframes/landingpagemobile.png)
+
+[Location Page](/docs/wireframes/locationpage.png)
+
+[Location Page Mobile](/docs/wireframes/locationpagemobile.png)
+
+[Guru Page](/docs/wireframes/gurupage.png)
+
+[Guru Page Mobile](/docs/wireframes/gurupagemobile.png)
+
+[Posts Page](/docs/wireframes/postpage.png)
+
+[Posts Page Mobile](/docs/wireframes/postpagemobile.png)
 
 - Landing Page
   - Made with [threejs](https://threejs.org/) to display pleasant visual of dark rippling ocean with moving clouds
 
 - Locations Page
   - CSS Grid based layout with a card for each location and button to individual forum. Cards use [tilt effect](https://micku7zu.github.io/vanilla-tilt.js/).
+
   - Individual location page has post option for logged in users and displays posts.
 
 - Ask Guru Page
@@ -128,6 +166,7 @@ Mix of blues, greys and browns to match sea and sand colors.
 Images:
 
 Use of images are uploaded my the user to the site, or by admin for the locations images.
+
 If images arent selected, a default image is posted.
 
 Typography:
@@ -137,6 +176,18 @@ Typography:
 Animations:
 
 [GSAP](https://greensock.com/) animations throughout site for fluid, appealing UX experience.
+
+Design: 
+
+Ocean and clouds 3D effect for landing page.
+
+Design includes text watermarks on page backgrounds throughout for nice subtle visual.
+
+Box shadows are used for soft visual effect.
+
+Font awesome icons displayed where necessary.
+
+Materialize used to structure page with custom SCSS written (for easier code nesting) compiled into CSS to add to design.
 
 ---
 
@@ -260,6 +311,8 @@ Consistant theme
 
 [Favicon Generator](https://favicon.io/favicon-generator/) - for favicon
 
+[DB Docs](https://dbdocs.io/) - for database structure image
+
 [Flask](https://flask.palletsprojects.com/en/2.0.x/) - web application framework
 
 [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - template engine for Python
@@ -326,7 +379,7 @@ Due to time constraints there are many things I would have liked to add to impro
 
 - More profile information
 
-- Added CSS improvements, including small profile pic in comments section
+- Added CSS improvements, including small profile pic in comments section. My focus wasn't on CSS for this project so there are definitely certain areas of that site that could be made more visually appealing.
 
 - Dashboards throughout site
 
@@ -335,6 +388,8 @@ Due to time constraints there are many things I would have liked to add to impro
 - Using Flask-login. I only discovered this midway through the project
 
 - More animations
+
+- Add pagination throughout posts, questions, comments section as well as admin pages. As the site would need it with bigger it grows.
 
 - Preventing page reload. I tried using barbaJS, but I kept having issues with it. So I decided against it. I used GSAP animations to improve the UX by waiting until page load to view page as some images werent loaded straight away when the page opened.
 
@@ -382,9 +437,11 @@ CI walkthrough project helped me throughout this project.
 
 Water effect from threeJS is used and adapted for my own style.
 
+Help with sorting objects in Javscript, had a small issue. Use [this link](https://javascript.plainenglish.io/sorting-objects-39a3cc47f9fe) to help
+
 ### Images and videos
 
-Images have been taken by myself as I live here.
+Images have been taken by myself as I live here on the island.
 
 ### Written Content
 
