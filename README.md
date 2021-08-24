@@ -1,22 +1,35 @@
-# [**Coastal Catch IoW**]()
+# [**Coastal Catch IoW**](https://coastal-catch-iow.herokuapp.com/)
 
 _Use CTRL+click or CMD+click to open links throughout the README in a new tab_
 
-![-](-) - image
+***Disclaimer: This website is for educational purposes only***
+
+![CoastalCatch](/docs/img/amiresponsiveimage.png)
 
 ## Overview
 
-Coastal Catch Isle of Wight is a fishing blog/forum site that allows users to post their fishing experiences of certain locations on the island as well as ask questions for advice. Users can posts comments, give a rating to a location and favourite a post.
+Coastal Catch Isle of Wight is a fishing blog/forum site that allows users to post their fishing experiences of certain locations on the island as well as ask questions for advice.
+
+This site is intended for those who love fishing and want to chat to other users about everything fishing on the Isle of Wight.
+
+Link to website: [https://coastal-catch-iow.herokuapp.com/](https://coastal-catch-iow.herokuapp.com/)
 
 ---
 
 ## Description
 
 This projects showcases full CRUD functionality and consists of 4 different types of users. Those users are:
-- Regular users who can only read. They can't post, like, comment, edit or delete anything.
-- Logged in users who can make a post in various locations. Edit and delete their posts. Like and favourite other posts. Edit their profile and give ratings to locations.
-- Guru users who can do everything a logged in user can do, but also have the privilege of being able to reply to questions in the Ask Guru section.
-- Admin users who can do everything including edit and delete all posts, as well as add and edit locations and question categories, as well as change users guru status.
+- Regular users who can only read.
+  - They can't post, like, comment, edit or delete anything.
+- Logged in users.
+  - Who can make a post in various locations as well as ask questions.
+  - They can edit and delete their posts and/or questions.
+  - Like and favourite other posts.
+  - Edit their profile and give ratings to locations.
+- Guru users.
+  - Who can do everything a logged in user can do, but also have the privilege of being able to reply to questions in the Ask Guru section.
+- Admin users.
+  - Who can do everything including edit and delete all posts, as well as add and edit locations and question categories, as well as change users guru status.
 
 ---
 
@@ -161,7 +174,7 @@ Colour scheme:
 
 Mix of blues, greys and browns to match sea and sand colors.
 
-![Color Palette](/docs/img/colorscheme.png) - color palette
+![Color Palette](/docs/img/colorscheme.png)
 
 Images:
 
