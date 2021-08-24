@@ -413,19 +413,77 @@ Deployment
 - Use of Gitpod for code editor.
 - Deployed using the master branch.
 
-Clone
-Environment variables, gitignore, procfile, 
+  - [Python](https://www.python.org/), [PIP](https://pip.pypa.io/en/stable/), [Git](https://git-scm.com/) are all required to run this project
 
-Heroku
-MongoDB
+### Clone
 
+- Locate the GitHub Repository.
 
+- Click the "Code" button.
 
-Cloning
+- Highlight the "HTTPS" button to clone with HTTPS and copy the link.
 
+- Open Git Bash
 
-Forking
+- Identify location in IDE where you want the cloned directory to be made.
 
+- Type git clone, and then paste the URL, which is the link that's been copied.
+
+- Your local clone will be made.
+
+### MongoDB
+
+- Create [MongoDB](https://www.mongodb.com/) account.
+
+- Select shared cluster, which is a free service.
+
+- Choose cloud provider and region.
+
+- Create new database and use the database schema for this project below to create your collections.
+
+![Database schema](/docs/img/databaseschema.png)
+
+### Create Environment Variables
+
+- Create `env.py` file. Add in required values.
+
+![](/docs/img/exampleenv.png)
+
+- Create `.gitignore` file. Make sure it contains these.
+
+![](/docs/img/examplegitignore.png)
+
+### Project dependencies
+
+- Install project dependencies with 'pip install -r requirements.txt'
+
+### Deploy Locally
+
+- Run python3 `app.py`
+
+- Open localhost URL.
+
+### Heroku
+
+You will require these files:
+
+  - requirements.txt - to store dependencies
+
+    - 'pip freeze --local > requirements.txt'
+
+  - Procfile - declares what commands are run on Heroku platform.
+
+    - Created Procfile which should contain web: python `app.py`
+
+The files are in the cloned repository.
+
+ - Register Heroku account.
+ - Create new app.
+ - Finish setup, including name and region.
+ - Configure config variables from `env.py` file. Do this from the settings tab.
+ - Select Github as deployment method and connect to Github.
+ - Deploy using automatic deployment.
+ - Open app to see deployed version.
 
 ---
 
@@ -437,7 +495,7 @@ CI walkthrough project helped me throughout this project.
 
 Water effect from threeJS is used and adapted for my own style.
 
-Help with sorting objects in Javscript, had a small issue. Use [this link](https://javascript.plainenglish.io/sorting-objects-39a3cc47f9fe) to help
+Help with sorting objects in Javscript, had a small issue. Used [this link](https://javascript.plainenglish.io/sorting-objects-39a3cc47f9fe) to help
 
 ### Images and videos
 
